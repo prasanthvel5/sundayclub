@@ -1,8 +1,5 @@
-// Configuration
-const DATA_FILE = 'dashboard-data.json';
-
 // State
-let dashboardData = null;
+// dashboardData is loaded from data.js
 let battingLeaderboard = [];
 let bowlingLeaderboard = [];
 let fieldingLeaderboard = [];
@@ -148,20 +145,12 @@ function switchTab(tabName) {
     document.getElementById(tabName).classList.add('active');
 }
 
-// Load dashboard data from static JSON file
-async function loadDashboardData() {
+// Load dashboard data (data is already embedded from data.js)
+function loadDashboardData() {
     try {
         showLoading();
 
-        // Fetch static data file
-        const response = await fetch(DATA_FILE + '?t=' + new Date().getTime());
-
-        if (!response.ok) {
-            throw new Error('Failed to load data');
-        }
-
-        dashboardData = await response.json();
-
+        // dashboardData is already loaded from data.js
         if (!dashboardData || !dashboardData.players || dashboardData.players.length === 0) {
             throw new Error('No player data found');
         }
