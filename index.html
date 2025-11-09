@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunday Club - Cricket Statistics Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>Sunday Club</h1>
+                    <p class="subtitle">Team Statistics Dashboard</p>
+                </div>
+                <button class="sync-btn" id="sync-btn" title="Sync latest data from HAR file">
+                    <span class="sync-icon">⟳</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Loading player statistics...</p>
+        </div>
+
+        <div class="error" id="error" style="display: none;">
+            <p>Error loading data. Please try again later.</p>
+        </div>
+
+        <div class="dashboard" id="dashboard" style="display: none;">
+            <!-- Tab Navigation -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="batting">
+                    <span class="icon">🏏</span>
+                    Batting
+                </button>
+                <button class="tab-btn" data-tab="bowling">
+                    <span class="icon">🎾</span>
+                    Bowling
+                </button>
+                <button class="tab-btn" data-tab="fielding">
+                    <span class="icon">🧤</span>
+                    Fielding
+                </button>
+                <button class="tab-btn" data-tab="highlights">
+                    <span class="icon">⭐</span>
+                    Highlights
+                </button>
+            </div>
+
+            <!-- Batting Leaderboard -->
+            <div class="tab-content active" id="batting">
+                <div class="leaderboard-header">
+                    <h2>Batting Leaderboard</h2>
+                    <div class="sort-controls">
+                        <label for="batting-sort">Sort by:</label>
+                        <select id="batting-sort" class="sort-select">
+                            <option value="runs">Runs</option>
+                            <option value="average">Avg</option>
+                            <option value="strikeRate">SR</option>
+                            <option value="highestScore">HS</option>
+                            <option value="thirties">30s</option>
+                            <option value="fifties">50s</option>
+                            <option value="fours">4s</option>
+                            <option value="sixes">6s</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="leaderboard" id="batting-leaderboard">
+                    <!-- Batting stats will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Bowling Leaderboard -->
+            <div class="tab-content" id="bowling">
+                <div class="leaderboard-header">
+                    <h2>Bowling Leaderboard</h2>
+                    <div class="sort-controls">
+                        <label for="bowling-sort">Sort by:</label>
+                        <select id="bowling-sort" class="sort-select">
+                            <option value="wickets">Wickets</option>
+                            <option value="overs">Overs</option>
+                            <option value="economy">Econ</option>
+                            <option value="threeWickets">3wkts</option>
+                            <option value="dotBalls">Dots</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="leaderboard" id="bowling-leaderboard">
+                    <!-- Bowling stats will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Fielding Leaderboard -->
+            <div class="tab-content" id="fielding">
+                <div class="leaderboard-header">
+                    <h2>Fielding Leaderboard</h2>
+                    <div class="sort-controls">
+                        <label for="fielding-sort">Sort by:</label>
+                        <select id="fielding-sort" class="sort-select">
+                            <option value="totalDismissals">Total</option>
+                            <option value="catches">Catches</option>
+                            <option value="stumpings">Stumpings</option>
+                            <option value="runOuts">Run Outs</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="leaderboard" id="fielding-leaderboard">
+                    <!-- Fielding stats will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Highlights Tab -->
+            <div class="tab-content" id="highlights">
+                <div class="leaderboard-header">
+                    <h2>Team Highlights</h2>
+                </div>
+
+                <div class="highlights-grid" id="highlights-grid">
+                    <!-- Highlights will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Last updated: <span id="last-updated"></span></p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

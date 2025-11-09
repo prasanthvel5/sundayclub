@@ -1,0 +1,184 @@
+╔═══════════════════════════════════════════════════════════════════╗
+║                                                                   ║
+║     CRAZY BOYZ CRICKET STATISTICS DASHBOARD - OFFLINE MODE        ║
+║                                                                   ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+✓ SETUP COMPLETE - Ready to Use!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 QUICK START (3 Steps)
+
+1. Install Dependencies (First Time Only)
+   npm install
+
+2. Start Server
+   npm start
+
+   OR on Windows, just double-click:
+   start.bat
+
+3. Open Dashboard
+   http://localhost:3000/index.html
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 WHAT YOU GET
+
+✓ 19 Players Extracted
+  - Complete batting statistics
+  - Bowling performance data
+  - Fielding records
+
+✓ Three Interactive Leaderboards
+  - Batting: 6,713 total runs
+  - Bowling: 377 total wickets
+  - Fielding: 219 total catches
+
+✓ Mobile-Optimized Design
+  - Works perfectly on phones
+  - Dark theme for easy viewing
+  - Gold/Silver/Bronze for top 3
+
+✓ Offline-First
+  - No internet required
+  - Lightning fast
+  - Data from HAR file
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔄 UPDATING DATA
+
+Method 1: Sync Button (Easiest)
+  1. Replace cricheroes.com.har with new file
+  2. Click sync button (⟳) in top-right corner
+  3. Wait for success message
+
+Method 2: Command Line
+  node extract-players.js
+  (Refresh browser)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📱 MOBILE ACCESS
+
+Same WiFi Network:
+  1. Find your computer IP: ipconfig (Windows) or ifconfig (Mac)
+  2. On phone visit: http://YOUR_IP:3000/index.html
+
+Example: http://192.168.1.100:3000/index.html
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📁 PROJECT FILES
+
+Core Files:
+  ✓ index.html              - Main dashboard
+  ✓ app.js                  - Dashboard logic
+  ✓ styles.css              - Mobile styling
+  ✓ dashboard-data.json     - Player statistics (17KB)
+
+Scripts:
+  ✓ extract-players.js      - Extract data from HAR
+  ✓ proxy-server.js         - Local server with sync
+  ✓ start.bat              - Windows quick start
+
+Data:
+  ✓ cricheroes.com.har      - Source HAR file (15MB)
+  ✓ dashboard-data.json     - Extracted stats
+
+Docs:
+  ✓ README.md              - Full documentation
+  ✓ QUICKSTART.md          - Quick start guide
+  ✓ GETTING_STARTED.txt    - This file
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 HOW IT WORKS
+
+1. HAR File Contains:
+   - API responses from CricHeroes
+   - Player statistics for all 19 players
+   - Captured during browser visit
+
+2. Extraction Script:
+   - Parses HAR file
+   - Extracts batting/bowling/fielding stats
+   - Saves to dashboard-data.json
+
+3. Dashboard:
+   - Loads static JSON file
+   - Displays interactive leaderboards
+   - Sync button re-extracts data
+
+4. Offline Mode:
+   - No API calls needed
+   - Works without internet
+   - Fast and secure
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+❓ TROUBLESHOOTING
+
+Problem: Dashboard not loading
+Solution: Run "node extract-players.js" first
+
+Problem: Sync button not working
+Solution: Make sure server is running (npm start)
+
+Problem: No player data
+Solution: Check dashboard-data.json exists and has content
+
+Problem: Players missing
+Solution: Update playerNames in extract-players.js
+
+For more help, see README.md or QUICKSTART.md
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✨ FEATURES HIGHLIGHT
+
+✓ Sync Button - Click to refresh data from HAR file
+✓ Tab Navigation - Switch between Batting/Bowling/Fielding
+✓ Summary Stats - Total runs, wickets, catches at a glance
+✓ Ranked Players - Gold/Silver/Bronze for top performers
+✓ Last Updated - Shows when data was last synced
+✓ Mobile First - Perfect for phone viewing
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎨 CUSTOMIZATION
+
+Team Name: Edit extract-players.js line 132
+Player Names: Edit extract-players.js lines 40-60
+Colors: Edit styles.css lines 10-20
+Sorting: Edit app.js sorting logic
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📖 DOCUMENTATION
+
+README.md - Complete documentation with all features
+QUICKSTART.md - Step-by-step setup guide
+demo.html - Preview UI with sample data (no setup needed)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👥 TEAM ROSTER (19 Players)
+
+Arun Balaji, Bharathi, Dinesh Baranitharan, Diwakar Cricket,
+Harish D, Kaviarasu, Manoj Jeganath, Meghanathan TKM,
+Muthuraj Anna, Parthiban, Pon Sundar, Pradeep TKM, Prasanth,
+Praveen J, Saravana CPT, Sathish TKM, Sheik, Vicky, VMR
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+READY TO GO! 🎉
+
+Just run: npm start
+Then visit: http://localhost:3000/index.html
+
+Enjoy your cricket statistics dashboard!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
