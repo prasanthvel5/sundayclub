@@ -34,10 +34,5 @@ yarn-error.log*
 .cache/
 
 # HAR files (optional - uncomment if you don't want to track HAR files)
-# *.har
+*.har
 
-# Player data exports
-players.json
-
-# Generated data (will be recreated from HAR file)
-dashboard-data.json
