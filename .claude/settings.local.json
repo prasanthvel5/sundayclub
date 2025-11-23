@@ -9,7 +9,12 @@
       "Bash(git add:*)",
       "Bash(git commit -m \"$(cat <<''EOF''\nInitial commit: Sunday Club Cricket Statistics Dashboard\n\n- Mobile-responsive cricket statistics dashboard\n- Batting, Bowling, Fielding leaderboards with dynamic sorting\n- Highlights tab with achievement cards\n- Offline data extraction from HAR file\n- Sync button to refresh data\n- Modern gradient UI with team colors\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
       "Bash(git branch:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(git commit:*)",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)",
+      "Bash(cat:*)",
+      "Bash(temp-data.txt)"
     ],
     "deny": [],
     "ask": []
