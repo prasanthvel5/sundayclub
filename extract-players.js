@@ -139,14 +139,22 @@ function extractPlayerStats() {
             players: playersList
         };
 
-        // Save to file
+        // Save to JSON file
         fs.writeFileSync('dashboard-data.json', JSON.stringify(dashboardData, null, 2));
+
+        // Update data.js for embedded dashboard data
+        const dataJsContent = `// Dashboard data embedded for static deployment
+const dashboardData = ${JSON.stringify(dashboardData, null, 2)};
+`;
+        fs.writeFileSync('data.js', dataJsContent);
 
         console.log('\n' + '='.repeat(60));
         console.log('✓ Extraction Complete!');
         console.log('='.repeat(60));
         console.log(`Total Players: ${playersList.length}`);
-        console.log(`Output File: dashboard-data.json`);
+        console.log(`Output Files:`);
+        console.log(`  - dashboard-data.json`);
+        console.log(`  - data.js (embedded)`);
         console.log('='.repeat(60));
 
         // Print summary statistics

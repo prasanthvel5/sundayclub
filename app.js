@@ -259,8 +259,8 @@ function displayBattingLeaderboard() {
                         <span class="stat-item-value">${player.runs}</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-item-label">Mat</span>
-                        <span class="stat-item-value">${player.matches || 0}</span>
+                        <span class="stat-item-label">Inn</span>
+                        <span class="stat-item-value">${player.innings || 0}</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-item-label">Avg</span>
@@ -306,7 +306,7 @@ function displayBowlingLeaderboard() {
                         <span class="stat-item-value">${player.wickets}</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-item-label">Mat</span>
+                        <span class="stat-item-label">Inn</span>
                         <span class="stat-item-value">${player.matches || 0}</span>
                     </div>
                     <div class="stat-item">
@@ -353,7 +353,7 @@ function displayFieldingLeaderboard() {
                         <span class="stat-item-value">${player.catches}</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-item-label">Mat</span>
+                        <span class="stat-item-label">Inn</span>
                         <span class="stat-item-value">${player.matches || 0}</span>
                     </div>
                     <div class="stat-item">
