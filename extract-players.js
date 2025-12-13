@@ -74,7 +74,8 @@ function extractPlayerStats() {
                             '41474289': 'VMR',
                             '41832657': 'Harish D',
                             '42047823': 'Sheik',
-                            '43183920': 'Parthiban'
+                            '43183920': 'Parthiban',
+                            '43668809': 'Valan'
                         };
 
                         const playerName = playerNames[playerId] || `Player ${playerId}`;
@@ -218,7 +219,8 @@ function extractWithRegex(harData) {
         '41474289': 'VMR',
         '41832657': 'Harish D',
         '42047823': 'Sheik',
-        '43183920': 'Parthiban'
+        '43183920': 'Parthiban',
+        '43668809': 'Valan'
     };
 
     console.log('Searching for player statistics in HAR data...');
@@ -389,9 +391,189 @@ const dashboardData = ${JSON.stringify(dashboardData, null, 2)};
     return dashboardData;
 }
 
-// Run if called directly
-if (require.main === module) {
-    extractPlayerStats();
+// Extract from additional HAR file and append to existing data
+function appendFromHarFile(harFileName) {
+    try {
+        console.log(`\nReading additional HAR file: ${harFileName}...`);
+
+        // Load existing data
+        let existingData = { players: [] };
+        try {
+            existingData = JSON.parse(fs.readFileSync('dashboard-data.json', 'utf8'));
+            console.log(`Loaded existing data with ${existingData.players.length} players`);
+        } catch (e) {
+            console.log('No existing data found, starting fresh');
+        }
+
+        // Create map from existing players
+        const playersMap = new Map();
+        existingData.players.forEach(p => playersMap.set(p.id, p));
+
+        // Read new HAR file
+        const harData = fs.readFileSync(harFileName, 'utf8');
+
+        // Player name mapping (extended)
+        const playerNames = {
+            '30000671': 'Arun Balaji',
+            '3179681': 'Prasanth',
+            '31974223': 'Manoj Jeganath',
+            '3224203': 'Praveen J',
+            '3224784': 'Vicky',
+            '3224789': 'Kaviarasu',
+            '3224822': 'Bharathi',
+            '3224827': 'Meghanathan TKM',
+            '3224839': 'Pradeep TKM',
+            '3224846': 'Sathish TKM',
+            '37775058': 'Dinesh Baranitharan',
+            '41473990': 'Muthuraj Anna',
+            '41473991': 'Pon Sundar',
+            '41473993': 'Saravana CPT',
+            '41474287': 'Diwakar Cricket',
+            '41474289': 'VMR',
+            '41832657': 'Harish D',
+            '42047823': 'Sheik',
+            '43183920': 'Parthiban',
+            '43668809': 'Valan'
+        };
+
+        // Find player IDs in new HAR
+        const playerIdRegex = /get-player-statistic\/(\d+)\?pagesize=12/g;
+        const newPlayerIds = new Set();
+        let match;
+        while ((match = playerIdRegex.exec(harData)) !== null) {
+            newPlayerIds.add(match[1]);
+        }
+
+        console.log(`Found ${newPlayerIds.size} player IDs in new HAR file`);
+
+        let newPlayersAdded = 0;
+        let playersUpdated = 0;
+
+        // Process each player ID
+        for (const playerId of newPlayerIds) {
+            const urlPattern = `get-player-statistic/${playerId}?pagesize=12`;
+            let searchIdx = 0;
+            let foundStats = false;
+
+            while (!foundStats) {
+                const urlIndex = harData.indexOf(urlPattern, searchIdx);
+                if (urlIndex === -1) break;
+
+                const searchEnd = Math.min(urlIndex + 10000, harData.length);
+                const searchBlock = harData.substring(urlIndex, searchEnd);
+
+                const textMatch = searchBlock.match(/"text":\s*"((?:[^"\\]|\\.)*)"/);
+
+                if (textMatch) {
+                    try {
+                        let jsonStr = textMatch[1];
+                        jsonStr = jsonStr.replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+
+                        const data = JSON.parse(jsonStr);
+
+                        if (data.status && data.data && data.data.statistics) {
+                            const stats = data.data.statistics;
+                            const batting = stats.batting || [];
+                            const bowling = stats.bowling || [];
+                            const fielding = stats.fielding || [];
+
+                            const getValue = (arr, title) => {
+                                const item = arr.find(i => i.title === title);
+                                return item ? item.value : 0;
+                            };
+
+                            const playerName = playerNames[playerId] || `Player ${playerId}`;
+
+                            const battingStats = {
+                                runs: parseInt(getValue(batting, 'Runs')) || 0,
+                                innings: parseInt(getValue(batting, 'Innings')) || 0,
+                                average: parseFloat(getValue(batting, 'Avg')) || 0,
+                                strikeRate: parseFloat(getValue(batting, 'SR')) || 0,
+                                highestScore: String(getValue(batting, 'Highest Runs') || '0'),
+                                thirties: parseInt(getValue(batting, '30s')) || 0,
+                                fifties: parseInt(getValue(batting, '50s')) || 0,
+                                hundreds: parseInt(getValue(batting, '100s')) || 0,
+                                fours: parseInt(getValue(batting, '4s')) || 0,
+                                sixes: parseInt(getValue(batting, '6s')) || 0,
+                                notOuts: parseInt(getValue(batting, 'Not out')) || 0,
+                                matches: parseInt(getValue(batting, 'Matches')) || 0
+                            };
+
+                            const bowlingStats = {
+                                wickets: parseInt(getValue(bowling, 'Wickets')) || 0,
+                                overs: parseFloat(getValue(bowling, 'Overs')) || 0,
+                                economy: parseFloat(getValue(bowling, 'Economy')) || 0,
+                                average: parseFloat(getValue(bowling, 'Avg')) || 0,
+                                bestBowling: String(getValue(bowling, 'Best Bowling') || '0/0'),
+                                maidens: parseInt(getValue(bowling, 'Maidens')) || 0,
+                                runs: parseInt(getValue(bowling, 'Runs')) || 0,
+                                dotBalls: parseInt(getValue(bowling, 'Dot Balls')) || 0,
+                                wides: parseInt(getValue(bowling, 'Wides')) || 0,
+                                noBalls: parseInt(getValue(bowling, 'NoBalls')) || 0,
+                                threeWickets: parseInt(getValue(bowling, '3 Wickets')) || 0,
+                                fiveWickets: parseInt(getValue(bowling, '5 Wickets')) || 0,
+                                matches: parseInt(getValue(bowling, 'Matches')) || 0
+                            };
+
+                            const fieldingStats = {
+                                catches: parseInt(getValue(fielding, 'Catches')) || 0,
+                                stumpings: parseInt(getValue(fielding, 'Stumpings')) || 0,
+                                runOuts: parseInt(getValue(fielding, 'Run outs')) || 0,
+                                caughtBehind: parseInt(getValue(fielding, 'Caught behind')) || 0,
+                                matches: parseInt(getValue(fielding, 'Matches')) || 0
+                            };
+
+                            const isNew = !playersMap.has(playerId);
+                            playersMap.set(playerId, {
+                                id: playerId,
+                                name: playerName,
+                                batting: battingStats,
+                                bowling: bowlingStats,
+                                fielding: fieldingStats,
+                                lastUpdated: new Date().toISOString()
+                            });
+
+                            if (isNew) {
+                                console.log(`✓ Added NEW player: ${playerName} (ID: ${playerId})`);
+                                newPlayersAdded++;
+                            } else {
+                                console.log(`✓ Updated existing: ${playerName} (ID: ${playerId})`);
+                                playersUpdated++;
+                            }
+                            foundStats = true;
+                        }
+                    } catch (e) {
+                        // Try next occurrence
+                    }
+                }
+                searchIdx = urlIndex + 1;
+            }
+        }
+
+        // Save updated data
+        const result = finalizeData(playersMap);
+
+        console.log(`\nSummary:`);
+        console.log(`  New players added: ${newPlayersAdded}`);
+        console.log(`  Existing players updated: ${playersUpdated}`);
+
+        return result;
+
+    } catch (error) {
+        console.error('\n❌ Error:', error.message);
+        throw error;
+    }
 }
 
-module.exports = { extractPlayerStats };
+// Run if called directly
+if (require.main === module) {
+    const args = process.argv.slice(2);
+    if (args.length > 0 && args[0] === '--append') {
+        const harFile = args[1] || 'cricheroes_new.com.har';
+        appendFromHarFile(harFile);
+    } else {
+        extractPlayerStats();
+    }
+}
+
+module.exports = { extractPlayerStats, appendFromHarFile };

@@ -2,8 +2,8 @@
 const dashboardData = {
   "teamName": "Sunday Club",
   "teamId": "10442708",
-  "lastSync": "2025-12-13T17:59:38.804Z",
-  "totalPlayers": 18,
+  "lastSync": "2025-12-13T18:09:48.396Z",
+  "totalPlayers": 19,
   "players": [
     {
       "id": "30000671",
@@ -701,6 +701,47 @@ const dashboardData = {
         "matches": 41
       },
       "lastUpdated": "2025-12-13T17:59:38.795Z"
+    },
+    {
+      "id": "43668809",
+      "name": "Valan",
+      "batting": {
+        "runs": 138,
+        "innings": 20,
+        "average": 10.62,
+        "strikeRate": 94.52,
+        "highestScore": "19*",
+        "thirties": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 8,
+        "sixes": 9,
+        "notOuts": 7,
+        "matches": 22
+      },
+      "bowling": {
+        "wickets": 0,
+        "overs": 0,
+        "economy": 0,
+        "average": 0,
+        "bestBowling": "0/0",
+        "maidens": 0,
+        "runs": 0,
+        "dotBalls": 0,
+        "wides": 0,
+        "noBalls": 0,
+        "threeWickets": 0,
+        "fiveWickets": 0,
+        "matches": 22
+      },
+      "fielding": {
+        "catches": 3,
+        "stumpings": 0,
+        "runOuts": 3,
+        "caughtBehind": 2,
+        "matches": 22
+      },
+      "lastUpdated": "2025-12-13T18:09:48.389Z"
     },
     {
       "id": "3224784",
