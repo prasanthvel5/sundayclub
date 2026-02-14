@@ -487,6 +487,99 @@ body {
     font-weight: 500;
 }
 
+/* Rating Badge (small - for batting/bowling tabs) */
+.rating-badge-small {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-primary);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+    min-width: 36px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* Allrounder Rating Badge */
+.allrounder-rating-badge {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-primary);
+    font-size: 18px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 10px;
+    min-width: 60px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(30, 136, 229, 0.4);
+    flex-shrink: 0;
+}
+
+/* Rating Bars */
+.rating-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 8px 0;
+}
+
+.rating-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.rating-bar-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    min-width: 34px;
+    flex-shrink: 0;
+}
+
+.rating-bar-track {
+    flex: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.rating-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.6s ease;
+}
+
+.rating-bar-fill.rating-bar-bat {
+    background: linear-gradient(90deg, #1e88e5, #42a5f5);
+}
+
+.rating-bar-fill.rating-bar-bowl {
+    background: linear-gradient(90deg, #43a047, #66bb6a);
+}
+
+.rating-bar-value {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    min-width: 32px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.allrounder-player-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.allrounder-player-header .player-name {
+    flex: 1;
+}
+
 /* Footer */
 .footer {
     text-align: center;
@@ -511,6 +604,21 @@ body {
         font-size: 10px;
         padding: 4px 6px;
         min-width: 70px;
+    }
+
+    .tab-btn {
+        min-width: 80px;
+        font-size: 11px;
+        padding: 6px 8px;
+    }
+
+    .tab-btn .icon {
+        font-size: 16px;
+    }
+
+    .allrounder-rating-badge {
+        font-size: 16px;
+        padding: 4px 10px;
     }
 }
 

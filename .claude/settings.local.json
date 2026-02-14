@@ -14,7 +14,15 @@
       "Bash(git pull:*)",
       "Bash(git stash:*)",
       "Bash(cat:*)",
-      "Bash(temp-data.txt)"
+      "Bash(temp-data.txt)",
+      "WebSearch",
+      "WebFetch(domain:www.icc-cricket.com)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:www.relianceiccrankings.com)",
+      "WebFetch(domain:iccbackup.co.uk)",
+      "WebFetch(domain:genzcricket.net)",
+      "WebFetch(domain:thecricketlounge.com)",
+      "WebFetch(domain:www.omnicalculator.com)"
     ],
     "deny": [],
     "ask": []

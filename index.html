@@ -48,6 +48,10 @@
                     <span class="icon">⭐</span>
                     Highlights
                 </button>
+                <button class="tab-btn" data-tab="allrounders">
+                    <span class="icon">&#9733;</span>
+                    Allrounders
+                </button>
             </div>
 
             <!-- Batting Leaderboard -->
@@ -57,6 +61,7 @@
                     <div class="sort-controls">
                         <label for="batting-sort">Sort by:</label>
                         <select id="batting-sort" class="sort-select">
+                            <option value="battingRating">Points</option>
                             <option value="runs">Runs</option>
                             <option value="average">Avg</option>
                             <option value="strikeRate">SR</option>
@@ -81,6 +86,7 @@
                     <div class="sort-controls">
                         <label for="bowling-sort">Sort by:</label>
                         <select id="bowling-sort" class="sort-select">
+                            <option value="bowlingRating">Points</option>
                             <option value="wickets">Wickets</option>
                             <option value="overs">Overs</option>
                             <option value="economy">Econ</option>
@@ -123,6 +129,25 @@
 
                 <div class="highlights-grid" id="highlights-grid">
                     <!-- Highlights will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Allrounders Tab -->
+            <div class="tab-content" id="allrounders">
+                <div class="leaderboard-header">
+                    <h2>Allrounder Rankings</h2>
+                    <div class="sort-controls">
+                        <label for="allrounder-sort">Sort by:</label>
+                        <select id="allrounder-sort" class="sort-select">
+                            <option value="allrounderRating">Rating</option>
+                            <option value="battingRating">Bat Rating</option>
+                            <option value="bowlingRating">Bowl Rating</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="leaderboard" id="allrounder-leaderboard">
+                    <!-- Allrounder stats will be inserted here -->
                 </div>
             </div>
         </div>

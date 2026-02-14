@@ -3,11 +3,13 @@
 let battingLeaderboard = [];
 let bowlingLeaderboard = [];
 let fieldingLeaderboard = [];
+let allrounderLeaderboard = [];
 
 // Sorting state
-let battingSortBy = 'runs';
-let bowlingSortBy = 'wickets';
+let battingSortBy = 'battingRating';
+let bowlingSortBy = 'bowlingRating';
 let fieldingSortBy = 'totalDismissals';
+let allrounderSortBy = 'allrounderRating';
 
 // Initialize the app
 document.addEventListener('DOMContentLoaded', () => {
@@ -52,6 +54,15 @@ function setupSortControls() {
             fieldingSortBy = e.target.value;
             sortFieldingLeaderboard();
             displayFieldingLeaderboard();
+        });
+    }
+
+    const allrounderSort = document.getElementById('allrounder-sort');
+    if (allrounderSort) {
+        allrounderSort.addEventListener('change', (e) => {
+            allrounderSortBy = e.target.value;
+            sortAllrounderLeaderboard();
+            displayAllrounderLeaderboard();
         });
     }
 }
@@ -169,12 +180,14 @@ function loadDashboardData() {
 // Process player data and create leaderboards
 function processPlayerData() {
     const players = dashboardData.players;
+    const teamMaxes = calculateTeamMaxes(players);
 
     // Create batting leaderboard
     battingLeaderboard = players.map(player => ({
         playerId: player.id,
         playerName: player.name,
-        ...player.batting
+        ...player.batting,
+        battingRating: calculateBattingRating(player.batting, teamMaxes)
     }));
     sortBattingLeaderboard();
 
@@ -182,7 +195,8 @@ function processPlayerData() {
     bowlingLeaderboard = players.map(player => ({
         playerId: player.id,
         playerName: player.name,
-        ...player.bowling
+        ...player.bowling,
+        bowlingRating: calculateBowlingRating(player.bowling, teamMaxes)
     }));
     sortBowlingLeaderboard();
 
@@ -194,6 +208,29 @@ function processPlayerData() {
         totalDismissals: player.fielding.catches + player.fielding.stumpings + player.fielding.runOuts
     }));
     sortFieldingLeaderboard();
+
+    // Create allrounder leaderboard
+    allrounderLeaderboard = players
+        .filter(p => (p.batting.innings || 0) >= 10 && (p.bowling.overs || 0) >= 20)
+        .map(player => {
+            const battingRating = calculateBattingRating(player.batting, teamMaxes);
+            const bowlingRating = calculateBowlingRating(player.bowling, teamMaxes);
+            const allrounderRating = Math.round((battingRating * bowlingRating) / 1000);
+            return {
+                playerId: player.id,
+                playerName: player.name,
+                battingRating,
+                bowlingRating,
+                allrounderRating,
+                runs: player.batting.runs,
+                average: player.batting.average,
+                strikeRate: player.batting.strikeRate,
+                wickets: player.bowling.wickets,
+                economy: player.bowling.economy,
+                bowlAvg: player.bowling.average
+            };
+        });
+    sortAllrounderLeaderboard();
 }
 
 // Sort batting leaderboard
@@ -230,12 +267,150 @@ function sortFieldingLeaderboard() {
     });
 }
 
+// Calculate team max/min values for normalization
+function calculateTeamMaxes(players) {
+    const maxes = {
+        runs: 0, average: 0, strikeRate: 0, consistency: 0,
+        wickets: 0, threeWickets: 0,
+        economyMin: Infinity, economyMax: 0,
+        bowlAvgMin: Infinity, bowlAvgMax: 0
+    };
+
+    players.forEach(p => {
+        const bat = p.batting;
+        const bowl = p.bowling;
+
+        maxes.runs = Math.max(maxes.runs, bat.runs || 0);
+        maxes.average = Math.max(maxes.average, bat.average || 0);
+        maxes.strikeRate = Math.max(maxes.strikeRate, bat.strikeRate || 0);
+        const cons = (bat.thirties || 0) + ((bat.fifties || 0) * 2);
+        maxes.consistency = Math.max(maxes.consistency, cons);
+
+        maxes.wickets = Math.max(maxes.wickets, bowl.wickets || 0);
+        maxes.threeWickets = Math.max(maxes.threeWickets, bowl.threeWickets || 0);
+
+        if (bowl.overs > 0) {
+            maxes.economyMin = Math.min(maxes.economyMin, bowl.economy || Infinity);
+            maxes.economyMax = Math.max(maxes.economyMax, bowl.economy || 0);
+        }
+        if (bowl.wickets > 0) {
+            maxes.bowlAvgMin = Math.min(maxes.bowlAvgMin, bowl.average || Infinity);
+            maxes.bowlAvgMax = Math.max(maxes.bowlAvgMax, bowl.average || 0);
+        }
+    });
+
+    // Handle edge cases where all values are the same
+    if (maxes.economyMin === Infinity) maxes.economyMin = 0;
+    if (maxes.bowlAvgMin === Infinity) maxes.bowlAvgMin = 0;
+
+    return maxes;
+}
+
+// Calculate batting rating (0-1000)
+function calculateBattingRating(batting, maxes) {
+    const normalize = (val, max) => max > 0 ? (val / max) * 1000 : 0;
+
+    const quality = normalize(batting.average || 0, maxes.average);
+    const intent = normalize(batting.strikeRate || 0, maxes.strikeRate);
+    const volume = normalize(batting.runs || 0, maxes.runs);
+    const cons = (batting.thirties || 0) + ((batting.fifties || 0) * 2);
+    const consistency = normalize(cons, maxes.consistency);
+
+    return Math.round(quality * 0.30 + intent * 0.25 + volume * 0.25 + consistency * 0.20);
+}
+
+// Calculate bowling rating (0-1000)
+function calculateBowlingRating(bowling, maxes) {
+    if (!bowling.overs || bowling.overs === 0) return 0;
+    if (!bowling.wickets || bowling.wickets === 0) return 0;
+
+    const normalize = (val, max) => max > 0 ? (val / max) * 1000 : 0;
+
+    const invertedNormalize = (val, min, max) => {
+        if (max === min) return 500;
+        const raw = (1 - (val - min) / (max - min)) * 1000;
+        return Math.max(0, Math.min(1000, raw));
+    };
+
+    const wicketTaking = normalize(bowling.wickets, maxes.wickets);
+    const economy = invertedNormalize(bowling.economy, maxes.economyMin, maxes.economyMax);
+    const efficiency = invertedNormalize(bowling.average, maxes.bowlAvgMin, maxes.bowlAvgMax);
+    const impact = normalize(bowling.threeWickets || 0, maxes.threeWickets);
+
+    return Math.round(wicketTaking * 0.30 + economy * 0.25 + efficiency * 0.25 + impact * 0.20);
+}
+
+// Sort allrounder leaderboard
+function sortAllrounderLeaderboard() {
+    allrounderLeaderboard.sort((a, b) => (b[allrounderSortBy] || 0) - (a[allrounderSortBy] || 0));
+}
+
+// Display allrounder leaderboard
+function displayAllrounderLeaderboard() {
+    const container = document.getElementById('allrounder-leaderboard');
+
+    container.innerHTML = allrounderLeaderboard.map((player, index) => `
+        <div class="player-card rank-${index + 1}">
+            <div class="player-info">
+                <div class="allrounder-player-header">
+                    <div class="rank-badge-small">${index + 1}</div>
+                    <div class="player-name">${player.playerName}</div>
+                    <div class="allrounder-rating-badge">${player.allrounderRating}</div>
+                </div>
+                <div class="rating-bars">
+                    <div class="rating-bar-row">
+                        <span class="rating-bar-label">BAT</span>
+                        <div class="rating-bar-track">
+                            <div class="rating-bar-fill rating-bar-bat" style="width: ${player.battingRating / 10}%"></div>
+                        </div>
+                        <span class="rating-bar-value">${player.battingRating}</span>
+                    </div>
+                    <div class="rating-bar-row">
+                        <span class="rating-bar-label">BOWL</span>
+                        <div class="rating-bar-track">
+                            <div class="rating-bar-fill rating-bar-bowl" style="width: ${player.bowlingRating / 10}%"></div>
+                        </div>
+                        <span class="rating-bar-value">${player.bowlingRating}</span>
+                    </div>
+                </div>
+                <div class="player-stats">
+                    <div class="stat-item">
+                        <span class="stat-item-label">Runs</span>
+                        <span class="stat-item-value">${player.runs}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-item-label">Bat Avg</span>
+                        <span class="stat-item-value">${player.average.toFixed(2)}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-item-label">SR</span>
+                        <span class="stat-item-value">${player.strikeRate.toFixed(1)}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-item-label">Wkts</span>
+                        <span class="stat-item-value">${player.wickets}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-item-label">Econ</span>
+                        <span class="stat-item-value">${player.economy.toFixed(2)}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-item-label">Bowl Avg</span>
+                        <span class="stat-item-value">${player.bowlAvg.toFixed(2)}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
 // Display dashboard
 function displayDashboard() {
     displayBattingLeaderboard();
     displayBowlingLeaderboard();
     displayFieldingLeaderboard();
     displayHighlights();
+    displayAllrounderLeaderboard();
     updateLastUpdated();
 
     document.getElementById('dashboard').style.display = 'block';
@@ -249,9 +424,10 @@ function displayBattingLeaderboard() {
     container.innerHTML = battingLeaderboard.map((player, index) => `
         <div class="player-card rank-${index + 1}">
             <div class="player-info">
-                <div class="player-header">
+                <div class="allrounder-player-header">
                     <div class="rank-badge-small">${index + 1}</div>
                     <div class="player-name">${player.playerName}</div>
+                    <div class="rating-badge-small">${player.battingRating}</div>
                 </div>
                 <div class="player-stats">
                     <div class="stat-item">
@@ -296,9 +472,10 @@ function displayBowlingLeaderboard() {
     container.innerHTML = bowlingLeaderboard.map((player, index) => `
         <div class="player-card rank-${index + 1}">
             <div class="player-info">
-                <div class="player-header">
+                <div class="allrounder-player-header">
                     <div class="rank-badge-small">${index + 1}</div>
                     <div class="player-name">${player.playerName}</div>
+                    <div class="rating-badge-small">${player.bowlingRating}</div>
                 </div>
                 <div class="player-stats">
                     <div class="stat-item">
