@@ -1,8 +1,185 @@
 // Node.js script to extract complete player statistics from HAR file
 const fs = require('fs');
 
+// --- Rating calculation functions (mirrored from app.js) ---
+
+function calculateTeamMaxes(players) {
+    const maxes = {
+        runs: 0, average: 0, strikeRate: 0, consistency: 0,
+        wickets: 0, threeWickets: 0,
+        economyMin: Infinity, economyMax: 0,
+        bowlAvgMin: Infinity, bowlAvgMax: 0
+    };
+
+    players.forEach(p => {
+        const bat = p.batting;
+        const bowl = p.bowling;
+
+        maxes.runs = Math.max(maxes.runs, bat.runs || 0);
+        maxes.average = Math.max(maxes.average, bat.average || 0);
+        maxes.strikeRate = Math.max(maxes.strikeRate, bat.strikeRate || 0);
+        const cons = (bat.thirties || 0) + ((bat.fifties || 0) * 2);
+        maxes.consistency = Math.max(maxes.consistency, cons);
+
+        maxes.wickets = Math.max(maxes.wickets, bowl.wickets || 0);
+        maxes.threeWickets = Math.max(maxes.threeWickets, bowl.threeWickets || 0);
+
+        if (bowl.overs > 0) {
+            maxes.economyMin = Math.min(maxes.economyMin, bowl.economy || Infinity);
+            maxes.economyMax = Math.max(maxes.economyMax, bowl.economy || 0);
+        }
+        if (bowl.wickets > 0) {
+            maxes.bowlAvgMin = Math.min(maxes.bowlAvgMin, bowl.average || Infinity);
+            maxes.bowlAvgMax = Math.max(maxes.bowlAvgMax, bowl.average || 0);
+        }
+    });
+
+    if (maxes.economyMin === Infinity) maxes.economyMin = 0;
+    if (maxes.bowlAvgMin === Infinity) maxes.bowlAvgMin = 0;
+
+    return maxes;
+}
+
+function calculateBattingRating(batting, maxes) {
+    const normalize = (val, max) => max > 0 ? (val / max) * 1000 : 0;
+
+    const quality = normalize(batting.average || 0, maxes.average);
+    const intent = normalize(batting.strikeRate || 0, maxes.strikeRate);
+    const volume = normalize(batting.runs || 0, maxes.runs);
+    const cons = (batting.thirties || 0) + ((batting.fifties || 0) * 2);
+    const consistency = normalize(cons, maxes.consistency);
+
+    return Math.round(quality * 0.30 + intent * 0.25 + volume * 0.25 + consistency * 0.20);
+}
+
+function calculateBowlingRating(bowling, maxes) {
+    if (!bowling.overs || bowling.overs === 0) return 0;
+    if (!bowling.wickets || bowling.wickets === 0) return 0;
+
+    const normalize = (val, max) => max > 0 ? (val / max) * 1000 : 0;
+
+    const invertedNormalize = (val, min, max) => {
+        if (max === min) return 500;
+        const raw = (1 - (val - min) / (max - min)) * 1000;
+        return Math.max(0, Math.min(1000, raw));
+    };
+
+    const wicketTaking = normalize(bowling.wickets, maxes.wickets);
+    const economy = invertedNormalize(bowling.economy, maxes.economyMin, maxes.economyMax);
+    const efficiency = invertedNormalize(bowling.average, maxes.bowlAvgMin, maxes.bowlAvgMax);
+    const impact = normalize(bowling.threeWickets || 0, maxes.threeWickets);
+
+    return Math.round(wicketTaking * 0.30 + economy * 0.25 + efficiency * 0.25 + impact * 0.20);
+}
+
+// Compute sorted ranking order (returns array of player IDs) for all categories
+function computeRankings(players) {
+    const teamMaxes = calculateTeamMaxes(players);
+
+    // Batting: sorted by battingRating descending
+    const battingRanking = players
+        .map(p => ({ id: p.id, rating: calculateBattingRating(p.batting, teamMaxes) }))
+        .sort((a, b) => b.rating - a.rating)
+        .map(p => p.id);
+
+    // Bowling: sorted by bowlingRating descending
+    const bowlingRanking = players
+        .map(p => ({ id: p.id, rating: calculateBowlingRating(p.bowling, teamMaxes) }))
+        .sort((a, b) => b.rating - a.rating)
+        .map(p => p.id);
+
+    // Fielding: sorted by totalDismissals descending
+    const fieldingRanking = players
+        .map(p => ({
+            id: p.id,
+            totalDismissals: (p.fielding.catches || 0) + (p.fielding.stumpings || 0) + (p.fielding.runOuts || 0)
+        }))
+        .sort((a, b) => b.totalDismissals - a.totalDismissals)
+        .map(p => p.id);
+
+    // Allrounder: filtered (innings >= 10 && overs >= 20), sorted by allrounderRating descending
+    const allrounderRanking = players
+        .filter(p => (p.batting.innings || 0) >= 10 && (p.bowling.overs || 0) >= 20)
+        .map(p => {
+            const batRating = calculateBattingRating(p.batting, teamMaxes);
+            const bowlRating = calculateBowlingRating(p.bowling, teamMaxes);
+            return { id: p.id, rating: Math.round((batRating * bowlRating) / 1000) };
+        })
+        .sort((a, b) => b.rating - a.rating)
+        .map(p => p.id);
+
+    return { batting: battingRanking, bowling: bowlingRanking, fielding: fieldingRanking, allrounder: allrounderRanking };
+}
+
+// Load previous rankings from existing dashboard-data.json
+function loadPreviousRankings() {
+    try {
+        const existingData = JSON.parse(fs.readFileSync('dashboard-data.json', 'utf8'));
+        if (existingData && existingData.players && existingData.players.length > 0) {
+            console.log(`Loaded existing data with ${existingData.players.length} players for ranking comparison`);
+            return computeRankings(existingData.players);
+        }
+    } catch (e) {
+        console.log('No existing dashboard-data.json found, skipping ranking comparison');
+    }
+    return null;
+}
+
+// Print ranking changes to console
+function printRankingChanges(previousRankings, newRankings, playersMap) {
+    if (!previousRankings) {
+        console.log('\nNo previous rankings to compare (first run)');
+        return;
+    }
+
+    const categories = ['batting', 'bowling', 'fielding', 'allrounder'];
+    const categoryLabels = { batting: 'Batting', bowling: 'Bowling', fielding: 'Fielding', allrounder: 'All-rounder' };
+
+    const getPlayerName = (id) => {
+        const p = playersMap.get(id);
+        return p ? p.name : `Player ${id}`;
+    };
+
+    for (const cat of categories) {
+        const prevOrder = previousRankings[cat] || [];
+        const newOrder = newRankings[cat] || [];
+        const prevRankMap = {};
+        prevOrder.forEach((id, idx) => { prevRankMap[id] = idx + 1; });
+
+        const changes = [];
+        newOrder.forEach((id, idx) => {
+            const newRank = idx + 1;
+            const prevRank = prevRankMap[id];
+            if (prevRank === undefined) {
+                changes.push({ name: getPlayerName(id), change: 'NEW', newRank });
+            } else if (prevRank !== newRank) {
+                const diff = prevRank - newRank;
+                changes.push({ name: getPlayerName(id), change: diff, newRank, prevRank });
+            }
+        });
+
+        if (changes.length > 0) {
+            console.log(`\n${categoryLabels[cat]} Ranking Changes:`);
+            changes.forEach(c => {
+                if (c.change === 'NEW') {
+                    console.log(`  NEW  #${c.newRank} ${c.name}`);
+                } else if (c.change > 0) {
+                    console.log(`  ▲ ${c.change}  #${c.prevRank} → #${c.newRank} ${c.name}`);
+                } else {
+                    console.log(`  ▼ ${Math.abs(c.change)}  #${c.prevRank} → #${c.newRank} ${c.name}`);
+                }
+            });
+        } else {
+            console.log(`\n${categoryLabels[cat]} Rankings: No changes`);
+        }
+    }
+}
+
 function extractPlayerStats() {
     try {
+        // Load previous rankings before processing new data
+        const previousRankings = loadPreviousRankings();
+
         console.log('Reading HAR file...');
         let harData = fs.readFileSync('cricheroes.com.har', 'utf8');
 
@@ -21,7 +198,7 @@ function extractPlayerStats() {
             } else {
                 // Alternative: extract data using regex patterns
                 console.log('Using regex extraction for player statistics...');
-                return extractWithRegex(harData);
+                return extractWithRegex(harData, previousRankings);
             }
         }
 
@@ -149,13 +326,17 @@ function extractPlayerStats() {
         // Sort by name
         playersList.sort((a, b) => a.name.localeCompare(b.name));
 
-        // Create the data structure
+        // Compute new rankings and compare with previous
+        const newRankings = computeRankings(playersList);
+
+        // Create the data structure with previous rankings embedded
         const dashboardData = {
             teamName: 'Sunday Club',
             teamId: '10442708',
             lastSync: new Date().toISOString(),
             totalPlayers: playersList.length,
-            players: playersList
+            players: playersList,
+            previousRankings: previousRankings || null
         };
 
         // Save to JSON file
@@ -185,6 +366,9 @@ const dashboardData = ${JSON.stringify(dashboardData, null, 2)};
         console.log(`  Total Runs: ${totalRuns}`);
         console.log(`  Total Wickets: ${totalWickets}`);
         console.log(`  Total Catches: ${totalCatches}`);
+
+        // Print ranking changes
+        printRankingChanges(previousRankings, newRankings, playersMap);
         console.log('\n');
 
         return dashboardData;
@@ -196,7 +380,7 @@ const dashboardData = ${JSON.stringify(dashboardData, null, 2)};
 }
 
 // Fallback regex extraction for truncated HAR files
-function extractWithRegex(harData) {
+function extractWithRegex(harData, previousRankings) {
     const playersMap = new Map();
 
     // Player name mapping
@@ -347,19 +531,23 @@ function extractWithRegex(harData) {
         }
     }
 
-    return finalizeData(playersMap);
+    return finalizeData(playersMap, previousRankings);
 }
 
-function finalizeData(playersMap) {
+function finalizeData(playersMap, previousRankings) {
     const playersList = Array.from(playersMap.values());
     playersList.sort((a, b) => a.name.localeCompare(b.name));
+
+    // Compute new rankings and compare with previous
+    const newRankings = computeRankings(playersList);
 
     const dashboardData = {
         teamName: 'Sunday Club',
         teamId: '10442708',
         lastSync: new Date().toISOString(),
         totalPlayers: playersList.length,
-        players: playersList
+        players: playersList,
+        previousRankings: previousRankings || null
     };
 
     fs.writeFileSync('dashboard-data.json', JSON.stringify(dashboardData, null, 2));
@@ -386,6 +574,9 @@ const dashboardData = ${JSON.stringify(dashboardData, null, 2)};
     console.log(`  Total Runs: ${totalRuns}`);
     console.log(`  Total Wickets: ${totalWickets}`);
     console.log(`  Total Catches: ${totalCatches}`);
+
+    // Print ranking changes
+    printRankingChanges(previousRankings, newRankings, playersMap);
     console.log('\n');
 
     return dashboardData;
@@ -395,6 +586,9 @@ const dashboardData = ${JSON.stringify(dashboardData, null, 2)};
 function appendFromHarFile(harFileName) {
     try {
         console.log(`\nReading additional HAR file: ${harFileName}...`);
+
+        // Load previous rankings before processing
+        const previousRankings = loadPreviousRankings();
 
         // Load existing data
         let existingData = { players: [] };
@@ -551,7 +745,7 @@ function appendFromHarFile(harFileName) {
         }
 
         // Save updated data
-        const result = finalizeData(playersMap);
+        const result = finalizeData(playersMap, previousRankings);
 
         console.log(`\nSummary:`);
         console.log(`  New players added: ${newPlayersAdded}`);

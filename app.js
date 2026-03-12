@@ -11,6 +11,14 @@ let bowlingSortBy = 'bowlingRating';
 let fieldingSortBy = 'totalDismissals';
 let allrounderSortBy = 'allrounderRating';
 
+// Rank change tracking
+let rankChanges = {
+    batting: {},
+    bowling: {},
+    fielding: {},
+    allrounder: {}
+};
+
 // Initialize the app
 document.addEventListener('DOMContentLoaded', () => {
     initializeTabs();
@@ -156,6 +164,70 @@ function switchTab(tabName) {
     document.getElementById(tabName).classList.add('active');
 }
 
+// Save current rankings to localStorage
+function saveCurrentRankings() {
+    const rankings = {
+        batting: battingLeaderboard.map(p => p.playerId),
+        bowling: bowlingLeaderboard.map(p => p.playerId),
+        fielding: fieldingLeaderboard.map(p => p.playerId),
+        allrounder: allrounderLeaderboard.map(p => p.playerId)
+    };
+    localStorage.setItem('previousRankings', JSON.stringify(rankings));
+}
+
+// Calculate rank changes by comparing current vs previous rankings
+function calculateRankChanges() {
+    // Prefer previousRankings embedded from extract-players.js, fall back to localStorage
+    let previous = null;
+    if (dashboardData && dashboardData.previousRankings) {
+        previous = dashboardData.previousRankings;
+    } else {
+        const stored = localStorage.getItem('previousRankings');
+        if (stored) {
+            previous = JSON.parse(stored);
+        }
+    }
+    if (!previous) return;
+
+    const calcChanges = (currentList, prevOrder, idKey) => {
+        const changes = {};
+        const prevRankMap = {};
+        prevOrder.forEach((id, idx) => { prevRankMap[id] = idx + 1; });
+
+        currentList.forEach((player, idx) => {
+            const currentRank = idx + 1;
+            const prevRank = prevRankMap[player[idKey]];
+            if (prevRank === undefined) {
+                changes[player[idKey]] = 'new';
+            } else if (prevRank === currentRank) {
+                changes[player[idKey]] = 0;
+            } else {
+                changes[player[idKey]] = prevRank - currentRank; // positive = moved up, negative = moved down
+            }
+        });
+        return changes;
+    };
+
+    rankChanges.batting = calcChanges(battingLeaderboard, previous.batting || [], 'playerId');
+    rankChanges.bowling = calcChanges(bowlingLeaderboard, previous.bowling || [], 'playerId');
+    rankChanges.fielding = calcChanges(fieldingLeaderboard, previous.fielding || [], 'playerId');
+    rankChanges.allrounder = calcChanges(allrounderLeaderboard, previous.allrounder || [], 'playerId');
+}
+
+// Generate HTML for rank change indicator
+function getRankChangeHTML(change) {
+    if (change === 'new') {
+        return '<span class="rank-change rank-new">NEW</span>';
+    }
+    if (change === undefined || change === 0) {
+        return '<span class="rank-change rank-same">&#8211;</span>';
+    }
+    if (change > 0) {
+        return `<span class="rank-change rank-up">&#9650; ${change}</span>`;
+    }
+    return `<span class="rank-change rank-down">&#9660; ${Math.abs(change)}</span>`;
+}
+
 // Load dashboard data (data is already embedded from data.js)
 function loadDashboardData() {
     try {
@@ -166,8 +238,20 @@ function loadDashboardData() {
             throw new Error('No player data found');
         }
 
+        // Save current rankings before reprocessing
+        if (battingLeaderboard.length > 0) {
+            saveCurrentRankings();
+        }
+
         // Process and display data
         processPlayerData();
+
+        // Calculate rank changes
+        calculateRankChanges();
+
+        // Save new rankings
+        saveCurrentRankings();
+
         displayDashboard();
         hideLoading();
 
@@ -354,6 +438,7 @@ function displayAllrounderLeaderboard() {
             <div class="player-info">
                 <div class="allrounder-player-header">
                     <div class="rank-badge-small">${index + 1}</div>
+                    ${getRankChangeHTML(rankChanges.allrounder[player.playerId])}
                     <div class="player-name">${player.playerName}</div>
                     <div class="allrounder-rating-badge">${player.allrounderRating}</div>
                 </div>
@@ -426,6 +511,7 @@ function displayBattingLeaderboard() {
             <div class="player-info">
                 <div class="allrounder-player-header">
                     <div class="rank-badge-small">${index + 1}</div>
+                    ${getRankChangeHTML(rankChanges.batting[player.playerId])}
                     <div class="player-name">${player.playerName}</div>
                     <div class="rating-badge-small">${player.battingRating}</div>
                 </div>
@@ -474,6 +560,7 @@ function displayBowlingLeaderboard() {
             <div class="player-info">
                 <div class="allrounder-player-header">
                     <div class="rank-badge-small">${index + 1}</div>
+                    ${getRankChangeHTML(rankChanges.bowling[player.playerId])}
                     <div class="player-name">${player.playerName}</div>
                     <div class="rating-badge-small">${player.bowlingRating}</div>
                 </div>
@@ -522,6 +609,7 @@ function displayFieldingLeaderboard() {
             <div class="player-info">
                 <div class="player-header">
                     <div class="rank-badge-small">${index + 1}</div>
+                    ${getRankChangeHTML(rankChanges.fielding[player.playerId])}
                     <div class="player-name">${player.playerName}</div>
                 </div>
                 <div class="player-stats">

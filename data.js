@@ -2,107 +2,107 @@
 const dashboardData = {
   "teamName": "Sunday Club",
   "teamId": "10442708",
-  "lastSync": "2026-02-14T16:03:14.024Z",
-  "totalPlayers": 24,
+  "lastSync": "2026-03-12T19:36:50.554Z",
+  "totalPlayers": 28,
   "players": [
     {
       "id": "30000671",
       "name": "Arun Balaji",
       "batting": {
-        "runs": 866,
-        "innings": 127,
-        "average": 10.56,
-        "strikeRate": 94.54,
+        "runs": 967,
+        "innings": 138,
+        "average": 10.87,
+        "strikeRate": 96.51,
         "highestScore": "42*",
         "thirties": 3,
         "fifties": 0,
         "hundreds": 0,
-        "fours": 51,
-        "sixes": 44,
-        "notOuts": 45,
-        "matches": 160
+        "fours": 58,
+        "sixes": 50,
+        "notOuts": 49,
+        "matches": 173
       },
       "bowling": {
-        "wickets": 86,
-        "overs": 218.5,
-        "economy": 9.74,
-        "average": 24.79,
+        "wickets": 94,
+        "overs": 234.5,
+        "economy": 9.76,
+        "average": 24.38,
         "bestBowling": "3/11",
         "maidens": 2,
-        "runs": 2132,
-        "dotBalls": 487,
-        "wides": 165,
-        "noBalls": 36,
+        "runs": 2292,
+        "dotBalls": 523,
+        "wides": 172,
+        "noBalls": 37,
         "threeWickets": 1,
         "fiveWickets": 0,
-        "matches": 160
+        "matches": 173
       },
       "fielding": {
-        "catches": 28,
+        "catches": 30,
         "stumpings": 0,
-        "runOuts": 12,
+        "runOuts": 13,
         "caughtBehind": 0,
-        "matches": 160
+        "matches": 173
       },
-      "lastUpdated": "2026-02-14T16:03:14.009Z"
+      "lastUpdated": "2026-03-12T19:36:50.540Z"
     },
     {
       "id": "3224822",
       "name": "Bharathi",
       "batting": {
-        "runs": 1475,
-        "innings": 103,
-        "average": 21.69,
-        "strikeRate": 157.75,
+        "runs": 1559,
+        "innings": 110,
+        "average": 21.36,
+        "strikeRate": 156.53,
         "highestScore": "53*",
-        "thirties": 12,
+        "thirties": 13,
         "fifties": 2,
         "hundreds": 0,
-        "fours": 75,
-        "sixes": 140,
-        "notOuts": 35,
-        "matches": 106
+        "fours": 78,
+        "sixes": 148,
+        "notOuts": 37,
+        "matches": 114
       },
       "bowling": {
-        "wickets": 90,
-        "overs": 217.2,
-        "economy": 7.5,
-        "average": 18.1,
+        "wickets": 96,
+        "overs": 234.2,
+        "economy": 7.58,
+        "average": 18.5,
         "bestBowling": "4/15",
         "maidens": 2,
-        "runs": 1629,
-        "dotBalls": 602,
-        "wides": 168,
-        "noBalls": 11,
+        "runs": 1776,
+        "dotBalls": 643,
+        "wides": 178,
+        "noBalls": 13,
         "threeWickets": 6,
         "fiveWickets": 0,
-        "matches": 106
+        "matches": 114
       },
       "fielding": {
-        "catches": 59,
+        "catches": 63,
         "stumpings": 0,
         "runOuts": 15,
         "caughtBehind": 1,
-        "matches": 106
+        "matches": 114
       },
-      "lastUpdated": "2026-02-14T16:03:14.009Z"
+      "lastUpdated": "2026-03-12T19:36:50.541Z"
     },
     {
       "id": "37775058",
       "name": "Dinesh Baranitharan",
       "batting": {
-        "runs": 14,
-        "innings": 5,
-        "average": 14,
-        "strikeRate": 42.42,
+        "runs": 22,
+        "innings": 11,
+        "average": 4.4,
+        "strikeRate": 44.9,
         "highestScore": "10*",
         "thirties": 0,
         "fifties": 0,
         "hundreds": 0,
         "fours": 2,
-        "sixes": 0,
-        "notOuts": 4,
-        "matches": 6
+        "sixes": 1,
+        "notOuts": 6,
+        "matches": 13
       },
       "bowling": {
         "wickets": 0,
@@ -117,57 +117,57 @@ const dashboardData = {
         "noBalls": 0,
         "threeWickets": 0,
         "fiveWickets": 0,
-        "matches": 6
+        "matches": 13
       },
       "fielding": {
         "catches": 0,
         "stumpings": 0,
         "runOuts": 0,
         "caughtBehind": 0,
-        "matches": 6
+        "matches": 13
       },
-      "lastUpdated": "2026-02-14T16:03:14.010Z"
+      "lastUpdated": "2026-03-12T19:36:50.542Z"
     },
     {
       "id": "41474287",
       "name": "Diwakar Cricket",
       "batting": {
-        "runs": 403,
-        "innings": 100,
-        "average": 11.19,
-        "strikeRate": 83.09,
+        "runs": 427,
+        "innings": 113,
+        "average": 10.17,
+        "strikeRate": 82.75,
         "highestScore": "32*",
         "thirties": 1,
         "fifties": 0,
         "hundreds": 0,
-        "fours": 20,
-        "sixes": 26,
-        "notOuts": 64,
-        "matches": 144
+        "fours": 21,
+        "sixes": 27,
+        "notOuts": 71,
+        "matches": 166
       },
       "bowling": {
-        "wickets": 9,
-        "overs": 30.1,
-        "economy": 11.97,
-        "average": 40.11,
-        "bestBowling": "2/15",
+        "wickets": 12,
+        "overs": 37.1,
+        "economy": 11.14,
+        "average": 34.5,
+        "bestBowling": "2/2",
         "maidens": 0,
-        "runs": 361,
-        "dotBalls": 71,
-        "wides": 27,
-        "noBalls": 14,
+        "runs": 414,
+        "dotBalls": 88,
+        "wides": 32,
+        "noBalls": 18,
         "threeWickets": 0,
         "fiveWickets": 0,
-        "matches": 144
+        "matches": 166
       },
       "fielding": {
-        "catches": 36,
+        "catches": 37,
         "stumpings": 2,
-        "runOuts": 11,
-        "caughtBehind": 4,
-        "matches": 144
+        "runOuts": 12,
+        "caughtBehind": 5,
+        "matches": 166
       },
-      "lastUpdated": "2026-02-14T16:03:14.010Z"
+      "lastUpdated": "2026-03-12T19:36:50.542Z"
     },
     {
       "id": "41832657",
@@ -208,7 +208,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 56
       },
-      "lastUpdated": "2026-02-14T16:03:14.011Z"
+      "lastUpdated": "2026-03-12T19:36:50.543Z"
     },
     {
       "id": "3224789",
@@ -249,130 +249,130 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 11
       },
-      "lastUpdated": "2026-02-14T16:03:14.011Z"
+      "lastUpdated": "2026-03-12T19:36:50.543Z"
     },
     {
       "id": "31974223",
       "name": "Manoj Jeganath",
       "batting": {
-        "runs": 1949,
-        "innings": 133,
-        "average": 20.09,
-        "strikeRate": 158.2,
+        "runs": 2371,
+        "innings": 153,
+        "average": 21.75,
+        "strikeRate": 161.18,
         "highestScore": "72",
-        "thirties": 17,
-        "fifties": 3,
+        "thirties": 21,
+        "fifties": 4,
         "hundreds": 0,
-        "fours": 102,
-        "sixes": 166,
-        "notOuts": 36,
-        "matches": 137
+        "fours": 121,
+        "sixes": 204,
+        "notOuts": 44,
+        "matches": 159
       },
       "bowling": {
-        "wickets": 55,
-        "overs": 124,
-        "economy": 9.9,
-        "average": 22.33,
+        "wickets": 67,
+        "overs": 143.2,
+        "economy": 9.96,
+        "average": 21.3,
         "bestBowling": "3/8",
         "maidens": 1,
-        "runs": 1228,
-        "dotBalls": 315,
-        "wides": 83,
-        "noBalls": 21,
-        "threeWickets": 5,
+        "runs": 1427,
+        "dotBalls": 360,
+        "wides": 105,
+        "noBalls": 24,
+        "threeWickets": 6,
         "fiveWickets": 0,
-        "matches": 137
+        "matches": 159
       },
       "fielding": {
-        "catches": 30,
-        "stumpings": 4,
-        "runOuts": 7,
-        "caughtBehind": 8,
-        "matches": 137
+        "catches": 37,
+        "stumpings": 5,
+        "runOuts": 8,
+        "caughtBehind": 11,
+        "matches": 159
       },
-      "lastUpdated": "2026-02-14T16:03:14.011Z"
+      "lastUpdated": "2026-03-12T19:36:50.543Z"
     },
     {
       "id": "3224827",
       "name": "Meghanathan TKM",
       "batting": {
-        "runs": 691,
-        "innings": 93,
-        "average": 9.73,
-        "strikeRate": 94.92,
+        "runs": 900,
+        "innings": 114,
+        "average": 10.84,
+        "strikeRate": 99.01,
         "highestScore": "35",
         "thirties": 1,
         "fifties": 0,
         "hundreds": 0,
-        "fours": 36,
-        "sixes": 45,
-        "notOuts": 22,
-        "matches": 111
+        "fours": 46,
+        "sixes": 61,
+        "notOuts": 31,
+        "matches": 133
       },
       "bowling": {
-        "wickets": 25,
-        "overs": 57.4,
-        "economy": 10.6,
-        "average": 24.44,
+        "wickets": 28,
+        "overs": 77.2,
+        "economy": 9.69,
+        "average": 26.75,
         "bestBowling": "3/20",
         "maidens": 0,
-        "runs": 611,
-        "dotBalls": 130,
-        "wides": 49,
-        "noBalls": 19,
+        "runs": 749,
+        "dotBalls": 176,
+        "wides": 56,
+        "noBalls": 20,
         "threeWickets": 1,
         "fiveWickets": 0,
-        "matches": 111
+        "matches": 133
       },
       "fielding": {
-        "catches": 13,
+        "catches": 16,
         "stumpings": 3,
-        "runOuts": 6,
+        "runOuts": 7,
         "caughtBehind": 7,
-        "matches": 111
+        "matches": 133
       },
-      "lastUpdated": "2026-02-14T16:03:14.012Z"
+      "lastUpdated": "2026-03-12T19:36:50.543Z"
     },
     {
       "id": "41473990",
       "name": "Muthuraj Anna",
       "batting": {
-        "runs": 1292,
-        "innings": 143,
-        "average": 12.54,
-        "strikeRate": 128.3,
+        "runs": 1421,
+        "innings": 161,
+        "average": 12.15,
+        "strikeRate": 125.09,
         "highestScore": "38",
         "thirties": 6,
         "fifties": 0,
         "hundreds": 0,
-        "fours": 47,
-        "sixes": 115,
-        "notOuts": 40,
-        "matches": 158
+        "fours": 55,
+        "sixes": 121,
+        "notOuts": 44,
+        "matches": 180
       },
       "bowling": {
-        "wickets": 44,
-        "overs": 92.1,
-        "economy": 9.75,
-        "average": 20.43,
-        "bestBowling": "3/12",
+        "wickets": 58,
+        "overs": 111.5,
+        "economy": 9.93,
+        "average": 19.14,
+        "bestBowling": "3/9",
         "maidens": 2,
-        "runs": 899,
-        "dotBalls": 234,
-        "wides": 60,
-        "noBalls": 11,
-        "threeWickets": 1,
+        "runs": 1110,
+        "dotBalls": 275,
+        "wides": 80,
+        "noBalls": 13,
+        "threeWickets": 2,
         "fiveWickets": 0,
-        "matches": 158
+        "matches": 180
       },
       "fielding": {
-        "catches": 35,
-        "stumpings": 0,
+        "catches": 42,
+        "stumpings": 1,
         "runOuts": 12,
-        "caughtBehind": 5,
-        "matches": 158
+        "caughtBehind": 7,
+        "matches": 180
       },
-      "lastUpdated": "2026-02-14T16:03:14.012Z"
+      "lastUpdated": "2026-03-12T19:36:50.544Z"
     },
     {
       "id": "43183920",
@@ -413,7 +413,130 @@ const dashboardData = {
         "caughtBehind": 2,
         "matches": 59
       },
-      "lastUpdated": "2026-02-14T16:03:14.012Z"
+      "lastUpdated": "2026-03-12T19:36:50.545Z"
+    },
+    {
+      "id": "14373666",
+      "name": "Player 14373666",
+      "batting": {
+        "runs": 62,
+        "innings": 11,
+        "average": 7.75,
+        "strikeRate": 96.88,
+        "highestScore": "20",
+        "thirties": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 6,
+        "sixes": 2,
+        "notOuts": 3,
+        "matches": 24
+      },
+      "bowling": {
+        "wickets": 0,
+        "overs": 1,
+        "economy": 11,
+        "average": 0,
+        "bestBowling": "0/11",
+        "maidens": 0,
+        "runs": 11,
+        "dotBalls": 2,
+        "wides": 2,
+        "noBalls": 2,
+        "threeWickets": 0,
+        "fiveWickets": 0,
+        "matches": 24
+      },
+      "fielding": {
+        "catches": 1,
+        "stumpings": 0,
+        "runOuts": 0,
+        "caughtBehind": 0,
+        "matches": 24
+      },
+      "lastUpdated": "2026-03-12T19:36:50.547Z"
+    },
+    {
+      "id": "3224791",
+      "name": "Player 3224791",
+      "batting": {
+        "runs": 22,
+        "innings": 1,
+        "average": 22,
+        "strikeRate": 100,
+        "highestScore": "22",
+        "thirties": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 1,
+        "sixes": 2,
+        "notOuts": 0,
+        "matches": 2
+      },
+      "bowling": {
+        "wickets": 1,
+        "overs": 2,
+        "economy": 10.5,
+        "average": 21,
+        "bestBowling": "1/21",
+        "maidens": 0,
+        "runs": 21,
+        "dotBalls": 2,
+        "wides": 0,
+        "noBalls": 0,
+        "threeWickets": 0,
+        "fiveWickets": 0,
+        "matches": 2
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 2,
+        "caughtBehind": 0,
+        "matches": 2
+      },
+      "lastUpdated": "2026-03-12T19:36:50.541Z"
+    },
+    {
+      "id": "39280713",
+      "name": "Player 39280713",
+      "batting": {
+        "runs": 1,
+        "innings": 1,
+        "average": 0,
+        "strikeRate": 100,
+        "highestScore": "1*",
+        "thirties": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 0,
+        "sixes": 0,
+        "notOuts": 1,
+        "matches": 6
+      },
+      "bowling": {
+        "wickets": 1,
+        "overs": 3,
+        "economy": 13.67,
+        "average": 41,
+        "bestBowling": "1/11",
+        "maidens": 0,
+        "runs": 41,
+        "dotBalls": 9,
+        "wides": 7,
+        "noBalls": 6,
+        "threeWickets": 0,
+        "fiveWickets": 0,
+        "matches": 6
+      },
+      "fielding": {
+        "catches": 1,
+        "stumpings": 0,
+        "runOuts": 0,
+        "caughtBehind": 0,
+        "matches": 6
+      },
+      "lastUpdated": "2026-03-12T19:36:50.540Z"
     },
     {
       "id": "43862252",
@@ -454,57 +577,57 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 14
       },
-      "lastUpdated": "2026-02-14T16:03:14.011Z"
+      "lastUpdated": "2026-03-12T19:36:50.543Z"
     },
     {
       "id": "44877085",
       "name": "Player 44877085",
       "batting": {
-        "runs": 275,
-        "innings": 46,
-        "average": 11.96,
-        "strikeRate": 95.82,
+        "runs": 374,
+        "innings": 56,
+        "average": 12.47,
+        "strikeRate": 102.75,
         "highestScore": "28*",
         "thirties": 0,
         "fifties": 0,
         "hundreds": 0,
-        "fours": 8,
-        "sixes": 17,
-        "notOuts": 23,
-        "matches": 55
+        "fours": 13,
+        "sixes": 23,
+        "notOuts": 26,
+        "matches": 70
       },
       "bowling": {
-        "wickets": 38,
-        "overs": 97.1,
-        "economy": 9.93,
-        "average": 25.39,
-        "bestBowling": "3/25",
+        "wickets": 48,
+        "overs": 117.4,
+        "economy": 9.99,
+        "average": 24.5,
+        "bestBowling": "3/20",
         "maidens": 1,
-        "runs": 965,
-        "dotBalls": 201,
-        "wides": 47,
+        "runs": 1176,
+        "dotBalls": 243,
+        "wides": 72,
         "noBalls": 4,
-        "threeWickets": 1,
+        "threeWickets": 2,
         "fiveWickets": 0,
-        "matches": 55
+        "matches": 70
       },
       "fielding": {
-        "catches": 19,
+        "catches": 21,
         "stumpings": 0,
-        "runOuts": 7,
-        "caughtBehind": 0,
-        "matches": 55
+        "runOuts": 8,
+        "caughtBehind": 2,
+        "matches": 70
       },
-      "lastUpdated": "2026-02-14T16:03:14.014Z"
+      "lastUpdated": "2026-03-12T19:36:50.546Z"
     },
     {
       "id": "44877094",
       "name": "Player 44877094",
       "batting": {
-        "runs": 74,
-        "innings": 13,
-        "average": 8.22,
-        "strikeRate": 89.16,
+        "runs": 82,
+        "innings": 15,
+        "average": 7.45,
+        "strikeRate": 86.32,
         "highestScore": "14*",
         "thirties": 0,
         "fifties": 0,
@@ -512,7 +635,7 @@ const dashboardData = {
         "fours": 1,
         "sixes": 5,
         "notOuts": 4,
-        "matches": 17
+        "matches": 19
       },
       "bowling": {
         "wickets": 2,
@@ -527,16 +650,16 @@ const dashboardData = {
         "noBalls": 2,
         "threeWickets": 0,
         "fiveWickets": 0,
-        "matches": 17
+        "matches": 19
       },
       "fielding": {
-        "catches": 1,
+        "catches": 2,
         "stumpings": 0,
-        "runOuts": 1,
+        "runOuts": 2,
         "caughtBehind": 0,
-        "matches": 17
+        "matches": 19
       },
-      "lastUpdated": "2026-02-14T16:03:14.010Z"
+      "lastUpdated": "2026-03-12T19:36:50.542Z"
     },
     {
       "id": "46171603",
@@ -577,221 +700,262 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 3
       },
-      "lastUpdated": "2026-02-14T16:03:14.012Z"
+      "lastUpdated": "2026-03-12T19:36:50.544Z"
+    },
+    {
+      "id": "48658210",
+      "name": "Player 48658210",
+      "batting": {
+        "runs": 8,
+        "innings": 5,
+        "average": 2.67,
+        "strikeRate": 53.33,
+        "highestScore": "4*",
+        "thirties": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 1,
+        "sixes": 0,
+        "notOuts": 2,
+        "matches": 4
+      },
+      "bowling": {
+        "wickets": 2,
+        "overs": 1,
+        "economy": 5,
+        "average": 2.5,
+        "bestBowling": "2/5",
+        "maidens": 0,
+        "runs": 5,
+        "dotBalls": 5,
+        "wides": 1,
+        "noBalls": 0,
+        "threeWickets": 0,
+        "fiveWickets": 0,
+        "matches": 4
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 2,
+        "caughtBehind": 0,
+        "matches": 4
+      },
+      "lastUpdated": "2026-03-12T19:36:50.546Z"
     },
     {
       "id": "41473991",
       "name": "Pon Sundar",
       "batting": {
-        "runs": 1601,
-        "innings": 128,
-        "average": 17.22,
-        "strikeRate": 136.02,
+        "runs": 1701,
+        "innings": 140,
+        "average": 16.51,
+        "strikeRate": 136.96,
         "highestScore": "52*",
         "thirties": 13,
         "fifties": 1,
         "hundreds": 0,
-        "fours": 99,
-        "sixes": 125,
-        "notOuts": 35,
-        "matches": 141
+        "fours": 107,
+        "sixes": 131,
+        "notOuts": 37,
+        "matches": 155
       },
       "bowling": {
-        "wickets": 113,
-        "overs": 298.3,
-        "economy": 8.47,
-        "average": 22.37,
+        "wickets": 122,
+        "overs": 326.2,
+        "economy": 8.53,
+        "average": 22.81,
         "bestBowling": "3/6",
         "maidens": 0,
-        "runs": 2528,
-        "dotBalls": 788,
-        "wides": 271,
-        "noBalls": 80,
+        "runs": 2783,
+        "dotBalls": 859,
+        "wides": 297,
+        "noBalls": 85,
         "threeWickets": 8,
         "fiveWickets": 0,
-        "matches": 141
+        "matches": 155
       },
       "fielding": {
-        "catches": 43,
+        "catches": 47,
         "stumpings": 0,
-        "runOuts": 12,
+        "runOuts": 14,
         "caughtBehind": 0,
-        "matches": 141
+        "matches": 155
       },
-      "lastUpdated": "2026-02-14T16:03:14.013Z"
+      "lastUpdated": "2026-03-12T19:36:50.545Z"
     },
     {
       "id": "3224839",
       "name": "Pradeep TKM",
       "batting": {
-        "runs": 94,
-        "innings": 11,
-        "average": 15.67,
-        "strikeRate": 134.29,
+        "runs": 115,
+        "innings": 13,
+        "average": 19.17,
+        "strikeRate": 130.68,
         "highestScore": "24",
         "thirties": 0,
         "fifties": 0,
         "hundreds": 0,
-        "fours": 6,
-        "sixes": 7,
-        "notOuts": 5,
-        "matches": 13
+        "fours": 7,
+        "sixes": 8,
+        "notOuts": 7,
+        "matches": 15
       },
       "bowling": {
         "wickets": 9,
-        "overs": 18,
-        "economy": 10.5,
-        "average": 21,
+        "overs": 20,
+        "economy": 10.35,
+        "average": 23,
         "bestBowling": "2/24",
         "maidens": 0,
-        "runs": 189,
-        "dotBalls": 32,
-        "wides": 9,
-        "noBalls": 5,
+        "runs": 207,
+        "dotBalls": 35,
+        "wides": 13,
+        "noBalls": 6,
         "threeWickets": 0,
         "fiveWickets": 0,
-        "matches": 13
+        "matches": 15
       },
       "fielding": {
-        "catches": 3,
+        "catches": 4,
         "stumpings": 0,
         "runOuts": 1,
         "caughtBehind": 0,
-        "matches": 13
+        "matches": 15
       },
-      "lastUpdated": "2026-02-14T16:03:14.013Z"
+      "lastUpdated": "2026-03-12T19:36:50.545Z"
     },
     {
       "id": "3179681",
       "name": "Prasanth",
       "batting": {
-        "runs": 1696,
-        "innings": 157,
-        "average": 18.43,
-        "strikeRate": 118.85,
+        "runs": 1897,
+        "innings": 176,
+        "average": 17.73,
+        "strikeRate": 117.75,
         "highestScore": "41",
-        "thirties": 9,
+        "thirties": 10,
         "fifties": 0,
         "hundreds": 0,
-        "fours": 98,
-        "sixes": 100,
-        "notOuts": 65,
-        "matches": 179
+        "fours": 113,
+        "sixes": 109,
+        "notOuts": 69,
+        "matches": 201
       },
       "bowling": {
-        "wickets": 128,
-        "overs": 328.5,
-        "economy": 7.86,
-        "average": 20.18,
+        "wickets": 142,
+        "overs": 377.5,
+        "economy": 7.83,
+        "average": 20.83,
         "bestBowling": "4/4",
-        "maidens": 4,
-        "runs": 2583,
-        "dotBalls": 840,
-        "wides": 196,
-        "noBalls": 77,
+        "maidens": 5,
+        "runs": 2958,
+        "dotBalls": 956,
+        "wides": 227,
+        "noBalls": 89,
         "threeWickets": 8,
         "fiveWickets": 0,
-        "matches": 179
+        "matches": 201
       },
       "fielding": {
-        "catches": 73,
+        "catches": 81,
         "stumpings": 0,
-        "runOuts": 17,
+        "runOuts": 18,
         "caughtBehind": 0,
-        "matches": 179
+        "matches": 201
       },
-      "lastUpdated": "2026-02-14T16:03:14.013Z"
+      "lastUpdated": "2026-03-12T19:36:50.545Z"
     },
     {
       "id": "3224203",
       "name": "Praveen J",
       "batting": {
-        "runs": 77,
-        "innings": 14,
-        "average": 25.67,
-        "strikeRate": 56.62,
-        "highestScore": "16*",
+        "runs": 94,
+        "innings": 15,
+        "average": 31.33,
+        "strikeRate": 63.95,
+        "highestScore": "17*",
         "thirties": 0,
         "fifties": 0,
         "hundreds": 0,
-        "fours": 3,
+        "fours": 6,
         "sixes": 1,
-        "notOuts": 11,
-        "matches": 18
+        "notOuts": 12,
+        "matches": 20
       },
       "bowling": {
-        "wickets": 8,
-        "overs": 17.3,
-        "economy": 12.91,
-        "average": 28.25,
+        "wickets": 9,
+        "overs": 19.3,
+        "economy": 12.92,
+        "average": 28,
         "bestBowling": "3/15",
         "maidens": 0,
-        "runs": 226,
-        "dotBalls": 40,
-        "wides": 9,
-        "noBalls": 10,
+        "runs": 252,
+        "dotBalls": 46,
+        "wides": 10,
+        "noBalls": 11,
         "threeWickets": 1,
         "fiveWickets": 0,
-        "matches": 18
+        "matches": 20
       },
       "fielding": {
-        "catches": 2,
+        "catches": 3,
         "stumpings": 0,
         "runOuts": 1,
         "caughtBehind": 1,
-        "matches": 18
+        "matches": 20
       },
-      "lastUpdated": "2026-02-14T16:03:14.014Z"
+      "lastUpdated": "2026-03-12T19:36:50.545Z"
     },
     {
       "id": "41473993",
       "name": "Saravana CPT",
       "batting": {
-        "runs": 2353,
-        "innings": 151,
-        "average": 21.99,
-        "strikeRate": 151.22,
+        "runs": 2641,
+        "innings": 172,
+        "average": 21.83,
+        "strikeRate": 151.61,
         "highestScore": "78*",
         "thirties": 15,
         "fifties": 4,
         "hundreds": 0,
-        "fours": 130,
-        "sixes": 179,
-        "notOuts": 44,
-        "matches": 155
+        "fours": 145,
+        "sixes": 202,
+        "notOuts": 51,
+        "matches": 177
       },
       "bowling": {
-        "wickets": 16,
-        "overs": 42.3,
-        "economy": 7.27,
-        "average": 19.31,
+        "wickets": 17,
+        "overs": 43.3,
+        "economy": 7.24,
+        "average": 18.53,
         "bestBowling": "2/3",
         "maidens": 3,
-        "runs": 309,
-        "dotBalls": 107,
+        "runs": 315,
+        "dotBalls": 112,
         "wides": 27,
         "noBalls": 5,
         "threeWickets": 0,
         "fiveWickets": 0,
-        "matches": 155
+        "matches": 177
       },
       "fielding": {
-        "catches": 67,
-        "stumpings": 0,
+        "catches": 72,
+        "stumpings": 1,
         "runOuts": 16,
         "caughtBehind": 0,
-        "matches": 155
+        "matches": 177
       },
-      "lastUpdated": "2026-02-14T16:03:14.014Z"
+      "lastUpdated": "2026-03-12T19:36:50.546Z"
     },
     {
       "id": "3224846",
       "name": "Sathish TKM",
       "batting": {
-        "runs": 16,
-        "innings": 7,
-        "average": 2.67,
-        "strikeRate": 29.63,
+        "runs": 18,
+        "innings": 8,
+        "average": 2.57,
+        "strikeRate": 31.58,
         "highestScore": "6",
         "thirties": 0,
         "fifties": 0,
@@ -799,89 +963,89 @@ const dashboardData = {
         "fours": 0,
         "sixes": 0,
         "notOuts": 1,
-        "matches": 10
+        "matches": 12
       },
       "bowling": {
-        "wickets": 4,
-        "overs": 16,
-        "economy": 6.94,
-        "average": 27.75,
+        "wickets": 6,
+        "overs": 20,
+        "economy": 7.3,
+        "average": 24.33,
         "bestBowling": "2/12",
         "maidens": 1,
-        "runs": 111,
-        "dotBalls": 58,
+        "runs": 146,
+        "dotBalls": 67,
         "wides": 16,
-        "noBalls": 8,
+        "noBalls": 9,
         "threeWickets": 0,
         "fiveWickets": 0,
-        "matches": 10
+        "matches": 12
       },
       "fielding": {
         "catches": 0,
         "stumpings": 0,
-        "runOuts": 0,
+        "runOuts": 1,
         "caughtBehind": 0,
-        "matches": 10
+        "matches": 12
       },
-      "lastUpdated": "2026-02-14T16:03:14.015Z"
+      "lastUpdated": "2026-03-12T19:36:50.546Z"
     },
     {
       "id": "42047823",
       "name": "Sheik",
       "batting": {
-        "runs": 159,
-        "innings": 37,
-        "average": 7.95,
-        "strikeRate": 76.44,
+        "runs": 182,
+        "innings": 44,
+        "average": 7.58,
+        "strikeRate": 75.52,
         "highestScore": "31*",
         "thirties": 1,
         "fifties": 0,
         "hundreds": 0,
-        "fours": 7,
-        "sixes": 9,
-        "notOuts": 17,
-        "matches": 56
+        "fours": 8,
+        "sixes": 10,
+        "notOuts": 20,
+        "matches": 64
       },
       "bowling": {
-        "wickets": 9,
-        "overs": 20.5,
-        "economy": 9.65,
-        "average": 22.33,
+        "wickets": 13,
+        "overs": 28.5,
+        "economy": 9.47,
+        "average": 21,
         "bestBowling": "2/4",
         "maidens": 0,
-        "runs": 201,
-        "dotBalls": 62,
-        "wides": 20,
-        "noBalls": 5,
+        "runs": 273,
+        "dotBalls": 82,
+        "wides": 29,
+        "noBalls": 7,
         "threeWickets": 0,
         "fiveWickets": 0,
-        "matches": 56
+        "matches": 64
       },
       "fielding": {
         "catches": 16,
         "stumpings": 10,
-        "runOuts": 3,
+        "runOuts": 4,
         "caughtBehind": 1,
-        "matches": 56
+        "matches": 64
       },
-      "lastUpdated": "2026-02-14T16:03:14.015Z"
+      "lastUpdated": "2026-03-12T19:36:50.546Z"
     },
     {
       "id": "43668809",
       "name": "Valan",
       "batting": {
-        "runs": 389,
-        "innings": 48,
-        "average": 12.97,
-        "strikeRate": 107.16,
+        "runs": 483,
+        "innings": 61,
+        "average": 11.78,
+        "strikeRate": 107.57,
         "highestScore": "52*",
         "thirties": 1,
         "fifties": 1,
         "hundreds": 0,
-        "fours": 28,
-        "sixes": 26,
-        "notOuts": 18,
-        "matches": 57
+        "fours": 34,
+        "sixes": 32,
+        "notOuts": 20,
+        "matches": 71
       },
       "bowling": {
         "wickets": 0,
@@ -896,98 +1060,194 @@ const dashboardData = {
         "noBalls": 0,
         "threeWickets": 0,
         "fiveWickets": 0,
-        "matches": 57
+        "matches": 71
       },
       "fielding": {
-        "catches": 8,
+        "catches": 11,
         "stumpings": 0,
-        "runOuts": 6,
-        "caughtBehind": 4,
-        "matches": 57
+        "runOuts": 7,
+        "caughtBehind": 5,
+        "matches": 71
       },
-      "lastUpdated": "2026-02-14T16:03:14.015Z"
+      "lastUpdated": "2026-03-12T19:36:50.547Z"
     },
     {
       "id": "3224784",
       "name": "Vicky",
       "batting": {
-        "runs": 1927,
-        "innings": 134,
-        "average": 23.5,
-        "strikeRate": 156.41,
+        "runs": 2216,
+        "innings": 153,
+        "average": 24.35,
+        "strikeRate": 155.07,
         "highestScore": "55*",
-        "thirties": 13,
+        "thirties": 15,
         "fifties": 2,
         "hundreds": 0,
-        "fours": 113,
-        "sixes": 162,
-        "notOuts": 52,
-        "matches": 147
+        "fours": 127,
+        "sixes": 185,
+        "notOuts": 62,
+        "matches": 169
       },
       "bowling": {
-        "wickets": 112,
-        "overs": 257.5,
-        "economy": 8.04,
-        "average": 18.52,
+        "wickets": 126,
+        "overs": 297.5,
+        "economy": 8.21,
+        "average": 19.4,
         "bestBowling": "3/2",
         "maidens": 1,
-        "runs": 2074,
-        "dotBalls": 589,
-        "wides": 169,
-        "noBalls": 45,
+        "runs": 2444,
+        "dotBalls": 669,
+        "wides": 192,
+        "noBalls": 48,
         "threeWickets": 6,
         "fiveWickets": 0,
-        "matches": 147
+        "matches": 169
       },
       "fielding": {
-        "catches": 46,
-        "stumpings": 2,
-        "runOuts": 14,
+        "catches": 53,
+        "stumpings": 3,
+        "runOuts": 19,
         "caughtBehind": 3,
-        "matches": 147
+        "matches": 169
       },
-      "lastUpdated": "2026-02-14T16:03:14.009Z"
+      "lastUpdated": "2026-03-12T19:36:50.539Z"
     },
     {
       "id": "41474289",
       "name": "VMR",
       "batting": {
-        "runs": 1173,
-        "innings": 104,
-        "average": 18.05,
-        "strikeRate": 132.09,
+        "runs": 1428,
+        "innings": 121,
+        "average": 21,
+        "strikeRate": 133.83,
         "highestScore": "54*",
-        "thirties": 6,
+        "thirties": 8,
         "fifties": 1,
         "hundreds": 0,
-        "fours": 59,
-        "sixes": 100,
-        "notOuts": 39,
-        "matches": 121
+        "fours": 81,
+        "sixes": 114,
+        "notOuts": 53,
+        "matches": 141
       },
       "bowling": {
-        "wickets": 95,
-        "overs": 211.5,
-        "economy": 8.43,
-        "average": 18.8,
+        "wickets": 110,
+        "overs": 249.5,
+        "economy": 8.57,
+        "average": 19.47,
         "bestBowling": "4/34",
-        "maidens": 2,
-        "runs": 1786,
-        "dotBalls": 517,
-        "wides": 97,
-        "noBalls": 16,
-        "threeWickets": 8,
+        "maidens": 3,
+        "runs": 2142,
+        "dotBalls": 607,
+        "wides": 125,
+        "noBalls": 26,
+        "threeWickets": 9,
         "fiveWickets": 0,
-        "matches": 121
+        "matches": 141
       },
       "fielding": {
-        "catches": 16,
+        "catches": 25,
         "stumpings": 0,
-        "runOuts": 6,
+        "runOuts": 7,
         "caughtBehind": 0,
-        "matches": 121
+        "matches": 141
       },
-      "lastUpdated": "2026-02-14T16:03:14.015Z"
+      "lastUpdated": "2026-03-12T19:36:50.547Z"
     }
-  ]
+  ],
+  "previousRankings": {
+    "batting": [
+      "41473993",
+      "31974223",
+      "3224784",
+      "3224822",
+      "41473991",
+      "3179681",
+      "41474289",
+      "41473990",
+      "3224839",
+      "3224203",
+      "30000671",
+      "43668809",
+      "3224827",
+      "44877085",
+      "41474287",
+      "41832657",
+      "43183920",
+      "44877094",
+      "42047823",
+      "37775058",
+      "3224789",
+      "46171603",
+      "43862252",
+      "3224846"
+    ],
+    "bowling": [
+      "3179681",
+      "3224784",
+      "41473991",
+      "41474289",
+      "3224822",
+      "31974223",
+      "30000671",
+      "41473990",
+      "41473993",
+      "44877085",
+      "43183920",
+      "41832657",
+      "3224846",
+      "3224827",
+      "42047823",
+      "3224839",
+      "43862252",
+      "46171603",
+      "44877094",
+      "3224203",
+      "3224789",
+      "41474287",
+      "37775058",
+      "43668809"
+    ],
+    "fielding": [
+      "3179681",
+      "41473993",
+      "3224822",
+      "3224784",
+      "41473991",
+      "41474287",
+      "41473990",
+      "31974223",
+      "30000671",
+      "42047823",
+      "44877085",
+      "3224827",
+      "41474289",
+      "43183920",
+      "43668809",
+      "41832657",
+      "3224839",
+      "3224203",
+      "44877094",
+      "3224789",
+      "43862252",
+      "46171603",
+      "37775058",
+      "3224846"
+    ],
+    "allrounder": [
+      "3224784",
+      "3224822",
+      "3179681",
+      "41473991",
+      "41474289",
+      "31974223",
+      "41473993",
+      "41473990",
+      "30000671",
+      "44877085",
+      "3224827",
+      "43183920",
+      "42047823",
+      "41474287"
+    ]
+  }
 };

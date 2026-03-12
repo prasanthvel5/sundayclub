@@ -376,6 +376,36 @@ body {
     box-shadow: 0 2px 6px rgba(205, 127, 50, 0.4);
 }
 
+/* Rank Change Indicators (ICC-style) */
+.rank-change {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 4px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.rank-up {
+    color: #4caf50;
+}
+
+.rank-down {
+    color: #e53935;
+}
+
+.rank-same {
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+.rank-new {
+    color: #ffd700;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+}
+
 .player-name {
     font-size: 15px;
     font-weight: 600;
