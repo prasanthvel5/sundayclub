@@ -150,6 +150,59 @@ body {
     color: var(--danger-color);
 }
 
+/* Format Tabs (top-level: Overall / Box / Tennis) */
+.format-tabs {
+    display: flex;
+    gap: 8px;
+    padding: 12px 15px 0;
+    background: linear-gradient(180deg, rgba(30, 136, 229, 0.08), transparent);
+}
+
+.format-tab {
+    flex: 1;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 999px;
+    transition: all 0.25s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+}
+
+.format-tab:hover {
+    color: var(--text-primary);
+    border-color: var(--primary-color);
+}
+
+.format-tab.active {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-primary);
+    border-color: transparent;
+    box-shadow: 0 4px 14px rgba(30, 136, 229, 0.45);
+}
+
+.format-tab:active {
+    transform: scale(0.97);
+}
+
+/* Empty state used by leaderboards / highlights when a format has no data. */
+.empty-state {
+    background-color: var(--card-bg);
+    border: 1px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 30px 20px;
+    margin: 10px 0;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+}
+
 /* Tabs */
 .tabs {
     display: flex;
@@ -622,6 +675,17 @@ body {
 
 /* Mobile specific styles */
 @media (max-width: 767px) {
+    .format-tabs {
+        padding: 10px 10px 0;
+        gap: 6px;
+    }
+
+    .format-tab {
+        font-size: 11px;
+        padding: 8px 10px;
+        letter-spacing: 0.3px;
+    }
+
     .leaderboard-header h2 {
         font-size: 14px;
     }

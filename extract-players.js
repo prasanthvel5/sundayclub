@@ -1,6 +1,158 @@
 // Node.js script to extract complete player statistics from HAR file
 const fs = require('fs');
 
+// HAR files searched for ball-type-wise (per-format) statistics.
+// The first HAR holding a given player's data wins.
+const BALL_TYPE_HAR_FILES = ['cricheroes.com_fullstats.har', 'cricheroes.com.har'];
+
+// Map ball-type-wise totals row to our internal batting shape.
+function mapBallTypeBatting(t) {
+    return {
+        runs: parseInt(t.Runs) || 0,
+        innings: parseInt(t.Inns) || 0,
+        average: parseFloat(t.Avg) || 0,
+        strikeRate: parseFloat(t.SR) || 0,
+        highestScore: String(t.HS || '0'),
+        thirties: parseInt(t['30s']) || 0,
+        fifties: parseInt(t['50s']) || 0,
+        hundreds: parseInt(t['100s']) || 0,
+        fours: parseInt(t['4s']) || 0,
+        sixes: parseInt(t['6s']) || 0,
+        notOuts: parseInt(t.NO) || 0,
+        matches: parseInt(t.Mat) || 0
+    };
+}
+
+function mapBallTypeBowling(t) {
+    return {
+        wickets: parseInt(t.Wkts) || 0,
+        overs: parseFloat(t.Overs) || 0,
+        economy: parseFloat(t.Eco) || 0,
+        average: parseFloat(t.Avg) || 0,
+        bestBowling: String(t.BB || '0/0'),
+        maidens: parseInt(t.Maidens) || 0,
+        runs: parseInt(t.Runs) || 0,
+        dotBalls: parseInt(t.Dots) || 0,
+        wides: parseInt(t.WD) || 0,
+        noBalls: parseInt(t.NB) || 0,
+        threeWickets: parseInt(t['3 Wkts']) || 0,
+        fiveWickets: parseInt(t['5 Wkts']) || 0,
+        matches: parseInt(t.Mat) || 0
+    };
+}
+
+function mapBallTypeFielding(t) {
+    return {
+        catches: parseInt(t.Catches) || 0,
+        stumpings: parseInt(t.St) || 0,
+        runOuts: parseInt(t['R/O']) || 0,
+        caughtBehind: parseInt(t['C.B']) || 0,
+        matches: parseInt(t.Mat) || 0
+    };
+}
+
+// Locate the first JSON-decodable response body that follows a URL match in raw HAR text.
+function findResponseTextAfter(harData, urlIndex) {
+    const searchEnd = Math.min(urlIndex + 80000, harData.length);
+    const block = harData.substring(urlIndex, searchEnd);
+    const m = block.match(/"text":\s*"((?:[^"\\]|\\.)*)"/);
+    if (!m) return null;
+    let jsonStr = m[1].replace(/\\"/g, '"').replace(/\\\\/g, '\\').replace(/\\\//g, '/').replace(/\\n/g, '\n').replace(/\\r/g, '');
+    try {
+        return JSON.parse(jsonStr);
+    } catch (e) {
+        return null;
+    }
+}
+
+// Extract per-format (box, tennis) totals from ball-type-wise responses in the given HAR text.
+// Returns a map: playerId -> { box: {batting,bowling,fielding}, tennis: {...} }
+function extractFormatStatsFromHar(harData) {
+    const formats = {};
+    const urlRegex = /get-player-stat-ball-type-wise\/(\d+)\/(BATTING|BOWLING|FIELDING)/g;
+    const seen = new Set();
+    let m;
+    while ((m = urlRegex.exec(harData)) !== null) {
+        const playerId = m[1];
+        const statType = m[2];
+        const key = `${playerId}/${statType}`;
+        if (seen.has(key)) continue;
+
+        const apiResponse = findResponseTextAfter(harData, m.index);
+        if (!apiResponse || !apiResponse.data) continue;
+        seen.add(key);
+
+        const d = apiResponse.data;
+        const boxTotal = (d.box_stat || []).find(r => r && r.is_total === 1);
+        const tennisTotal = (d.tennis_ball || []).find(r => r && r.is_total === 1);
+
+        if (!formats[playerId]) formats[playerId] = { box: {}, tennis: {} };
+
+        if (statType === 'BATTING') {
+            if (boxTotal) formats[playerId].box.batting = mapBallTypeBatting(boxTotal);
+            if (tennisTotal) formats[playerId].tennis.batting = mapBallTypeBatting(tennisTotal);
+        } else if (statType === 'BOWLING') {
+            if (boxTotal) formats[playerId].box.bowling = mapBallTypeBowling(boxTotal);
+            if (tennisTotal) formats[playerId].tennis.bowling = mapBallTypeBowling(tennisTotal);
+        } else if (statType === 'FIELDING') {
+            if (boxTotal) formats[playerId].box.fielding = mapBallTypeFielding(boxTotal);
+            if (tennisTotal) formats[playerId].tennis.fielding = mapBallTypeFielding(tennisTotal);
+        }
+    }
+    return formats;
+}
+
+// Aggregate format stats across every HAR file in BALL_TYPE_HAR_FILES (first match wins).
+function loadAllFormatStats() {
+    const merged = {};
+    for (const file of BALL_TYPE_HAR_FILES) {
+        if (!fs.existsSync(file)) continue;
+        try {
+            const harData = fs.readFileSync(file, 'utf8');
+            const found = extractFormatStatsFromHar(harData);
+            const ids = Object.keys(found);
+            if (ids.length > 0) {
+                console.log(`Found ball-type-wise stats for ${ids.length} players in ${file}`);
+            }
+            for (const id of ids) {
+                if (!merged[id]) {
+                    merged[id] = found[id];
+                } else {
+                    merged[id].box = { ...found[id].box, ...merged[id].box };
+                    merged[id].tennis = { ...found[id].tennis, ...merged[id].tennis };
+                }
+            }
+        } catch (e) {
+            console.log(`  Could not process ${file}: ${e.message}`);
+        }
+    }
+    return merged;
+}
+
+// Scan the raw HAR text for player_id/name pairs from roster API responses.
+// CricHeroes embeds these in escaped form: \"player_id\":<id>,\"name\":\"<name>\"
+// We also accept the unescaped form for HARs stored differently.
+function buildHarNameMap(harData) {
+    const names = {};
+    const patterns = [
+        /\\"player_id\\":(\d+),\\"name\\":\\"((?:[^"\\]|\\.)*?)\\"/g,
+        /"player_id":(\d+),"name":"((?:[^"\\]|\\.)*?)"/g
+    ];
+    for (const re of patterns) {
+        let m;
+        while ((m = re.exec(harData)) !== null) {
+            const id = m[1];
+            const name = m[2].replace(/\\"/g, '"').replace(/\\\\/g, '\\').trim();
+            if (name && !names[id]) names[id] = name;
+        }
+    }
+    return names;
+}
+
+function resolvePlayerName(playerId, harNameMap) {
+    return harNameMap[playerId] || `Player ${playerId}`;
+}
+
 // --- Rating calculation functions (mirrored from app.js) ---
 
 function calculateTeamMaxes(players) {
@@ -203,6 +355,8 @@ function extractPlayerStats() {
         }
 
         const playersMap = new Map();
+        const harNameMap = buildHarNameMap(harData);
+        console.log(`Built HAR roster lookup: ${Object.keys(harNameMap).length} player names found`);
 
         console.log('Processing HAR entries...');
 
@@ -231,31 +385,7 @@ function extractPlayerStats() {
                             return item ? item.value : 0;
                         };
 
-                        // Get player name from URL or use fallback
-                        const playerNames = {
-                            '30000671': 'Arun Balaji',
-                            '3179681': 'Prasanth',
-                            '31974223': 'Manoj Jeganath',
-                            '3224203': 'Praveen J',
-                            '3224784': 'Vicky',
-                            '3224789': 'Kaviarasu',
-                            '3224822': 'Bharathi',
-                            '3224827': 'Meghanathan TKM',
-                            '3224839': 'Pradeep TKM',
-                            '3224846': 'Sathish TKM',
-                            '37775058': 'Dinesh Baranitharan',
-                            '41473990': 'Muthuraj Anna',
-                            '41473991': 'Pon Sundar',
-                            '41473993': 'Saravana CPT',
-                            '41474287': 'Diwakar Cricket',
-                            '41474289': 'VMR',
-                            '41832657': 'Harish D',
-                            '42047823': 'Sheik',
-                            '43183920': 'Parthiban',
-                            '43668809': 'Valan'
-                        };
-
-                        const playerName = playerNames[playerId] || `Player ${playerId}`;
+                        const playerName = resolvePlayerName(playerId, harNameMap);
 
                         // Extract batting statistics
                         const batting = stats.batting || [];
@@ -326,6 +456,20 @@ function extractPlayerStats() {
         // Sort by name
         playersList.sort((a, b) => a.name.localeCompare(b.name));
 
+        // Attach per-format (box / tennis) stats where available.
+        const formatStats = loadAllFormatStats();
+        let playersWithFormats = 0;
+        for (const player of playersList) {
+            const fs2 = formatStats[player.id];
+            if (fs2 && (Object.keys(fs2.box).length > 0 || Object.keys(fs2.tennis).length > 0)) {
+                player.formats = fs2;
+                playersWithFormats++;
+            }
+        }
+        if (playersWithFormats > 0) {
+            console.log(`Attached format-wise stats for ${playersWithFormats} player(s)`);
+        }
+
         // Compute new rankings and compare with previous
         const newRankings = computeRankings(playersList);
 
@@ -382,30 +526,8 @@ const dashboardData = ${JSON.stringify(dashboardData, null, 2)};
 // Fallback regex extraction for truncated HAR files
 function extractWithRegex(harData, previousRankings) {
     const playersMap = new Map();
-
-    // Player name mapping
-    const playerNames = {
-        '30000671': 'Arun Balaji',
-        '3179681': 'Prasanth',
-        '31974223': 'Manoj Jeganath',
-        '3224203': 'Praveen J',
-        '3224784': 'Vicky',
-        '3224789': 'Kaviarasu',
-        '3224822': 'Bharathi',
-        '3224827': 'Meghanathan TKM',
-        '3224839': 'Pradeep TKM',
-        '3224846': 'Sathish TKM',
-        '37775058': 'Dinesh Baranitharan',
-        '41473990': 'Muthuraj Anna',
-        '41473991': 'Pon Sundar',
-        '41473993': 'Saravana CPT',
-        '41474287': 'Diwakar Cricket',
-        '41474289': 'VMR',
-        '41832657': 'Harish D',
-        '42047823': 'Sheik',
-        '43183920': 'Parthiban',
-        '43668809': 'Valan'
-    };
+    const harNameMap = buildHarNameMap(harData);
+    console.log(`Built HAR roster lookup: ${Object.keys(harNameMap).length} player names found`);
 
     console.log('Searching for player statistics in HAR data...');
 
@@ -466,7 +588,7 @@ function extractWithRegex(harData, previousRankings) {
                             return item ? item.value : 0;
                         };
 
-                        const playerName = playerNames[playerId] || `Player ${playerId}`;
+                        const playerName = resolvePlayerName(playerId, harNameMap);
 
                         const battingStats = {
                             runs: parseInt(getValue(batting, 'Runs')) || 0,
@@ -534,16 +656,37 @@ function extractWithRegex(harData, previousRankings) {
     return finalizeData(playersMap, previousRankings);
 }
 
-function finalizeData(playersMap, previousRankings) {
+function finalizeData(playersMap, previousRankings, opts = {}) {
     const playersList = Array.from(playersMap.values());
     playersList.sort((a, b) => a.name.localeCompare(b.name));
+
+    // Attach per-format (box / tennis) stats from HAR files for any player that
+    // doesn't already have them (e.g. set by the live API scraper).
+    const formatStats = loadAllFormatStats();
+    let playersWithFormats = playersList.filter(p => p.formats).length;
+    let attachedFromHar = 0;
+    for (const player of playersList) {
+        if (player.formats) continue;
+        const fs2 = formatStats[player.id];
+        if (fs2 && (Object.keys(fs2.box).length > 0 || Object.keys(fs2.tennis).length > 0)) {
+            player.formats = fs2;
+            attachedFromHar++;
+            playersWithFormats++;
+        }
+    }
+    if (attachedFromHar > 0) {
+        console.log(`Attached format-wise stats from HAR for ${attachedFromHar} player(s)`);
+    }
+    if (playersWithFormats > 0) {
+        console.log(`Total players with format-wise stats: ${playersWithFormats}`);
+    }
 
     // Compute new rankings and compare with previous
     const newRankings = computeRankings(playersList);
 
     const dashboardData = {
-        teamName: 'Sunday Club',
-        teamId: '10442708',
+        teamName: opts.teamName || 'Sunday Club',
+        teamId: opts.teamId || '10442708',
         lastSync: new Date().toISOString(),
         totalPlayers: playersList.length,
         players: playersList,
@@ -605,30 +748,8 @@ function appendFromHarFile(harFileName) {
 
         // Read new HAR file
         const harData = fs.readFileSync(harFileName, 'utf8');
-
-        // Player name mapping (extended)
-        const playerNames = {
-            '30000671': 'Arun Balaji',
-            '3179681': 'Prasanth',
-            '31974223': 'Manoj Jeganath',
-            '3224203': 'Praveen J',
-            '3224784': 'Vicky',
-            '3224789': 'Kaviarasu',
-            '3224822': 'Bharathi',
-            '3224827': 'Meghanathan TKM',
-            '3224839': 'Pradeep TKM',
-            '3224846': 'Sathish TKM',
-            '37775058': 'Dinesh Baranitharan',
-            '41473990': 'Muthuraj Anna',
-            '41473991': 'Pon Sundar',
-            '41473993': 'Saravana CPT',
-            '41474287': 'Diwakar Cricket',
-            '41474289': 'VMR',
-            '41832657': 'Harish D',
-            '42047823': 'Sheik',
-            '43183920': 'Parthiban',
-            '43668809': 'Valan'
-        };
+        const harNameMap = buildHarNameMap(harData);
+        console.log(`Built HAR roster lookup: ${Object.keys(harNameMap).length} player names found`);
 
         // Find player IDs in new HAR
         const playerIdRegex = /get-player-statistic\/(\d+)\?pagesize=12/g;
@@ -676,7 +797,7 @@ function appendFromHarFile(harFileName) {
                                 return item ? item.value : 0;
                             };
 
-                            const playerName = playerNames[playerId] || `Player ${playerId}`;
+                            const playerName = resolvePlayerName(playerId, harNameMap);
 
                             const battingStats = {
                                 runs: parseInt(getValue(batting, 'Runs')) || 0,
@@ -770,4 +891,16 @@ if (require.main === module) {
     }
 }
 
-module.exports = { extractPlayerStats, appendFromHarFile };
+module.exports = {
+    extractPlayerStats,
+    appendFromHarFile,
+    finalizeData,
+    loadPreviousRankings,
+    computeRankings,
+    calculateTeamMaxes,
+    calculateBattingRating,
+    calculateBowlingRating,
+    mapBallTypeBatting,
+    mapBallTypeBowling,
+    mapBallTypeFielding
+};

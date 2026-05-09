@@ -5,6 +5,9 @@ let bowlingLeaderboard = [];
 let fieldingLeaderboard = [];
 let allrounderLeaderboard = [];
 
+// Active cricket format ('overall' | 'box' | 'tennis')
+let currentFormat = 'overall';
+
 // Sorting state
 let battingSortBy = 'battingRating';
 let bowlingSortBy = 'bowlingRating';
@@ -19,13 +22,49 @@ let rankChanges = {
     allrounder: {}
 };
 
+// Pull the right batting/bowling/fielding block for a given format.
+// Returns null when the player has no data for the requested format.
+function getPlayerStatsForFormat(player, format) {
+    if (format === 'overall') {
+        return {
+            batting: player.batting,
+            bowling: player.bowling,
+            fielding: player.fielding
+        };
+    }
+    const fmt = player.formats && player.formats[format];
+    if (!fmt) return null;
+    return {
+        batting: fmt.batting || null,
+        bowling: fmt.bowling || null,
+        fielding: fmt.fielding || null
+    };
+}
+
 // Initialize the app
 document.addEventListener('DOMContentLoaded', () => {
     initializeTabs();
+    initializeFormatTabs();
     loadDashboardData();
     setupSyncButton();
     setupSortControls();
 });
+
+// Format tab functionality
+function initializeFormatTabs() {
+    document.querySelectorAll('.format-tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const format = btn.getAttribute('data-format');
+            if (format === currentFormat) return;
+            currentFormat = format;
+            document.querySelectorAll('.format-tab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            processPlayerData();
+            calculateRankChanges();
+            displayDashboard();
+        });
+    });
+}
 
 // Setup sync button
 function setupSyncButton() {
@@ -75,38 +114,38 @@ function setupSortControls() {
     }
 }
 
-// Handle sync button click
+// Handle sync button click. Hits /sync (live scrape) and refreshes the
+// in-memory dashboardData from the server so the UI updates without a reload.
 async function handleSync() {
     const syncBtn = document.getElementById('sync-btn');
     const syncIcon = syncBtn.querySelector('.sync-icon');
 
     try {
-        // Add spinning animation
         syncIcon.classList.add('syncing');
         syncBtn.disabled = true;
 
-        // Call sync endpoint
-        const response = await fetch('/sync', {
-            method: 'POST'
-        });
-
+        const response = await fetch('/sync', { method: 'POST' });
         if (!response.ok) {
             throw new Error('Sync failed');
         }
+        await response.json();
 
-        const result = await response.json();
+        // Re-fetch the freshly-written dashboard data (data.js on disk is now
+        // stale relative to the page's in-memory copy). dashboardData is a
+        // const, so swap its contents in place rather than reassigning.
+        const dataRes = await fetch('/dashboard-data.json?_=' + Date.now());
+        if (!dataRes.ok) throw new Error('Could not reload dashboard data');
+        const fresh = await dataRes.json();
+        Object.keys(dashboardData).forEach(k => delete dashboardData[k]);
+        Object.assign(dashboardData, fresh);
 
-        // Reload data
-        await loadDashboardData();
-
-        // Show success message briefly
+        loadDashboardData();
         showSyncSuccess();
 
     } catch (error) {
         console.error('Sync error:', error);
         showSyncError();
     } finally {
-        // Remove spinning animation
         syncIcon.classList.remove('syncing');
         syncBtn.disabled = false;
     }
@@ -164,8 +203,10 @@ function switchTab(tabName) {
     document.getElementById(tabName).classList.add('active');
 }
 
-// Save current rankings to localStorage
+// Save current rankings to localStorage. Only persist when viewing Overall so
+// that rank-change deltas always compare against the same baseline.
 function saveCurrentRankings() {
+    if (currentFormat !== 'overall') return;
     const rankings = {
         batting: battingLeaderboard.map(p => p.playerId),
         bowling: bowlingLeaderboard.map(p => p.playerId),
@@ -175,9 +216,13 @@ function saveCurrentRankings() {
     localStorage.setItem('previousRankings', JSON.stringify(rankings));
 }
 
-// Calculate rank changes by comparing current vs previous rankings
+// Calculate rank changes by comparing current vs previous rankings.
+// Rank-change deltas are only meaningful for the Overall format because
+// previous rankings are only persisted for Overall.
 function calculateRankChanges() {
-    // Prefer previousRankings embedded from extract-players.js, fall back to localStorage
+    rankChanges = { batting: {}, bowling: {}, fielding: {}, allrounder: {} };
+    if (currentFormat !== 'overall') return;
+
     let previous = null;
     if (dashboardData && dashboardData.previousRankings) {
         previous = dashboardData.previousRankings;
@@ -261,44 +306,65 @@ function loadDashboardData() {
     }
 }
 
-// Process player data and create leaderboards
+// Process player data and create leaderboards (uses currentFormat).
 function processPlayerData() {
-    const players = dashboardData.players;
-    const teamMaxes = calculateTeamMaxes(players);
+    // Pair each player with the stat block for the active format. Players that
+    // have no data for the active format are dropped per category.
+    const playersWithStats = dashboardData.players.map(player => ({
+        player,
+        stats: getPlayerStatsForFormat(player, currentFormat)
+    })).filter(item => item.stats);
 
-    // Create batting leaderboard
-    battingLeaderboard = players.map(player => ({
-        playerId: player.id,
-        playerName: player.name,
-        ...player.batting,
-        battingRating: calculateBattingRating(player.batting, teamMaxes)
+    // For team-wide normalization use only players that contributed to this format.
+    const normalizedPlayers = playersWithStats.map(({ player, stats }) => ({
+        batting: stats.batting || {},
+        bowling: stats.bowling || {}
     }));
+    const teamMaxes = calculateTeamMaxes(normalizedPlayers);
+
+    // Create batting leaderboard (drop players with no batting block in this format).
+    battingLeaderboard = playersWithStats
+        .filter(({ stats }) => stats.batting)
+        .map(({ player, stats }) => ({
+            playerId: player.id,
+            playerName: player.name,
+            ...stats.batting,
+            battingRating: calculateBattingRating(stats.batting, teamMaxes)
+        }));
     sortBattingLeaderboard();
 
-    // Create bowling leaderboard
-    bowlingLeaderboard = players.map(player => ({
-        playerId: player.id,
-        playerName: player.name,
-        ...player.bowling,
-        bowlingRating: calculateBowlingRating(player.bowling, teamMaxes)
-    }));
+    // Create bowling leaderboard.
+    bowlingLeaderboard = playersWithStats
+        .filter(({ stats }) => stats.bowling)
+        .map(({ player, stats }) => ({
+            playerId: player.id,
+            playerName: player.name,
+            ...stats.bowling,
+            bowlingRating: calculateBowlingRating(stats.bowling, teamMaxes)
+        }));
     sortBowlingLeaderboard();
 
-    // Create fielding leaderboard
-    fieldingLeaderboard = players.map(player => ({
-        playerId: player.id,
-        playerName: player.name,
-        ...player.fielding,
-        totalDismissals: player.fielding.catches + player.fielding.stumpings + player.fielding.runOuts
-    }));
+    // Create fielding leaderboard.
+    fieldingLeaderboard = playersWithStats
+        .filter(({ stats }) => stats.fielding)
+        .map(({ player, stats }) => ({
+            playerId: player.id,
+            playerName: player.name,
+            ...stats.fielding,
+            totalDismissals: (stats.fielding.catches || 0) + (stats.fielding.stumpings || 0) + (stats.fielding.runOuts || 0)
+        }));
     sortFieldingLeaderboard();
 
-    // Create allrounder leaderboard
-    allrounderLeaderboard = players
-        .filter(p => (p.batting.innings || 0) >= 10 && (p.bowling.overs || 0) >= 20)
-        .map(player => {
-            const battingRating = calculateBattingRating(player.batting, teamMaxes);
-            const bowlingRating = calculateBowlingRating(player.bowling, teamMaxes);
+    // Allrounder thresholds shrink for non-overall formats since sample sizes are smaller.
+    const minInnings = currentFormat === 'overall' ? 10 : 5;
+    const minOvers = currentFormat === 'overall' ? 20 : 5;
+
+    allrounderLeaderboard = playersWithStats
+        .filter(({ stats }) => stats.batting && stats.bowling)
+        .filter(({ stats }) => (stats.batting.innings || 0) >= minInnings && (stats.bowling.overs || 0) >= minOvers)
+        .map(({ player, stats }) => {
+            const battingRating = calculateBattingRating(stats.batting, teamMaxes);
+            const bowlingRating = calculateBowlingRating(stats.bowling, teamMaxes);
             const allrounderRating = Math.round((battingRating * bowlingRating) / 1000);
             return {
                 playerId: player.id,
@@ -306,12 +372,12 @@ function processPlayerData() {
                 battingRating,
                 bowlingRating,
                 allrounderRating,
-                runs: player.batting.runs,
-                average: player.batting.average,
-                strikeRate: player.batting.strikeRate,
-                wickets: player.bowling.wickets,
-                economy: player.bowling.economy,
-                bowlAvg: player.bowling.average
+                runs: stats.batting.runs,
+                average: stats.batting.average,
+                strikeRate: stats.batting.strikeRate,
+                wickets: stats.bowling.wickets,
+                economy: stats.bowling.economy,
+                bowlAvg: stats.bowling.average
             };
         });
     sortAllrounderLeaderboard();
@@ -433,6 +499,11 @@ function sortAllrounderLeaderboard() {
 function displayAllrounderLeaderboard() {
     const container = document.getElementById('allrounder-leaderboard');
 
+    if (allrounderLeaderboard.length === 0) {
+        container.innerHTML = '<div class="empty-state">No allrounder data available for this format yet.</div>';
+        return;
+    }
+
     container.innerHTML = allrounderLeaderboard.map((player, index) => `
         <div class="player-card rank-${index + 1}">
             <div class="player-info">
@@ -505,6 +576,11 @@ function displayDashboard() {
 function displayBattingLeaderboard() {
     const container = document.getElementById('batting-leaderboard');
 
+    if (battingLeaderboard.length === 0) {
+        container.innerHTML = '<div class="empty-state">No batting data available for this format.</div>';
+        return;
+    }
+
     // Display leaderboard
     container.innerHTML = battingLeaderboard.map((player, index) => `
         <div class="player-card rank-${index + 1}">
@@ -553,6 +629,11 @@ function displayBattingLeaderboard() {
 // Display bowling leaderboard
 function displayBowlingLeaderboard() {
     const container = document.getElementById('bowling-leaderboard');
+
+    if (bowlingLeaderboard.length === 0) {
+        container.innerHTML = '<div class="empty-state">No bowling data available for this format.</div>';
+        return;
+    }
 
     // Display leaderboard
     container.innerHTML = bowlingLeaderboard.map((player, index) => `
@@ -603,6 +684,11 @@ function displayBowlingLeaderboard() {
 function displayFieldingLeaderboard() {
     const container = document.getElementById('fielding-leaderboard');
 
+    if (fieldingLeaderboard.length === 0) {
+        container.innerHTML = '<div class="empty-state">No fielding data available for this format.</div>';
+        return;
+    }
+
     // Display leaderboard
     container.innerHTML = fieldingLeaderboard.map((player, index) => `
         <div class="player-card rank-${index + 1}">
@@ -643,8 +729,14 @@ function displayFieldingLeaderboard() {
 function displayHighlights() {
     const container = document.getElementById('highlights-grid');
 
+    if (battingLeaderboard.length === 0 && bowlingLeaderboard.length === 0 && fieldingLeaderboard.length === 0) {
+        container.innerHTML = '<div class="empty-state">No data available for this format yet.</div>';
+        return;
+    }
+
     // Calculate highlights
     const highlights = [];
+    const pushIfPresent = (h) => { if (h && h.player) highlights.push(h); };
 
     // Highest Score (single innings)
     const highestScore = [...battingLeaderboard].sort((a, b) => {
@@ -652,7 +744,7 @@ function displayHighlights() {
         const scoreB = parseInt(String(b.highestScore).replace(/[*]/g, '')) || 0;
         return scoreB - scoreA;
     })[0];
-    highlights.push({
+    pushIfPresent(highestScore && {
         icon: '🏏',
         title: 'Highest Score',
         player: highestScore.playerName,
@@ -662,7 +754,7 @@ function displayHighlights() {
 
     // Most Runs
     const topScorer = [...battingLeaderboard].sort((a, b) => b.runs - a.runs)[0];
-    highlights.push({
+    pushIfPresent(topScorer && {
         icon: '💯',
         title: 'Most Runs',
         player: topScorer.playerName,
@@ -672,7 +764,7 @@ function displayHighlights() {
 
     // Most Thirties
     const mostThirties = [...battingLeaderboard].sort((a, b) => (b.thirties || 0) - (a.thirties || 0))[0];
-    highlights.push({
+    pushIfPresent(mostThirties && {
         icon: '3️⃣',
         title: 'Most Thirties',
         player: mostThirties.playerName,
@@ -682,7 +774,7 @@ function displayHighlights() {
 
     // Most Fifties
     const mostFifties = [...battingLeaderboard].sort((a, b) => b.fifties - a.fifties)[0];
-    highlights.push({
+    pushIfPresent(mostFifties && {
         icon: '5️⃣',
         title: 'Most Fifties',
         player: mostFifties.playerName,
@@ -692,7 +784,7 @@ function displayHighlights() {
 
     // Most Wickets
     const mostWickets = [...bowlingLeaderboard].sort((a, b) => b.wickets - a.wickets)[0];
-    highlights.push({
+    pushIfPresent(mostWickets && {
         icon: '🎯',
         title: 'Most Wickets',
         player: mostWickets.playerName,
@@ -702,7 +794,7 @@ function displayHighlights() {
 
     // Most Fours
     const mostFours = [...battingLeaderboard].sort((a, b) => b.fours - a.fours)[0];
-    highlights.push({
+    pushIfPresent(mostFours && {
         icon: '4️⃣',
         title: 'Most Fours',
         player: mostFours.playerName,
@@ -712,7 +804,7 @@ function displayHighlights() {
 
     // Most Sixes
     const mostSixes = [...battingLeaderboard].sort((a, b) => b.sixes - a.sixes)[0];
-    highlights.push({
+    pushIfPresent(mostSixes && {
         icon: '6️⃣',
         title: 'Most Sixes',
         player: mostSixes.playerName,
@@ -720,9 +812,10 @@ function displayHighlights() {
         label: 'sixes'
     });
 
-    // Best Economy (Minimum 20 overs)
+    // Best Economy (Minimum overs threshold scales with format).
+    const minOversForEconomy = currentFormat === 'overall' ? 20 : 5;
     const bestEconomy = [...bowlingLeaderboard]
-        .filter(p => p.overs >= 20)
+        .filter(p => p.overs >= minOversForEconomy)
         .sort((a, b) => a.economy - b.economy)[0];
     if (bestEconomy) {
         highlights.push({
@@ -730,13 +823,13 @@ function displayHighlights() {
             title: 'Best Economy',
             player: bestEconomy.playerName,
             stat: bestEconomy.economy.toFixed(2),
-            label: 'economy (20+ overs)'
+            label: `economy (${minOversForEconomy}+ overs)`
         });
     }
 
     // Most Catches
     const mostCatches = [...fieldingLeaderboard].sort((a, b) => b.catches - a.catches)[0];
-    highlights.push({
+    pushIfPresent(mostCatches && {
         icon: '🧤',
         title: 'Most Catches',
         player: mostCatches.playerName,
@@ -746,7 +839,7 @@ function displayHighlights() {
 
     // Most Stumpings
     const mostStumpings = [...fieldingLeaderboard].sort((a, b) => b.stumpings - a.stumpings)[0];
-    highlights.push({
+    pushIfPresent(mostStumpings && {
         icon: '🎪',
         title: 'Most Stumpings',
         player: mostStumpings.playerName,
@@ -756,15 +849,14 @@ function displayHighlights() {
 
     // Best Bowling Figure (highest wickets in bestBowling)
     const bestBowlingFigure = [...bowlingLeaderboard].sort((a, b) => {
-        const wicketsA = parseInt(a.bestBowling.split('/')[0]) || 0;
-        const wicketsB = parseInt(b.bestBowling.split('/')[0]) || 0;
+        const wicketsA = parseInt(String(a.bestBowling || '0/0').split('/')[0]) || 0;
+        const wicketsB = parseInt(String(b.bestBowling || '0/0').split('/')[0]) || 0;
         if (wicketsB !== wicketsA) return wicketsB - wicketsA;
-        // If wickets are same, lower runs is better
-        const runsA = parseInt(a.bestBowling.split('/')[1]) || 999;
-        const runsB = parseInt(b.bestBowling.split('/')[1]) || 999;
+        const runsA = parseInt(String(a.bestBowling || '0/0').split('/')[1]) || 999;
+        const runsB = parseInt(String(b.bestBowling || '0/0').split('/')[1]) || 999;
         return runsA - runsB;
     })[0];
-    highlights.push({
+    pushIfPresent(bestBowlingFigure && {
         icon: '🔥',
         title: 'Best Bowling Figure',
         player: bestBowlingFigure.playerName,
