@@ -36,3 +36,6 @@ yarn-error.log*
 # HAR files (optional - uncomment if you don't want to track HAR files)
 *.har
 
+# Per-machine UDID for scrape.js (acts as a stable device identifier for the API)
+.scrape-udid
+

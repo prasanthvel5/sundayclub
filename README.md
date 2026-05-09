@@ -1,325 +1,129 @@
-# Crazy Boyz Cricket Statistics Dashboard
+# Sunday Club — Cricket Statistics Dashboard
 
-A mobile-responsive, **offline cricket statistics dashboard** that extracts and displays player statistics from HAR files. Built for the Crazy Boyz team.
+A mobile-responsive cricket statistics dashboard for the **Sunday Club** team. Pulls player statistics directly from CricHeroes' public API (no login, no HAR file required) and renders interactive leaderboards with computed performance ratings.
 
-## Features
+## What it does
 
-### Offline-First Architecture
-- No API calls - works completely offline
-- Data extracted from HAR files
-- One-click sync to refresh statistics
-- Fast loading and instant updates
-
-### Comprehensive Statistics
-- **Batting**: Runs, Average, Strike Rate, Highest Score, 50s, 100s, 4s, 6s
-- **Bowling**: Wickets, Economy, Average, Best Bowling, Maidens, Overs
-- **Fielding**: Catches, Stumpings, Run Outs
-
-### Mobile-Optimized Design
-- Responsive layout adapts to all screen sizes
-- Touch-friendly interface
-- Smooth animations and transitions
-- Dark theme optimized for mobile viewing
-- Gold, Silver, Bronze highlights for top 3 players
-
-### Smart Leaderboards
-- Automatic sorting by key metrics
-- Summary statistics for quick insights
-- Real-time last updated timestamp
-- Visual rank indicators
+- Fetches the team roster and per-player batting/bowling/fielding stats live from `api.cricheroes.in` — covering **all** team members, not just whoever you happened to click on.
+- Computes performance ratings (0–1000 scale) for batting, bowling, and all-rounders using normalized team-relative metrics.
+- Displays five tabs: **Batting**, **Bowling**, **Allrounders**, **Fielding**, **Highlights**.
+- Tracks rank changes between syncs (▲/▼/NEW indicators) by comparing against the previously saved rankings.
+- Supports re-syncing in-place via the dashboard sync button.
 
 ## Quick Start
 
 ### Prerequisites
-- Node.js (v14 or higher)
-- HAR file from CricHeroes
+- Node.js **v18+** (uses native `fetch`)
 
-### Installation
+### Install and Run
 
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+node scrape.js            # fetches stats from CricHeroes' public API
+npm start                 # serves http://localhost:3000
+```
 
-2. **Extract player data from HAR file:**
-   ```bash
-   node extract-players.js
-   ```
+Open **http://localhost:3000/index.html**.
 
-3. **Start the server:**
-   ```bash
-   npm start
-   ```
+Windows users can double-click `start.bat` instead.
 
-4. **Open dashboard:**
-   Visit: http://localhost:3000/index.html
+## Refreshing the data
 
-## Usage
+Three ways, in order of convenience:
 
-### Sync Button
-Click the sync button (⟳) in the top-right corner to:
-- Re-extract data from HAR file
-- Delete old statistics
-- Insert fresh data
-- Auto-refresh dashboard
+1. **Sync button** — click the ⟳ on the dashboard. The server calls `scrape.js` and the page reloads with fresh stats.
+2. **Re-run the scraper** — `node scrape.js` then refresh the browser.
+3. **Use a HAR file (legacy)** — drop a `cricheroes.com.har` in the project root and run `node extract-players.js`. The sync endpoint also supports this via `POST /sync?source=har`.
 
-### Navigation
-Switch between tabs to view different statistics:
-- 🏏 **Batting** - Run scorers and batting averages
-- 🎾 **Bowling** - Wicket takers and economy rates
-- 🧤 **Fielding** - Catches and dismissals
+### How the API access works
+
+The dashboard hits two CricHeroes endpoints:
+- `GET /api/v1/team/get-team-players/{teamId}` — full team roster
+- `GET /api/v1/player/get-player-statistic/{playerId}?pagesize=12` — per-player career stats
+
+Both are publicly accessible. They're gated only by static `api-key`, `udid`, and `device-type` headers (no login, no session cookie). The first run generates a stable `udid` and saves it to `.scrape-udid` (gitignored).
+
+To switch to a different team, pass the team ID as a CLI argument:
+
+```bash
+node scrape.js <teamId>
+```
+
+## Tabs
+
+| Tab          | What it shows                                                            | Default sort       |
+|--------------|--------------------------------------------------------------------------|--------------------|
+| Batting      | Runs, Innings, Avg, SR, HS, 30s/50s, 4s/6s — with batting rating         | Batting Rating     |
+| Bowling      | Wickets, Overs, Economy, Best, 3wkts, Dot Balls — with bowling rating    | Bowling Rating     |
+| Allrounders  | Combined bat+bowl rating (filtered: ≥10 innings AND ≥20 overs)           | Allrounder Rating  |
+| Fielding     | Catches, Stumpings, Run Outs                                             | Total Dismissals   |
+| Highlights   | Top performer cards (Most Runs, Highest Score, Most Wickets, etc.)       | —                  |
+
+## Rating Formulas
+
+**Batting Rating** (0–1000) = `0.30·quality + 0.25·intent + 0.25·volume + 0.20·consistency`
+- *quality*: Average normalized to team max
+- *intent*: Strike Rate normalized to team max
+- *volume*: Runs normalized to team max
+- *consistency*: `30s + 2·50s` normalized to team max
+
+**Bowling Rating** (0–1000) = `0.30·wicketTaking + 0.25·economy + 0.25·efficiency + 0.20·impact`
+- *wicketTaking*: Wickets normalized to team max
+- *economy*: Inverted normalization across team economy range (lower is better)
+- *efficiency*: Inverted normalization across bowling-average range
+- *impact*: 3-wicket hauls normalized to team max
+- Returns 0 for players with 0 overs or 0 wickets.
+
+**Allrounder Rating** = `(battingRating × bowlingRating) / 1000` — only for players with ≥10 batting innings and ≥20 overs bowled.
 
 ## File Structure
 
 ```
 Dashboard/
-├── index.html              # Main dashboard page
-├── styles.css              # Mobile-responsive styles
-├── app.js                  # Dashboard logic (offline mode)
-├── extract-players.js      # HAR extraction script
-├── proxy-server.js         # Local server with sync endpoint
-├── cricheroes.com.har      # HAR file with API responses (15MB)
-├── dashboard-data.json     # Extracted player statistics
-├── demo.html              # Preview UI with sample data
-├── package.json           # Dependencies
-├── start.bat              # Windows quick start script
-├── QUICKSTART.md          # Quick start guide
-└── README.md              # This file
-```
-
-## How It Works
-
-### Data Flow
-
-1. **Capture HAR File**
-   - Visit CricHeroes team page
-   - Open DevTools (F12) → Network tab
-   - Save network activity as HAR file
-
-2. **Extract Statistics**
-   - Run `extract-players.js`
-   - Parses HAR file for player statistics
-   - Generates `dashboard-data.json`
-
-3. **Display Dashboard**
-   - Dashboard loads static JSON file
-   - Processes and sorts player data
-   - Renders interactive leaderboards
-
-4. **Sync Updates**
-   - Click sync button
-   - Server re-runs extraction
-   - Dashboard auto-refreshes with new data
-
-### Technical Stack
-
-- **Frontend**: Vanilla JavaScript, HTML5, CSS3
-- **Backend**: Node.js, Express
-- **Data**: Static JSON (extracted from HAR)
-- **Design**: Mobile-first responsive design
-
-## Updating Statistics
-
-### Method 1: Sync Button (Easiest)
-1. Replace `cricheroes.com.har` with new HAR file
-2. Open dashboard
-3. Click sync button (⟳)
-4. Wait for success confirmation
-
-### Method 2: Manual Extraction
-1. Replace `cricheroes.com.har` with new HAR file
-2. Run: `node extract-players.js`
-3. Refresh browser
-
-### Method 3: Command Line
-```bash
-# Extract and restart server
-node extract-players.js && npm start
+├── index.html             # Dashboard markup with tab navigation
+├── styles.css             # Mobile-first dark theme
+├── app.js                 # Frontend: leaderboards, sorting, rank-change UI
+├── data.js                # Auto-generated: window-scoped dashboardData
+├── scrape.js              # Live scraper — calls CricHeroes' public API
+├── extract-players.js     # Legacy HAR parser (still works) + shared rating logic
+├── proxy-server.js        # Express server + POST /sync endpoint
+├── cricheroes.com.har     # Optional source HAR — only used if you run extract-players.js
+├── dashboard-data.json    # Generated statistics + previousRankings snapshot
+├── data.js                # Generated mirror of dashboard-data.json (loaded by index.html)
+├── .scrape-udid           # Generated stable device ID for the API (gitignored)
+├── demo.html              # Standalone preview with hard-coded sample data
+├── package.json           # Express + cors
+├── start.bat              # Windows: install + extract + start
+└── QUICKSTART.md          # Condensed setup guide
 ```
 
 ## Customization
 
-### Team Configuration
+**Team** — pass the team ID as a CLI arg to `scrape.js`, or change the `TEAM_ID` / `TEAM_NAME` defaults at the top of `scrape.js`.
 
-Edit `extract-players.js` (lines 130-135):
-```javascript
-const dashboardData = {
-    teamName: 'Your Team Name',
-    teamId: 'your_team_id',
-    // ...
-};
-```
+**Theme** — CSS variables at the top of `styles.css`.
 
-### Player Names
+**Allrounder eligibility** — innings/overs thresholds in `extract-players.js` (line 102) and `app.js` (line 298). Keep both in sync.
 
-Edit `extract-players.js` (lines 40-60):
-```javascript
-const playerNames = {
-    'player_id': 'Player Name',
-    '12345': 'John Doe',
-    // Add more players...
-};
-```
+**Port** — `PORT` constant in `proxy-server.js`.
 
-### Colors and Theme
+**Concurrency** — `CONCURRENCY` constant in `scrape.js` controls how many player-stat requests run in parallel (default 4).
 
-Edit `styles.css` (lines 10-20):
-```css
-:root {
-    --primary-color: #1e88e5;      /* Main theme color */
-    --secondary-color: #43a047;     /* Accent color */
-    --dark-bg: #1a1a2e;            /* Background */
-    /* ... more variables */
-}
-```
+## Mobile Access (Same WiFi)
 
-### Leaderboard Sorting
-
-Edit `app.js` to change sorting logic:
-```javascript
-// Batting by runs (default)
-.sort((a, b) => b.runs - a.runs);
-
-// Batting by average
-.sort((a, b) => b.average - a.average);
-
-// Bowling by economy
-.sort((a, b) => a.economy - b.economy);
-```
-
-## Mobile Access
-
-### Same WiFi Network
-
-1. **Find your computer's IP address:**
-   - Windows: `ipconfig`
-   - Mac/Linux: `ifconfig`
-
-2. **Access from mobile:**
-   - Visit: `http://YOUR_IP:3000/index.html`
-   - Example: `http://192.168.1.100:3000/index.html`
-
-### Public Access
-
-Deploy to any web host:
-- Vercel, Netlify, GitHub Pages (static files only)
-- Heroku, Railway, Render (with sync functionality)
-
-## Browser Compatibility
-
-| Browser | Version | Status |
-|---------|---------|--------|
-| Chrome  | 90+     | ✅ Full Support |
-| Edge    | 90+     | ✅ Full Support |
-| Firefox | 88+     | ✅ Full Support |
-| Safari  | 14+     | ✅ Full Support |
-| Mobile  | All     | ✅ Optimized |
+Run `ipconfig` (Windows) or `ifconfig` (Mac/Linux) to find your IPv4 address, then visit `http://<your-ip>:3000/index.html` from your phone.
 
 ## Troubleshooting
 
-### Dashboard Not Loading
+- **`scrape.js` fails with HTTP 4xx** — CricHeroes occasionally rotates the api-key. Capture a fresh HAR, copy the new `api-key` value from the request headers, and update the `API_KEY` constant in `scrape.js`.
+- **`Device-type not found` API error** — the `device-type` header is missing or malformed. Check the constants at the top of `scrape.js`.
+- **Empty leaderboards** — run `node scrape.js` and check that it reports `Total Players: N` with N > 0.
+- **Sync button shows ✗** — server isn't running, or the API call failed. Check the server console for the actual error message.
 
-**Problem**: Blank page or loading forever
+## Privacy
 
-**Solution**:
-1. Check browser console (F12)
-2. Verify `dashboard-data.json` exists
-3. Run: `node extract-players.js`
-4. Refresh browser (Ctrl+Shift+R)
-
-### No Player Data
-
-**Problem**: Empty leaderboards
-
-**Solution**:
-1. Ensure HAR file contains player statistics
-2. Run extraction: `node extract-players.js`
-3. Check output: "Total Players: 19"
-4. Verify `dashboard-data.json` file size > 0
-
-### Sync Not Working
-
-**Problem**: Sync button shows error
-
-**Solution**:
-1. Check if server is running
-2. Look at server console for errors
-3. Verify HAR file exists and is valid
-4. Check browser console for errors
-
-### Players Missing
-
-**Problem**: Some players not showing
-
-**Solution**:
-1. Check HAR file has all player data
-2. Update `playerNames` in `extract-players.js`
-3. Re-run: `node extract-players.js`
-4. Click sync button
-
-### Mobile Layout Issues
-
-**Problem**: Dashboard looks broken on mobile
-
-**Solution**:
-1. Hard refresh (clear cache)
-2. Check viewport meta tag in HTML
-3. Verify `styles.css` is loading
-4. Test in different browsers
-
-## Data Privacy
-
-- All data is local (no external API calls)
-- HAR files may contain sensitive information
-- Do not share HAR files publicly
-- Dashboard runs entirely offline
-
-## Performance
-
-- Lightning fast load times (< 100ms)
-- Minimal memory footprint
-- No network requests (offline)
-- Efficient data processing
-- Smooth animations (60fps)
-
-## Future Enhancements
-
-- [ ] Player comparison view
-- [ ] Match history timeline
-- [ ] Performance trends graph
-- [ ] Export to PDF/Excel
-- [ ] Dark/Light theme toggle
-- [ ] Custom stat filters
-- [ ] Team vs Team comparison
-
-## Contributing
-
-Suggestions and improvements welcome!
-
-1. Fork the repository
-2. Create feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit pull request
-
-## Credits
-
-- **Data Source**: [CricHeroes](https://cricheroes.com)
-- **Team**: Crazy Boyz
-- **Built with**: Node.js, Express, Vanilla JavaScript
+The scraper hits CricHeroes' public API only — there is no auth token to leak. The legacy HAR file, if you have one, contains full HTTP traffic including any session cookies the browser had at capture time. **Do not commit or share HAR files publicly.** `*.har` is gitignored by default.
 
 ## License
 
-MIT License - Feel free to use and modify for your team!
-
-## Support
-
-For issues or questions:
-1. Check QUICKSTART.md
-2. Review troubleshooting section
-3. Check browser console (F12)
-4. Verify file structure
-
----
-
-Made with ❤️ for cricket enthusiasts
+MIT.
