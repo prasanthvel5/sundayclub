@@ -2,10 +2,13 @@
 // Replaces the manual HAR-capture workflow. No login required — the stats
 // endpoints are gated only by static api-key + udid + device-type headers.
 //
+// Pulls rosters from multiple teams (Crazy Boyz + Thunder Boyz) and
+// de-duplicates by player_id. Players that appear in both teams are
+// fetched only once.
+//
 // Usage:
-//   node scrape.js                     # default team (TEAM_ID below)
-//   node scrape.js <teamId>            # override team ID
-//   node scrape.js <teamId> <teamSlug> # override team ID and team slug
+//   node scrape.js                            # default teams (TEAMS below)
+//   node scrape.js <teamId>[,<teamId>,...]    # comma-separated team IDs
 //
 // Writes dashboard-data.json and data.js, identical in shape to what
 // extract-players.js produces from a HAR.
@@ -20,9 +23,16 @@ const {
 } = require('./extract-players');
 
 // Defaults — can be overridden via CLI args.
-const TEAM_ID = '10442708';
-const TEAM_SLUG = 'crazy-boyz';
+// Sunday Club consists of two CricHeroes teams (Crazy Boyz + Thunder Boyz)
+// with significant roster overlap. Both rosters are pulled and de-duplicated
+// by player_id so each player's stats are fetched exactly once.
+const TEAMS = [
+    { id: '10442708', slug: 'crazy-boyz' },
+    { id: '10442742', slug: 'thunder-boyz' }
+];
 const TEAM_NAME = 'Sunday Club';
+// Used as the canonical teamId in dashboard-data.json (the first team in TEAMS).
+const PRIMARY_TEAM_ID = TEAMS[0].id;
 
 // Headers required by CricHeroes' public API. The api-key is shipped in their
 // own frontend bundle, so it's not a secret. The udid is any stable random
@@ -192,15 +202,33 @@ function shapeStats(stats) {
     };
 }
 
-async function scrape(teamId = TEAM_ID, teamSlug = TEAM_SLUG) {
+async function scrape(teams = TEAMS) {
     const start = Date.now();
-    console.log(`\nScraping team ${teamId} (${teamSlug})...\n`);
+    const teamList = Array.isArray(teams) ? teams : [teams];
+    console.log(`\nScraping ${teamList.length} team(s): ${teamList.map(t => t.slug || t.id).join(', ')}\n`);
 
     const previousRankings = loadPreviousRankings();
 
-    console.log('Fetching team roster...');
-    const roster = await fetchTeamRoster(teamId);
-    console.log(`  Roster: ${roster.length} players\n`);
+    // Fetch every team's roster, then de-duplicate by player_id. The first
+    // team to mention a player wins for the display name.
+    const rosterById = new Map();
+    let totalRosterRows = 0;
+    let duplicateRows = 0;
+    for (const team of teamList) {
+        console.log(`Fetching roster for ${team.slug || team.id}...`);
+        const roster = await fetchTeamRoster(team.id);
+        console.log(`  ${roster.length} players`);
+        totalRosterRows += roster.length;
+        for (const p of roster) {
+            if (rosterById.has(p.id)) {
+                duplicateRows++;
+                continue;
+            }
+            rosterById.set(p.id, p);
+        }
+    }
+    const roster = [...rosterById.values()];
+    console.log(`\nUnique players: ${roster.length} (skipped ${duplicateRows} duplicate roster row(s) across ${totalRosterRows} total)\n`);
 
     console.log(`Fetching per-player statistics (concurrency=${CONCURRENCY})...`);
     const playersMap = new Map();
@@ -248,16 +276,19 @@ async function scrape(teamId = TEAM_ID, teamSlug = TEAM_SLUG) {
         throw new Error('No player statistics retrieved — aborting before overwriting dashboard-data.json');
     }
 
-    finalizeData(playersMap, previousRankings, { teamName: TEAM_NAME, teamId });
+    finalizeData(playersMap, previousRankings, { teamName: TEAM_NAME, teamId: PRIMARY_TEAM_ID });
 
     const elapsed = ((Date.now() - start) / 1000).toFixed(1);
     console.log(`\nDone in ${elapsed}s.`);
 }
 
 if (require.main === module) {
-    const teamId = process.argv[2] || TEAM_ID;
-    const teamSlug = process.argv[3] || TEAM_SLUG;
-    scrape(teamId, teamSlug).catch(err => {
+    // Optional CLI override: `node scrape.js 10442708,10442742`
+    let teams = TEAMS;
+    if (process.argv[2]) {
+        teams = process.argv[2].split(',').map(id => ({ id: id.trim(), slug: id.trim() }));
+    }
+    scrape(teams).catch(err => {
         console.error('\n❌ Scrape failed:', err.message);
         process.exit(1);
     });
