@@ -19,7 +19,8 @@ const {
     loadPreviousRankings,
     mapBallTypeBatting,
     mapBallTypeBowling,
-    mapBallTypeFielding
+    mapBallTypeFielding,
+    isBlocked
 } = require('./extract-players');
 
 // Defaults — can be overridden via CLI args.
@@ -214,12 +215,17 @@ async function scrape(teams = TEAMS) {
     const rosterById = new Map();
     let totalRosterRows = 0;
     let duplicateRows = 0;
+    let blockedRows = 0;
     for (const team of teamList) {
         console.log(`Fetching roster for ${team.slug || team.id}...`);
         const roster = await fetchTeamRoster(team.id);
         console.log(`  ${roster.length} players`);
         totalRosterRows += roster.length;
         for (const p of roster) {
+            if (isBlocked(p.id)) {
+                blockedRows++;
+                continue;
+            }
             if (rosterById.has(p.id)) {
                 duplicateRows++;
                 continue;
@@ -228,7 +234,7 @@ async function scrape(teams = TEAMS) {
         }
     }
     const roster = [...rosterById.values()];
-    console.log(`\nUnique players: ${roster.length} (skipped ${duplicateRows} duplicate roster row(s) across ${totalRosterRows} total)\n`);
+    console.log(`\nUnique players: ${roster.length} (skipped ${duplicateRows} duplicate, ${blockedRows} blocked, of ${totalRosterRows} total)\n`);
 
     console.log(`Fetching per-player statistics (concurrency=${CONCURRENCY})...`);
     const playersMap = new Map();

@@ -5,6 +5,17 @@ const fs = require('fs');
 // The first HAR holding a given player's data wins.
 const BALL_TYPE_HAR_FILES = ['cricheroes.com_fullstats.har', 'cricheroes.com.har'];
 
+// Players excluded from the dashboard regardless of which roster they appear in.
+// IDs (not names) so renames and casing tweaks can't silently re-enable them.
+//   15459630 — Arun Manikandan
+const BLOCKED_PLAYER_IDS = new Set([
+    '15459630'
+]);
+
+function isBlocked(playerId) {
+    return BLOCKED_PLAYER_IDS.has(String(playerId));
+}
+
 // Map ball-type-wise totals row to our internal batting shape.
 function mapBallTypeBatting(t) {
     return {
@@ -657,6 +668,18 @@ function extractWithRegex(harData, previousRankings) {
 }
 
 function finalizeData(playersMap, previousRankings, opts = {}) {
+    // Drop blocklisted players before any downstream processing or output.
+    const dropped = [];
+    for (const id of [...playersMap.keys()]) {
+        if (isBlocked(id)) {
+            dropped.push(`${playersMap.get(id).name || '?'} (${id})`);
+            playersMap.delete(id);
+        }
+    }
+    if (dropped.length > 0) {
+        console.log(`Filtered ${dropped.length} blocklisted player(s): ${dropped.join(', ')}`);
+    }
+
     const playersList = Array.from(playersMap.values());
     playersList.sort((a, b) => a.name.localeCompare(b.name));
 
@@ -902,5 +925,7 @@ module.exports = {
     calculateBowlingRating,
     mapBallTypeBatting,
     mapBallTypeBowling,
-    mapBallTypeFielding
+    mapBallTypeFielding,
+    isBlocked,
+    BLOCKED_PLAYER_IDS
 };

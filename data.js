@@ -2,8 +2,8 @@
 const dashboardData = {
   "teamName": "Sunday Club",
   "teamId": "10442708",
-  "lastSync": "2026-05-09T18:23:03.469Z",
-  "totalPlayers": 59,
+  "lastSync": "2026-05-09T19:25:27.073Z",
+  "totalPlayers": 58,
   "players": [
     {
       "id": "3224806",
@@ -44,7 +44,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 3
       },
-      "lastUpdated": "2026-05-09T18:23:02.203Z",
+      "lastUpdated": "2026-05-09T19:25:24.982Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -126,7 +126,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 2
       },
-      "lastUpdated": "2026-05-09T18:23:02.216Z",
+      "lastUpdated": "2026-05-09T19:25:25.011Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -208,7 +208,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 3
       },
-      "lastUpdated": "2026-05-09T18:23:02.247Z",
+      "lastUpdated": "2026-05-09T19:25:24.980Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -290,7 +290,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 2
       },
-      "lastUpdated": "2026-05-09T18:23:02.243Z",
+      "lastUpdated": "2026-05-09T19:25:25.008Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -372,7 +372,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 6
       },
-      "lastUpdated": "2026-05-09T18:23:02.260Z",
+      "lastUpdated": "2026-05-09T19:25:25.049Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -454,7 +454,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 196
       },
-      "lastUpdated": "2026-05-09T18:23:02.301Z",
+      "lastUpdated": "2026-05-09T19:25:26.871Z",
       "formats": {
         "box": {
           "batting": {
@@ -535,88 +535,6 @@ const dashboardData = {
       }
     },
     {
-      "id": "15459630",
-      "name": "Arun Manikandan",
-      "batting": {
-        "runs": 313,
-        "innings": 42,
-        "average": 13.04,
-        "strikeRate": 121.79,
-        "highestScore": "43*",
-        "thirties": 2,
-        "fifties": 0,
-        "hundreds": 0,
-        "fours": 21,
-        "sixes": 18,
-        "notOuts": 18,
-        "matches": 61
-      },
-      "bowling": {
-        "wickets": 1,
-        "overs": 3,
-        "economy": 16,
-        "average": 48,
-        "bestBowling": "1/10",
-        "maidens": 0,
-        "runs": 48,
-        "dotBalls": 3,
-        "wides": 1,
-        "noBalls": 0,
-        "threeWickets": 0,
-        "fiveWickets": 0,
-        "matches": 61
-      },
-      "fielding": {
-        "catches": 25,
-        "stumpings": 0,
-        "runOuts": 8,
-        "caughtBehind": 3,
-        "matches": 61
-      },
-      "lastUpdated": "2026-05-09T18:23:03.170Z",
-      "formats": {
-        "box": {},
-        "tennis": {
-          "batting": {
-            "runs": 303,
-            "innings": 41,
-            "average": 13.17,
-            "strikeRate": 121.69,
-            "highestScore": "43*",
-            "thirties": 2,
-            "fifties": 0,
-            "hundreds": 0,
-            "fours": 19,
-            "sixes": 18,
-            "notOuts": 18,
-            "matches": 58
-          },
-          "bowling": {
-            "wickets": 1,
-            "overs": 3,
-            "economy": 16,
-            "average": 48,
-            "bestBowling": "1/10",
-            "maidens": 0,
-            "runs": 48,
-            "dotBalls": 3,
-            "wides": 1,
-            "noBalls": 0,
-            "threeWickets": 0,
-            "fiveWickets": 0,
-            "matches": 58
-          },
-          "fielding": {
-            "catches": 25,
-            "stumpings": 0,
-            "runOuts": 8,
-            "caughtBehind": 3,
-            "matches": 58
-          }
-        }
-      }
-    },
-    {
       "id": "49289038",
       "name": "Ashok",
       "batting": {
@@ -655,7 +573,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 2
       },
-      "lastUpdated": "2026-05-09T18:23:02.298Z",
+      "lastUpdated": "2026-05-09T19:25:25.215Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -737,7 +655,7 @@ const dashboardData = {
         "caughtBehind": 2,
         "matches": 132
       },
-      "lastUpdated": "2026-05-09T18:23:02.345Z",
+      "lastUpdated": "2026-05-09T19:25:25.112Z",
       "formats": {
         "box": {
           "batting": {
@@ -856,7 +774,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 8
       },
-      "lastUpdated": "2026-05-09T18:23:02.322Z",
+      "lastUpdated": "2026-05-09T19:25:25.122Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -938,7 +856,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 13
       },
-      "lastUpdated": "2026-05-09T18:23:02.385Z",
+      "lastUpdated": "2026-05-09T19:25:25.180Z",
       "formats": {
         "box": {
           "batting": {
@@ -1057,7 +975,7 @@ const dashboardData = {
         "caughtBehind": 3,
         "matches": 41
       },
-      "lastUpdated": "2026-05-09T18:23:02.368Z",
+      "lastUpdated": "2026-05-09T19:25:25.192Z",
       "formats": {
         "box": {
           "batting": {
@@ -1176,7 +1094,7 @@ const dashboardData = {
         "caughtBehind": 6,
         "matches": 186
       },
-      "lastUpdated": "2026-05-09T18:23:02.399Z",
+      "lastUpdated": "2026-05-09T19:25:25.279Z",
       "formats": {
         "box": {
           "batting": {
@@ -1295,7 +1213,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 14
       },
-      "lastUpdated": "2026-05-09T18:23:02.477Z",
+      "lastUpdated": "2026-05-09T19:25:25.298Z",
       "formats": {
         "box": {
           "batting": {
@@ -1377,7 +1295,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 2
       },
-      "lastUpdated": "2026-05-09T18:23:03.195Z",
+      "lastUpdated": "2026-05-09T19:25:26.248Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -1459,7 +1377,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 62
       },
-      "lastUpdated": "2026-05-09T18:23:02.429Z",
+      "lastUpdated": "2026-05-09T19:25:25.294Z",
       "formats": {
         "box": {
           "batting": {
@@ -1578,7 +1496,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 4
       },
-      "lastUpdated": "2026-05-09T18:23:03.196Z",
+      "lastUpdated": "2026-05-09T19:25:26.963Z",
       "formats": {
         "box": {
           "batting": {
@@ -1660,7 +1578,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 17
       },
-      "lastUpdated": "2026-05-09T18:23:02.443Z",
+      "lastUpdated": "2026-05-09T19:25:25.355Z",
       "formats": {
         "box": {
           "batting": {
@@ -1779,7 +1697,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 2
       },
-      "lastUpdated": "2026-05-09T18:23:03.240Z",
+      "lastUpdated": "2026-05-09T19:25:26.279Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -1861,7 +1779,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 2
       },
-      "lastUpdated": "2026-05-09T18:23:02.467Z",
+      "lastUpdated": "2026-05-09T19:25:25.362Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -1943,7 +1861,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 8
       },
-      "lastUpdated": "2026-05-09T18:23:02.480Z",
+      "lastUpdated": "2026-05-09T19:25:25.367Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -2025,7 +1943,7 @@ const dashboardData = {
         "caughtBehind": 16,
         "matches": 186
       },
-      "lastUpdated": "2026-05-09T18:23:02.556Z",
+      "lastUpdated": "2026-05-09T19:25:25.454Z",
       "formats": {
         "box": {
           "batting": {
@@ -2144,7 +2062,7 @@ const dashboardData = {
         "caughtBehind": 8,
         "matches": 157
       },
-      "lastUpdated": "2026-05-09T18:23:02.572Z",
+      "lastUpdated": "2026-05-09T19:25:25.450Z",
       "formats": {
         "box": {
           "batting": {
@@ -2263,7 +2181,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 0
       },
-      "lastUpdated": "2026-05-09T18:23:02.563Z"
+      "lastUpdated": "2026-05-09T19:25:25.428Z"
     },
     {
       "id": "43184469",
@@ -2304,7 +2222,7 @@ const dashboardData = {
         "caughtBehind": 1,
         "matches": 7
       },
-      "lastUpdated": "2026-05-09T18:23:03.223Z",
+      "lastUpdated": "2026-05-09T19:25:26.334Z",
       "formats": {
         "box": {
           "batting": {
@@ -2386,7 +2304,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 5
       },
-      "lastUpdated": "2026-05-09T18:23:02.593Z",
+      "lastUpdated": "2026-05-09T19:25:25.494Z",
       "formats": {
         "box": {
           "batting": {
@@ -2505,7 +2423,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 1
       },
-      "lastUpdated": "2026-05-09T18:23:02.673Z",
+      "lastUpdated": "2026-05-09T19:25:25.516Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -2587,7 +2505,7 @@ const dashboardData = {
         "caughtBehind": 8,
         "matches": 194
       },
-      "lastUpdated": "2026-05-09T18:23:02.690Z",
+      "lastUpdated": "2026-05-09T19:25:25.546Z",
       "formats": {
         "box": {
           "batting": {
@@ -2706,7 +2624,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 2
       },
-      "lastUpdated": "2026-05-09T18:23:02.677Z",
+      "lastUpdated": "2026-05-09T19:25:25.607Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -2788,7 +2706,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 11
       },
-      "lastUpdated": "2026-05-09T18:23:02.691Z",
+      "lastUpdated": "2026-05-09T19:25:25.608Z",
       "formats": {
         "box": {
           "batting": {
@@ -2907,7 +2825,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 11
       },
-      "lastUpdated": "2026-05-09T18:23:03.263Z",
+      "lastUpdated": "2026-05-09T19:25:26.341Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -2989,7 +2907,7 @@ const dashboardData = {
         "caughtBehind": 2,
         "matches": 59
       },
-      "lastUpdated": "2026-05-09T18:23:02.736Z",
+      "lastUpdated": "2026-05-09T19:25:25.620Z",
       "formats": {
         "box": {
           "batting": {
@@ -3071,7 +2989,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 157
       },
-      "lastUpdated": "2026-05-09T18:23:02.761Z",
+      "lastUpdated": "2026-05-09T19:25:25.704Z",
       "formats": {
         "box": {
           "batting": {
@@ -3190,7 +3108,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 2
       },
-      "lastUpdated": "2026-05-09T18:23:02.749Z",
+      "lastUpdated": "2026-05-09T19:25:25.666Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -3272,7 +3190,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 20
       },
-      "lastUpdated": "2026-05-09T18:23:02.775Z",
+      "lastUpdated": "2026-05-09T19:25:25.687Z",
       "formats": {
         "box": {
           "batting": {
@@ -3391,7 +3309,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 1
       },
-      "lastUpdated": "2026-05-09T18:23:03.273Z",
+      "lastUpdated": "2026-05-09T19:25:26.665Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -3473,7 +3391,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 230
       },
-      "lastUpdated": "2026-05-09T18:23:02.883Z",
+      "lastUpdated": "2026-05-09T19:25:25.775Z",
       "formats": {
         "box": {
           "batting": {
@@ -3592,7 +3510,7 @@ const dashboardData = {
         "caughtBehind": 1,
         "matches": 31
       },
-      "lastUpdated": "2026-05-09T18:23:02.872Z",
+      "lastUpdated": "2026-05-09T19:25:25.773Z",
       "formats": {
         "box": {
           "batting": {
@@ -3711,7 +3629,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 4
       },
-      "lastUpdated": "2026-05-09T18:23:02.815Z",
+      "lastUpdated": "2026-05-09T19:25:25.774Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -3793,7 +3711,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 2
       },
-      "lastUpdated": "2026-05-09T18:23:02.839Z",
+      "lastUpdated": "2026-05-09T19:25:25.841Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -3875,7 +3793,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 4
       },
-      "lastUpdated": "2026-05-09T18:23:02.876Z",
+      "lastUpdated": "2026-05-09T19:25:25.839Z",
       "formats": {
         "box": {
           "batting": {
@@ -3957,7 +3875,7 @@ const dashboardData = {
         "caughtBehind": 2,
         "matches": 87
       },
-      "lastUpdated": "2026-05-09T18:23:02.905Z",
+      "lastUpdated": "2026-05-09T19:25:25.858Z",
       "formats": {
         "box": {
           "batting": {
@@ -4076,7 +3994,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 5
       },
-      "lastUpdated": "2026-05-09T18:23:02.923Z",
+      "lastUpdated": "2026-05-09T19:25:25.910Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -4158,7 +4076,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 2
       },
-      "lastUpdated": "2026-05-09T18:23:02.927Z",
+      "lastUpdated": "2026-05-09T19:25:25.912Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -4240,7 +4158,7 @@ const dashboardData = {
         "caughtBehind": 2,
         "matches": 196
       },
-      "lastUpdated": "2026-05-09T18:23:02.969Z",
+      "lastUpdated": "2026-05-09T19:25:25.950Z",
       "formats": {
         "box": {
           "batting": {
@@ -4359,7 +4277,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 29
       },
-      "lastUpdated": "2026-05-09T18:23:02.973Z",
+      "lastUpdated": "2026-05-09T19:25:25.992Z",
       "formats": {
         "box": {
           "batting": {
@@ -4478,7 +4396,7 @@ const dashboardData = {
         "caughtBehind": 1,
         "matches": 75
       },
-      "lastUpdated": "2026-05-09T18:23:02.982Z",
+      "lastUpdated": "2026-05-09T19:25:25.987Z",
       "formats": {
         "box": {
           "batting": {
@@ -4597,7 +4515,7 @@ const dashboardData = {
         "caughtBehind": 2,
         "matches": 5
       },
-      "lastUpdated": "2026-05-09T18:23:03.338Z",
+      "lastUpdated": "2026-05-09T19:25:26.674Z",
       "formats": {
         "box": {
           "batting": {
@@ -4716,7 +4634,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 2
       },
-      "lastUpdated": "2026-05-09T18:23:03.006Z",
+      "lastUpdated": "2026-05-09T19:25:26.010Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -4798,7 +4716,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 24
       },
-      "lastUpdated": "2026-05-09T18:23:03.029Z",
+      "lastUpdated": "2026-05-09T19:25:26.070Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -4880,7 +4798,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 4
       },
-      "lastUpdated": "2026-05-09T18:23:03.048Z",
+      "lastUpdated": "2026-05-09T19:25:26.056Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -4962,7 +4880,7 @@ const dashboardData = {
         "caughtBehind": 5,
         "matches": 92
       },
-      "lastUpdated": "2026-05-09T18:23:03.109Z",
+      "lastUpdated": "2026-05-09T19:25:26.095Z",
       "formats": {
         "box": {
           "batting": {
@@ -5081,7 +4999,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 13
       },
-      "lastUpdated": "2026-05-09T18:23:03.291Z",
+      "lastUpdated": "2026-05-09T19:25:26.775Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -5163,7 +5081,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 2
       },
-      "lastUpdated": "2026-05-09T18:23:03.084Z",
+      "lastUpdated": "2026-05-09T19:25:26.118Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -5245,7 +5163,7 @@ const dashboardData = {
         "caughtBehind": 3,
         "matches": 193
       },
-      "lastUpdated": "2026-05-09T18:23:03.121Z",
+      "lastUpdated": "2026-05-09T19:25:26.175Z",
       "formats": {
         "box": {
           "batting": {
@@ -5364,7 +5282,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 5
       },
-      "lastUpdated": "2026-05-09T18:23:03.319Z",
+      "lastUpdated": "2026-05-09T19:25:26.755Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -5446,7 +5364,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 147
       },
-      "lastUpdated": "2026-05-09T18:23:03.145Z",
+      "lastUpdated": "2026-05-09T19:25:26.181Z",
       "formats": {
         "box": {
           "batting": {
@@ -5565,7 +5483,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 4
       },
-      "lastUpdated": "2026-05-09T18:23:03.146Z",
+      "lastUpdated": "2026-05-09T19:25:26.209Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -5647,7 +5565,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 21
       },
-      "lastUpdated": "2026-05-09T18:23:03.341Z",
+      "lastUpdated": "2026-05-09T19:25:26.823Z",
       "formats": {
         "box": {
           "batting": {
@@ -5706,7 +5624,6 @@ const dashboardData = {
       "3224791",
       "3224827",
       "30000671",
-      "15459630",
       "49015980",
       "3224839",
       "43668809",
@@ -5762,38 +5679,37 @@ const dashboardData = {
       "31974223",
       "48658210",
       "50519541",
-      "30000671",
       "3224806",
-      "41473990",
+      "30000671",
       "48320216",
+      "41473990",
       "15702188",
       "50511637",
       "46171603",
-      "43184469",
-      "44877085",
       "50519348",
+      "43184469",
       "41473993",
+      "44877085",
       "49015980",
       "3224846",
       "3224827",
-      "43183920",
       "49792919",
-      "41832657",
-      "42047823",
+      "43183920",
       "43668809",
       "50511636",
+      "42047823",
+      "41832657",
       "32928266",
       "3224839",
       "3224203",
-      "43862252",
       "38457602",
+      "43862252",
       "41833160",
       "44877094",
       "41474287",
       "3224789",
       "3224791",
       "39280713",
-      "15459630",
       "49015857",
       "49289038",
       "37775058",
@@ -5827,7 +5743,6 @@ const dashboardData = {
       "41474289",
       "44877085",
       "3224827",
-      "15459630",
       "42047823",
       "43668809",
       "43183920",
@@ -5877,8 +5792,8 @@ const dashboardData = {
     ],
     "allrounder": [
       "3224784",
-      "31974223",
       "3179681",
+      "31974223",
       "3224822",
       "41474289",
       "41473991",
