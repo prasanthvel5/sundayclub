@@ -22,7 +22,12 @@
       "WebFetch(domain:iccbackup.co.uk)",
       "WebFetch(domain:genzcricket.net)",
       "WebFetch(domain:thecricketlounge.com)",
-      "WebFetch(domain:www.omnicalculator.com)"
+      "WebFetch(domain:www.omnicalculator.com)",
+      "Bash(curl -s -o /tmp/test-stats.json -w 'HTTP %{http_code} | %{size_download} bytes\\\\n' -H 'api-key: cr!CkH3r0s' -H 'udid: 7b40c1f044b5a378a312120fe7854f4d' -H 'origin: https://cricheroes.com' -H 'referer: https://cricheroes.com/' -H 'user-agent: Mozilla/5.0' 'https://api.cricheroes.in/api/v1/player/get-player-statistic/3224784?pagesize=12')",
+      "Bash(curl -s -H 'api-key: cr!CkH3r0s' -H 'udid: 7b40c1f044b5a378a312120fe7854f4d' -H 'device-type: Chrome: 147.0.0.0' -H 'origin: https://cricheroes.com' -H 'referer: https://cricheroes.com/' 'https://api.cricheroes.in/api/v1/player/get-player-statistic/3224806?pagesize=12')",
+      "Bash(rm tmp-debug.json)",
+      "Bash(git checkout *)",
+      "mcp__Claude_Preview__preview_start"
     ],
     "deny": [],
     "ask": []
