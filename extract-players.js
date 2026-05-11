@@ -8,8 +8,10 @@ const BALL_TYPE_HAR_FILES = ['cricheroes.com_fullstats.har', 'cricheroes.com.har
 // Players excluded from the dashboard regardless of which roster they appear in.
 // IDs (not names) so renames and casing tweaks can't silently re-enable them.
 //   15459630 — Arun Manikandan
+//   15702188 — Padhmanaban M
 const BLOCKED_PLAYER_IDS = new Set([
-    '15459630'
+    '15459630',
+    '15702188'
 ]);
 
 function isBlocked(playerId) {
@@ -203,7 +205,10 @@ function calculateTeamMaxes(players) {
     return maxes;
 }
 
-function calculateBattingRating(batting, maxes) {
+// Sample-size confidence multiplier mirrors app.js so persisted rankings line
+// up with what the UI shows. See calculateBattingRating in app.js for context.
+function calculateBattingRating(batting, maxes, opts) {
+    const fullCreditInnings = (opts && opts.fullCreditInnings) || 10;
     const normalize = (val, max) => max > 0 ? (val / max) * 1000 : 0;
 
     const quality = normalize(batting.average || 0, maxes.average);
@@ -212,13 +217,16 @@ function calculateBattingRating(batting, maxes) {
     const cons = (batting.thirties || 0) + ((batting.fifties || 0) * 2);
     const consistency = normalize(cons, maxes.consistency);
 
-    return Math.round(quality * 0.30 + intent * 0.25 + volume * 0.25 + consistency * 0.20);
+    const rawRating = quality * 0.30 + intent * 0.25 + volume * 0.25 + consistency * 0.20;
+    const confidence = Math.min(1, (batting.innings || 0) / fullCreditInnings);
+    return Math.round(rawRating * confidence);
 }
 
-function calculateBowlingRating(bowling, maxes) {
+function calculateBowlingRating(bowling, maxes, opts) {
     if (!bowling.overs || bowling.overs === 0) return 0;
     if (!bowling.wickets || bowling.wickets === 0) return 0;
 
+    const fullCreditOvers = (opts && opts.fullCreditOvers) || 20;
     const normalize = (val, max) => max > 0 ? (val / max) * 1000 : 0;
 
     const invertedNormalize = (val, min, max) => {
@@ -232,46 +240,88 @@ function calculateBowlingRating(bowling, maxes) {
     const efficiency = invertedNormalize(bowling.average, maxes.bowlAvgMin, maxes.bowlAvgMax);
     const impact = normalize(bowling.threeWickets || 0, maxes.threeWickets);
 
-    return Math.round(wicketTaking * 0.30 + economy * 0.25 + efficiency * 0.25 + impact * 0.20);
+    const rawRating = wicketTaking * 0.30 + economy * 0.25 + efficiency * 0.25 + impact * 0.20;
+    const confidence = Math.min(1, (bowling.overs || 0) / fullCreditOvers);
+    return Math.round(rawRating * confidence);
 }
 
-// Compute sorted ranking order (returns array of player IDs) for all categories
-function computeRankings(players) {
-    const teamMaxes = calculateTeamMaxes(players);
+// Pull the right batting/bowling/fielding block for a given format.
+// Mirrors getPlayerStatsForFormat() in app.js so persisted rankings line up
+// with what the UI shows for that tab.
+function getStatsForFormat(player, format) {
+    if (format === 'overall') {
+        return { batting: player.batting, bowling: player.bowling, fielding: player.fielding };
+    }
+    const fmt = player.formats && player.formats[format];
+    if (!fmt) return null;
+    return { batting: fmt.batting || null, bowling: fmt.bowling || null, fielding: fmt.fielding || null };
+}
 
-    // Batting: sorted by battingRating descending
-    const battingRanking = players
-        .map(p => ({ id: p.id, rating: calculateBattingRating(p.batting, teamMaxes) }))
+// Compute the four leaderboards for a given (already filtered) set of
+// {player, stats} pairs. Returns ordered arrays of player IDs.
+function computeRankingsForFormat(playersWithStats, minInnings, minOvers) {
+    const normalizedPlayers = playersWithStats.map(({ stats }) => ({
+        batting: stats.batting || {},
+        bowling: stats.bowling || {}
+    }));
+    const teamMaxes = calculateTeamMaxes(normalizedPlayers);
+    const ratingOpts = { fullCreditInnings: minInnings, fullCreditOvers: minOvers };
+
+    const battingRanking = playersWithStats
+        .filter(({ stats }) => stats.batting)
+        .map(({ player, stats }) => ({ id: player.id, rating: calculateBattingRating(stats.batting, teamMaxes, ratingOpts) }))
         .sort((a, b) => b.rating - a.rating)
         .map(p => p.id);
 
-    // Bowling: sorted by bowlingRating descending
-    const bowlingRanking = players
-        .map(p => ({ id: p.id, rating: calculateBowlingRating(p.bowling, teamMaxes) }))
+    const bowlingRanking = playersWithStats
+        .filter(({ stats }) => stats.bowling)
+        .map(({ player, stats }) => ({ id: player.id, rating: calculateBowlingRating(stats.bowling, teamMaxes, ratingOpts) }))
         .sort((a, b) => b.rating - a.rating)
         .map(p => p.id);
 
-    // Fielding: sorted by totalDismissals descending
-    const fieldingRanking = players
-        .map(p => ({
-            id: p.id,
-            totalDismissals: (p.fielding.catches || 0) + (p.fielding.stumpings || 0) + (p.fielding.runOuts || 0)
+    const fieldingRanking = playersWithStats
+        .filter(({ stats }) => stats.fielding)
+        .map(({ player, stats }) => ({
+            id: player.id,
+            totalDismissals: (stats.fielding.catches || 0) + (stats.fielding.stumpings || 0) + (stats.fielding.runOuts || 0)
         }))
         .sort((a, b) => b.totalDismissals - a.totalDismissals)
         .map(p => p.id);
 
-    // Allrounder: filtered (innings >= 10 && overs >= 20), sorted by allrounderRating descending
-    const allrounderRanking = players
-        .filter(p => (p.batting.innings || 0) >= 10 && (p.bowling.overs || 0) >= 20)
-        .map(p => {
-            const batRating = calculateBattingRating(p.batting, teamMaxes);
-            const bowlRating = calculateBowlingRating(p.bowling, teamMaxes);
-            return { id: p.id, rating: Math.round((batRating * bowlRating) / 1000) };
+    const allrounderRanking = playersWithStats
+        .filter(({ stats }) => stats.batting && stats.bowling)
+        .filter(({ stats }) => (stats.batting.innings || 0) >= minInnings && (stats.bowling.overs || 0) >= minOvers)
+        .map(({ player, stats }) => {
+            const batRating = calculateBattingRating(stats.batting, teamMaxes, ratingOpts);
+            const bowlRating = calculateBowlingRating(stats.bowling, teamMaxes, ratingOpts);
+            return { id: player.id, rating: Math.round((batRating * bowlRating) / 1000) };
         })
         .sort((a, b) => b.rating - a.rating)
         .map(p => p.id);
 
     return { batting: battingRanking, bowling: bowlingRanking, fielding: fieldingRanking, allrounder: allrounderRanking };
+}
+
+// Compute per-format ranking maps so the UI can show rank-change deltas on
+// every format tab, not just Overall. Format keys mirror app.js: 'overall',
+// 'box' (Turf), 'tennis' (Ground). Allrounder thresholds shrink for non-Overall
+// formats since sample sizes are smaller — same as app.js processPlayerData().
+function computeRankings(players) {
+    const formats = ['overall', 'box', 'tennis'];
+    const result = {};
+    for (const fmt of formats) {
+        const playersWithStats = players
+            .map(p => ({ player: p, stats: getStatsForFormat(p, fmt) }))
+            .filter(item => item.stats)
+            // Mirror app.js processPlayerData: drop players who didn't bat or
+            // bowl in this format so previousRankings stays in sync with what
+            // the UI shows.
+            .filter(({ stats }) => ((stats.batting && stats.batting.runs) || 0) > 0 || ((stats.bowling && stats.bowling.overs) || 0) > 0);
+        const minInnings = fmt === 'overall' ? 10 : 5;
+        const minOvers = fmt === 'overall' ? 20 : 5;
+        result[fmt] = computeRankingsForFormat(playersWithStats, minInnings, minOvers);
+    }
+    return result;
 }
 
 // Load previous rankings from existing dashboard-data.json
@@ -288,7 +338,9 @@ function loadPreviousRankings() {
     return null;
 }
 
-// Print ranking changes to console
+// Print ranking changes to console for every format (overall/box/tennis).
+// Accepts both the new per-format shape and the legacy flat shape (treated as
+// overall) so older dashboard-data.json files don't crash the extractor.
 function printRankingChanges(previousRankings, newRankings, playersMap) {
     if (!previousRankings) {
         console.log('\nNo previous rankings to compare (first run)');
@@ -297,43 +349,56 @@ function printRankingChanges(previousRankings, newRankings, playersMap) {
 
     const categories = ['batting', 'bowling', 'fielding', 'allrounder'];
     const categoryLabels = { batting: 'Batting', bowling: 'Bowling', fielding: 'Fielding', allrounder: 'All-rounder' };
+    const formatLabels = { overall: 'Overall', box: 'Turf', tennis: 'Ground' };
 
     const getPlayerName = (id) => {
         const p = playersMap.get(id);
         return p ? p.name : `Player ${id}`;
     };
 
-    for (const cat of categories) {
-        const prevOrder = previousRankings[cat] || [];
-        const newOrder = newRankings[cat] || [];
-        const prevRankMap = {};
-        prevOrder.forEach((id, idx) => { prevRankMap[id] = idx + 1; });
+    const isFlatShape = (obj) => obj && (obj.batting || obj.bowling || obj.fielding || obj.allrounder) && !obj.overall && !obj.box && !obj.tennis;
+    const prevByFormat = isFlatShape(previousRankings) ? { overall: previousRankings } : previousRankings;
+    const newByFormat = isFlatShape(newRankings) ? { overall: newRankings } : newRankings;
 
-        const changes = [];
-        newOrder.forEach((id, idx) => {
-            const newRank = idx + 1;
-            const prevRank = prevRankMap[id];
-            if (prevRank === undefined) {
-                changes.push({ name: getPlayerName(id), change: 'NEW', newRank });
-            } else if (prevRank !== newRank) {
-                const diff = prevRank - newRank;
-                changes.push({ name: getPlayerName(id), change: diff, newRank, prevRank });
-            }
-        });
+    for (const fmt of ['overall', 'box', 'tennis']) {
+        const prevForFmt = prevByFormat[fmt];
+        const newForFmt = newByFormat[fmt];
+        if (!prevForFmt || !newForFmt) continue;
 
-        if (changes.length > 0) {
-            console.log(`\n${categoryLabels[cat]} Ranking Changes:`);
-            changes.forEach(c => {
-                if (c.change === 'NEW') {
-                    console.log(`  NEW  #${c.newRank} ${c.name}`);
-                } else if (c.change > 0) {
-                    console.log(`  ▲ ${c.change}  #${c.prevRank} → #${c.newRank} ${c.name}`);
-                } else {
-                    console.log(`  ▼ ${Math.abs(c.change)}  #${c.prevRank} → #${c.newRank} ${c.name}`);
+        console.log(`\n--- ${formatLabels[fmt]} format ---`);
+
+        for (const cat of categories) {
+            const prevOrder = prevForFmt[cat] || [];
+            const newOrder = newForFmt[cat] || [];
+            const prevRankMap = {};
+            prevOrder.forEach((id, idx) => { prevRankMap[id] = idx + 1; });
+
+            const changes = [];
+            newOrder.forEach((id, idx) => {
+                const newRank = idx + 1;
+                const prevRank = prevRankMap[id];
+                if (prevRank === undefined) {
+                    changes.push({ name: getPlayerName(id), change: 'NEW', newRank });
+                } else if (prevRank !== newRank) {
+                    const diff = prevRank - newRank;
+                    changes.push({ name: getPlayerName(id), change: diff, newRank, prevRank });
                 }
             });
-        } else {
-            console.log(`\n${categoryLabels[cat]} Rankings: No changes`);
+
+            if (changes.length > 0) {
+                console.log(`\n${categoryLabels[cat]} Ranking Changes:`);
+                changes.forEach(c => {
+                    if (c.change === 'NEW') {
+                        console.log(`  NEW  #${c.newRank} ${c.name}`);
+                    } else if (c.change > 0) {
+                        console.log(`  ▲ ${c.change}  #${c.prevRank} → #${c.newRank} ${c.name}`);
+                    } else {
+                        console.log(`  ▼ ${Math.abs(c.change)}  #${c.prevRank} → #${c.newRank} ${c.name}`);
+                    }
+                });
+            } else {
+                console.log(`\n${categoryLabels[cat]} Rankings: No changes`);
+            }
         }
     }
 }

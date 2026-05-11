@@ -203,35 +203,54 @@ function switchTab(tabName) {
     document.getElementById(tabName).classList.add('active');
 }
 
-// Save current rankings to localStorage. Only persist when viewing Overall so
-// that rank-change deltas always compare against the same baseline.
+// localStorage stores rankings keyed by format ('overall' | 'box' | 'tennis').
+// Older builds wrote a flat shape — migrate transparently so a returning user
+// doesn't lose their Overall baseline.
+function migrateLegacyRankings(obj) {
+    if (!obj) return null;
+    if (obj.overall || obj.box || obj.tennis) return obj;
+    if (obj.batting || obj.bowling || obj.fielding || obj.allrounder) return { overall: obj };
+    return obj;
+}
+
+// Save current rankings to localStorage under the active format key. Persisting
+// per-format means rank-change deltas show on every tab, not just Overall.
 function saveCurrentRankings() {
-    if (currentFormat !== 'overall') return;
-    const rankings = {
+    let allRankings = {};
+    try {
+        const stored = localStorage.getItem('previousRankings');
+        allRankings = migrateLegacyRankings(stored ? JSON.parse(stored) : {}) || {};
+    } catch (e) {
+        allRankings = {};
+    }
+    allRankings[currentFormat] = {
         batting: battingLeaderboard.map(p => p.playerId),
         bowling: bowlingLeaderboard.map(p => p.playerId),
         fielding: fieldingLeaderboard.map(p => p.playerId),
         allrounder: allrounderLeaderboard.map(p => p.playerId)
     };
-    localStorage.setItem('previousRankings', JSON.stringify(rankings));
+    localStorage.setItem('previousRankings', JSON.stringify(allRankings));
 }
 
-// Calculate rank changes by comparing current vs previous rankings.
-// Rank-change deltas are only meaningful for the Overall format because
-// previous rankings are only persisted for Overall.
+// Calculate rank changes by comparing current vs previous rankings for the
+// active format. Falls back to the legacy flat shape (treated as Overall) so
+// dashboards extracted before per-format rankings still render.
 function calculateRankChanges() {
     rankChanges = { batting: {}, bowling: {}, fielding: {}, allrounder: {} };
-    if (currentFormat !== 'overall') return;
 
-    let previous = null;
+    let allPrevious = null;
     if (dashboardData && dashboardData.previousRankings) {
-        previous = dashboardData.previousRankings;
+        allPrevious = dashboardData.previousRankings;
     } else {
         const stored = localStorage.getItem('previousRankings');
         if (stored) {
-            previous = JSON.parse(stored);
+            try { allPrevious = JSON.parse(stored); } catch (e) {}
         }
     }
+    allPrevious = migrateLegacyRankings(allPrevious);
+    if (!allPrevious) return;
+
+    const previous = allPrevious[currentFormat];
     if (!previous) return;
 
     const calcChanges = (currentList, prevOrder, idKey) => {
@@ -309,11 +328,13 @@ function loadDashboardData() {
 // Process player data and create leaderboards (uses currentFormat).
 function processPlayerData() {
     // Pair each player with the stat block for the active format. Players that
-    // have no data for the active format are dropped per category.
-    const playersWithStats = dashboardData.players.map(player => ({
-        player,
-        stats: getPlayerStatsForFormat(player, currentFormat)
-    })).filter(item => item.stats);
+    // have no data for the active format are dropped per category. Also hide
+    // anyone with 0 runs AND 0 overs in this format — they didn't bat or bowl,
+    // so showing them at the bottom of every leaderboard adds no signal.
+    const playersWithStats = dashboardData.players
+        .map(player => ({ player, stats: getPlayerStatsForFormat(player, currentFormat) }))
+        .filter(item => item.stats)
+        .filter(({ stats }) => (stats.batting?.runs || 0) > 0 || (stats.bowling?.overs || 0) > 0);
 
     // For team-wide normalization use only players that contributed to this format.
     const normalizedPlayers = playersWithStats.map(({ player, stats }) => ({
@@ -322,6 +343,14 @@ function processPlayerData() {
     }));
     const teamMaxes = calculateTeamMaxes(normalizedPlayers);
 
+    // Sample-size thresholds shrink for non-overall formats since players have
+    // played fewer Turf/Ground matches. These drive both the soft-penalty
+    // confidence multiplier inside the rating functions AND the hard allrounder
+    // filter below.
+    const minInnings = currentFormat === 'overall' ? 10 : 5;
+    const minOvers = currentFormat === 'overall' ? 20 : 5;
+    const ratingOpts = { fullCreditInnings: minInnings, fullCreditOvers: minOvers };
+
     // Create batting leaderboard (drop players with no batting block in this format).
     battingLeaderboard = playersWithStats
         .filter(({ stats }) => stats.batting)
@@ -329,7 +358,7 @@ function processPlayerData() {
             playerId: player.id,
             playerName: player.name,
             ...stats.batting,
-            battingRating: calculateBattingRating(stats.batting, teamMaxes)
+            battingRating: calculateBattingRating(stats.batting, teamMaxes, ratingOpts)
         }));
     sortBattingLeaderboard();
 
@@ -340,7 +369,7 @@ function processPlayerData() {
             playerId: player.id,
             playerName: player.name,
             ...stats.bowling,
-            bowlingRating: calculateBowlingRating(stats.bowling, teamMaxes)
+            bowlingRating: calculateBowlingRating(stats.bowling, teamMaxes, ratingOpts)
         }));
     sortBowlingLeaderboard();
 
@@ -355,16 +384,12 @@ function processPlayerData() {
         }));
     sortFieldingLeaderboard();
 
-    // Allrounder thresholds shrink for non-overall formats since sample sizes are smaller.
-    const minInnings = currentFormat === 'overall' ? 10 : 5;
-    const minOvers = currentFormat === 'overall' ? 20 : 5;
-
     allrounderLeaderboard = playersWithStats
         .filter(({ stats }) => stats.batting && stats.bowling)
         .filter(({ stats }) => (stats.batting.innings || 0) >= minInnings && (stats.bowling.overs || 0) >= minOvers)
         .map(({ player, stats }) => {
-            const battingRating = calculateBattingRating(stats.batting, teamMaxes);
-            const bowlingRating = calculateBowlingRating(stats.bowling, teamMaxes);
+            const battingRating = calculateBattingRating(stats.batting, teamMaxes, ratingOpts);
+            const bowlingRating = calculateBowlingRating(stats.bowling, teamMaxes, ratingOpts);
             const allrounderRating = Math.round((battingRating * bowlingRating) / 1000);
             return {
                 playerId: player.id,
@@ -456,8 +481,11 @@ function calculateTeamMaxes(players) {
     return maxes;
 }
 
-// Calculate batting rating (0-1000)
-function calculateBattingRating(batting, maxes) {
+// Calculate batting rating (0-1000).
+// Applies a sample-size confidence multiplier `min(1, innings / fullCreditInnings)`
+// so cameos with great per-innings stats but tiny volume don't outrank regulars.
+function calculateBattingRating(batting, maxes, opts) {
+    const fullCreditInnings = (opts && opts.fullCreditInnings) || 10;
     const normalize = (val, max) => max > 0 ? (val / max) * 1000 : 0;
 
     const quality = normalize(batting.average || 0, maxes.average);
@@ -466,14 +494,19 @@ function calculateBattingRating(batting, maxes) {
     const cons = (batting.thirties || 0) + ((batting.fifties || 0) * 2);
     const consistency = normalize(cons, maxes.consistency);
 
-    return Math.round(quality * 0.30 + intent * 0.25 + volume * 0.25 + consistency * 0.20);
+    const rawRating = quality * 0.30 + intent * 0.25 + volume * 0.25 + consistency * 0.20;
+    const confidence = Math.min(1, (batting.innings || 0) / fullCreditInnings);
+    return Math.round(rawRating * confidence);
 }
 
-// Calculate bowling rating (0-1000)
-function calculateBowlingRating(bowling, maxes) {
+// Calculate bowling rating (0-1000).
+// Applies a sample-size confidence multiplier `min(1, overs / fullCreditOvers)`
+// so a one-over wicket with 4-run economy can't ride to the top of the table.
+function calculateBowlingRating(bowling, maxes, opts) {
     if (!bowling.overs || bowling.overs === 0) return 0;
     if (!bowling.wickets || bowling.wickets === 0) return 0;
 
+    const fullCreditOvers = (opts && opts.fullCreditOvers) || 20;
     const normalize = (val, max) => max > 0 ? (val / max) * 1000 : 0;
 
     const invertedNormalize = (val, min, max) => {
@@ -487,7 +520,9 @@ function calculateBowlingRating(bowling, maxes) {
     const efficiency = invertedNormalize(bowling.average, maxes.bowlAvgMin, maxes.bowlAvgMax);
     const impact = normalize(bowling.threeWickets || 0, maxes.threeWickets);
 
-    return Math.round(wicketTaking * 0.30 + economy * 0.25 + efficiency * 0.25 + impact * 0.20);
+    const rawRating = wicketTaking * 0.30 + economy * 0.25 + efficiency * 0.25 + impact * 0.20;
+    const confidence = Math.min(1, (bowling.overs || 0) / fullCreditOvers);
+    return Math.round(rawRating * confidence);
 }
 
 // Sort allrounder leaderboard
