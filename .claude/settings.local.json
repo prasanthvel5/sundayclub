@@ -27,7 +27,8 @@
       "Bash(curl -s -H 'api-key: cr!CkH3r0s' -H 'udid: 7b40c1f044b5a378a312120fe7854f4d' -H 'device-type: Chrome: 147.0.0.0' -H 'origin: https://cricheroes.com' -H 'referer: https://cricheroes.com/' 'https://api.cricheroes.in/api/v1/player/get-player-statistic/3224806?pagesize=12')",
       "Bash(rm tmp-debug.json)",
       "Bash(git checkout *)",
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "PowerShell(Get-Command gh -ErrorAction SilentlyContinue; if \\(-not $?\\) { \"Not in PATH\"; \"Checking common install paths...\"; @\\(\"$env:LOCALAPPDATA\\\\GitHubCLI\\\\gh.exe\",\"$env:ProgramFiles\\\\GitHub CLI\\\\gh.exe\",\"${env:ProgramFiles\\(x86\\)}\\\\GitHub CLI\\\\gh.exe\"\\) | ForEach-Object { if \\(Test-Path $_\\) { \"FOUND: $_\" } } })"
     ],
     "deny": [],
     "ask": []
