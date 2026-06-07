@@ -217,7 +217,17 @@ function calculateBattingRating(batting, maxes, opts) {
     const cons = (batting.thirties || 0) + ((batting.fifties || 0) * 2);
     const consistency = normalize(cons, maxes.consistency);
 
-    const rawRating = quality * 0.30 + intent * 0.25 + volume * 0.25 + consistency * 0.20;
+    // Average is only trustworthy when backed by volume: a 40 average off 40
+    // runs is a not-out artifact, not batting quality. Scale the quality
+    // (average) weight by how much volume backs it (0..1) and hand the freed
+    // weight to volume, so low-volume batters are judged on actual runs rather
+    // than a fragile average. sqrt softens the curve so mid-volume players
+    // aren't over-penalized; weights still sum to 1.0 to keep the 0-1000 scale.
+    const volumeCredibility = maxes.runs > 0 ? Math.min(1, Math.sqrt((batting.runs || 0) / maxes.runs)) : 0;
+    const qualityWeight = 0.30 * volumeCredibility;
+    const volumeWeight = 0.25 + 0.30 * (1 - volumeCredibility);
+
+    const rawRating = quality * qualityWeight + intent * 0.25 + volume * volumeWeight + consistency * 0.20;
     const confidence = Math.min(1, (batting.innings || 0) / fullCreditInnings);
     return Math.round(rawRating * confidence);
 }

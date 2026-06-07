@@ -103,6 +103,17 @@ body {
     transition: transform 0.3s ease;
 }
 
+/* Help button (anchor styled like the round sync button) */
+.help-btn {
+    text-decoration: none;
+}
+
+.help-btn .sync-icon {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+}
+
 .sync-icon.syncing {
     animation: rotate 1s linear infinite;
 }
