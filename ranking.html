@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Rankings Work - Sunday Club</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .info-page {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 20px 18px 60px;
+        }
+        .info-page h2 {
+            font-size: 20px;
+            margin: 28px 0 12px;
+            color: var(--text-primary);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+        }
+        .info-page h2 .emoji { margin-right: 6px; }
+        .info-page p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+        .info-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        .ingredient {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .ingredient:last-child { border-bottom: none; }
+        .ingredient .weight {
+            flex-shrink: 0;
+            min-width: 52px;
+            text-align: center;
+            font-weight: 700;
+            color: var(--gold);
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 8px;
+            padding: 6px 4px;
+            font-size: 14px;
+        }
+        .ingredient .desc { flex: 1; }
+        .ingredient .desc strong { color: var(--text-primary); display: block; margin-bottom: 2px; }
+        .ingredient .desc span { color: var(--text-secondary); font-size: 14px; line-height: 1.5; }
+        .callout {
+            background: rgba(30, 136, 229, 0.12);
+            border: 1px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin: 16px 0;
+        }
+        .callout strong { color: var(--text-primary); }
+        .callout p { margin-bottom: 0; color: var(--text-secondary); }
+        .intro {
+            font-size: 16px;
+            color: var(--text-primary);
+            line-height: 1.65;
+        }
+        .back-link {
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .back-link:hover { opacity: 0.85; }
+        .pill {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 12px;
+            padding: 1px 9px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>How Rankings Work</h1>
+                    <p class="subtitle">A plain-English guide to the Points</p>
+                </div>
+                <a href="index.html" class="sync-btn help-btn" title="Back to dashboard" aria-label="Back to dashboard">
+                    <span class="sync-icon">&#8592;</span>
+                </a>
+            </div>
+        </header>
+
+        <div class="info-page">
+            <p class="intro">
+                Every player gets a score out of <span class="pill">1000</span> in each category &mdash;
+                Batting, Bowling, All-rounder and Fielding. The leaderboard simply sorts everyone by those
+                points. Here's what goes into them, in everyday terms.
+            </p>
+
+            <div class="callout">
+                <p><strong>Points are relative, not absolute.</strong> You're measured against the best player
+                in the group for the selected format. That means your points can move even in a week you didn't
+                play &mdash; if the top performer's numbers change, everyone else's scores shift around them.</p>
+            </div>
+
+            <!-- BATTING -->
+            <h2><span class="emoji">🏏</span> Batting</h2>
+            <p>Four ingredients are blended together. The percentage is how much each one matters:</p>
+            <div class="info-card">
+                <div class="ingredient">
+                    <div class="weight">30%</div>
+                    <div class="desc">
+                        <strong>Quality &mdash; Batting Average</strong>
+                        <span>Runs scored per time you got out. <em>But</em> a high average only counts fully
+                        if it's backed by enough runs. A "40 average" off just 40 runs (lots of not-outs) earns
+                        little credit &mdash; the same average built on 400 runs earns the full share. The credit
+                        you lose here is handed to Volume below.</span>
+                    </div>
+                </div>
+                <div class="ingredient">
+                    <div class="weight">25%</div>
+                    <div class="desc">
+                        <strong>Intent &mdash; Strike Rate</strong>
+                        <span>How fast you score &mdash; runs per 100 balls. Rewards aggressive scoring.</span>
+                    </div>
+                </div>
+                <div class="ingredient">
+                    <div class="weight">25%</div>
+                    <div class="desc">
+                        <strong>Volume &mdash; Total Runs</strong>
+                        <span>How many runs you've actually piled up across the season. Big contributors rank higher.</span>
+                    </div>
+                </div>
+                <div class="ingredient">
+                    <div class="weight">20%</div>
+                    <div class="desc">
+                        <strong>Consistency &mdash; 30s &amp; 50s</strong>
+                        <span>Turning starts into meaningful scores. A fifty counts double a thirty.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="callout">
+                <p><strong>Fairness check:</strong> if you've only batted a few innings, your score is scaled
+                down so a couple of lucky knocks can't outrank the regulars who do it week after week.</p>
+            </div>
+
+            <!-- BOWLING -->
+            <h2><span class="emoji">🎯</span> Bowling</h2>
+            <p>You must have bowled <em>and</em> taken at least one wicket to score any points. Then four
+            ingredients are blended:</p>
+            <div class="info-card">
+                <div class="ingredient">
+                    <div class="weight">30%</div>
+                    <div class="desc">
+                        <strong>Wickets</strong>
+                        <span>Total wickets taken &mdash; the core job of a bowler.</span>
+                    </div>
+                </div>
+                <div class="ingredient">
+                    <div class="weight">25%</div>
+                    <div class="desc">
+                        <strong>Economy</strong>
+                        <span>Runs you give away per over. <em>Fewer is better</em> &mdash; tight bowling scores higher.</span>
+                    </div>
+                </div>
+                <div class="ingredient">
+                    <div class="weight">25%</div>
+                    <div class="desc">
+                        <strong>Efficiency &mdash; Bowling Average</strong>
+                        <span>Runs conceded per wicket. <em>Fewer is better</em> &mdash; striking often without leaking runs.</span>
+                    </div>
+                </div>
+                <div class="ingredient">
+                    <div class="weight">20%</div>
+                    <div class="desc">
+                        <strong>Impact &mdash; 3-Wicket Hauls</strong>
+                        <span>Match-turning spells where you ran through the batting.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="callout">
+                <p><strong>Fairness check:</strong> bowled only a handful of overs? Your score is scaled down,
+                so one cheap wicket in a single over can't shoot you to the top.</p>
+            </div>
+
+            <!-- ALL-ROUNDER -->
+            <h2><span class="emoji">⭐</span> All-rounder</h2>
+            <div class="info-card">
+                <p style="margin-bottom: 0;">Your <strong>Batting points multiplied by your Bowling points</strong>.
+                Because it's a multiplication, you need to be good at <em>both</em> &mdash; being brilliant at one
+                and poor at the other won't get you far. You also need a minimum number of batting innings and
+                bowling overs to qualify at all.</p>
+            </div>
+
+            <!-- FIELDING -->
+            <h2><span class="emoji">🧤</span> Fielding</h2>
+            <div class="info-card">
+                <p style="margin-bottom: 0;">The simplest one: total <strong>dismissals = Catches + Stumpings +
+                Run-outs</strong>. Whoever has the most is ranked first.</p>
+            </div>
+
+            <!-- FORMATS -->
+            <h2><span class="emoji">🗂️</span> Overall, Turf &amp; Ground</h2>
+            <div class="info-card">
+                <p style="margin-bottom: 0;">Each format tab is scored on its own, comparing only the players
+                who played that format. Because fewer Turf and Ground matches are played, the qualification bar
+                (minimum innings and overs) is lower on those tabs than on Overall.</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="index.html" class="back-link">&#8592; Back to the dashboard</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
