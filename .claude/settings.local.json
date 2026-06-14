@@ -28,7 +28,12 @@
       "Bash(rm tmp-debug.json)",
       "Bash(git checkout *)",
       "mcp__Claude_Preview__preview_start",
-      "PowerShell(Get-Command gh -ErrorAction SilentlyContinue; if \\(-not $?\\) { \"Not in PATH\"; \"Checking common install paths...\"; @\\(\"$env:LOCALAPPDATA\\\\GitHubCLI\\\\gh.exe\",\"$env:ProgramFiles\\\\GitHub CLI\\\\gh.exe\",\"${env:ProgramFiles\\(x86\\)}\\\\GitHub CLI\\\\gh.exe\"\\) | ForEach-Object { if \\(Test-Path $_\\) { \"FOUND: $_\" } } })"
+      "PowerShell(Get-Command gh -ErrorAction SilentlyContinue; if \\(-not $?\\) { \"Not in PATH\"; \"Checking common install paths...\"; @\\(\"$env:LOCALAPPDATA\\\\GitHubCLI\\\\gh.exe\",\"$env:ProgramFiles\\\\GitHub CLI\\\\gh.exe\",\"${env:ProgramFiles\\(x86\\)}\\\\GitHub CLI\\\\gh.exe\"\\) | ForEach-Object { if \\(Test-Path $_\\) { \"FOUND: $_\" } } })",
+      "Bash(gh pr *)",
+      "Bash(git check-ignore *)",
+      "PowerShell($g = Get-Command gh -ErrorAction SilentlyContinue; if \\($g\\) { \"gh found: $\\($g.Source\\)\"; gh pr list --head feat/format-tabs --json number,url,title } else { \"gh NOT FOUND\" })",
+      "PowerShell(@\\(\"$env:LOCALAPPDATA\\\\GitHubCLI\\\\gh.exe\",\"$env:ProgramFiles\\\\GitHub CLI\\\\gh.exe\",\"${env:ProgramFiles\\(x86\\)}\\\\GitHub CLI\\\\gh.exe\"\\) | ForEach-Object { if \\(Test-Path $_\\) { \"FOUND: $_\" } else { \"missing: $_\" } })",
+      "Bash(git credential *)"
     ],
     "deny": [],
     "ask": []
