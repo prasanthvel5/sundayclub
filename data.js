@@ -2,8 +2,8 @@
 const dashboardData = {
   "teamName": "Sunday Club",
   "teamId": "10442708",
-  "lastSync": "2026-09-14T13:25:15.185Z",
-  "totalPlayers": 80,
+  "lastSync": "2026-09-24T03:14:21.963Z",
+  "totalPlayers": 82,
   "players": [
     {
       "id": "52294797",
@@ -44,7 +44,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 4
       },
-      "lastUpdated": "2026-09-14T13:25:14.606Z",
+      "lastUpdated": "2026-09-24T03:14:21.037Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -126,7 +126,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 8
       },
-      "lastUpdated": "2026-09-14T13:25:13.071Z",
+      "lastUpdated": "2026-09-24T03:14:18.834Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -173,80 +173,80 @@ const dashboardData = {
       "id": "50511636",
       "name": "Ajith Crick TKM",
       "batting": {
-        "runs": 311,
-        "innings": 33,
-        "average": 11.11,
-        "strikeRate": 113.09,
+        "runs": 328,
+        "innings": 34,
+        "average": 11.71,
+        "strikeRate": 110.07,
         "highestScore": "47*",
         "thirties": 3,
         "fifties": 0,
         "hundreds": 0,
-        "fours": 23,
+        "fours": 25,
         "sixes": 20,
-        "notOuts": 5,
-        "matches": 37
+        "notOuts": 6,
+        "matches": 38
       },
       "bowling": {
-        "wickets": 48,
-        "overs": 90,
-        "economy": 5.28,
-        "average": 9.9,
-        "bestBowling": "3/6",
+        "wickets": 51,
+        "overs": 93,
+        "economy": 5.16,
+        "average": 9.41,
+        "bestBowling": "3/5",
         "maidens": 3,
-        "runs": 475,
-        "dotBalls": 298,
-        "wides": 59,
+        "runs": 480,
+        "dotBalls": 312,
+        "wides": 60,
         "noBalls": 2,
-        "threeWickets": 5,
+        "threeWickets": 6,
         "fiveWickets": 0,
-        "matches": 37
+        "matches": 38
       },
       "fielding": {
         "catches": 11,
         "stumpings": 0,
         "runOuts": 5,
         "caughtBehind": 2,
-        "matches": 37
+        "matches": 38
       },
-      "lastUpdated": "2026-09-14T13:25:13.021Z",
+      "lastUpdated": "2026-09-24T03:14:18.715Z",
       "formats": {
         "box": {},
         "tennis": {
           "batting": {
-            "runs": 311,
-            "innings": 33,
-            "average": 11.11,
-            "strikeRate": 113.09,
+            "runs": 328,
+            "innings": 34,
+            "average": 11.71,
+            "strikeRate": 110.07,
             "highestScore": "47*",
             "thirties": 3,
             "fifties": 0,
             "hundreds": 0,
-            "fours": 23,
+            "fours": 25,
             "sixes": 20,
-            "notOuts": 5,
-            "matches": 37
+            "notOuts": 6,
+            "matches": 38
           },
           "bowling": {
-            "wickets": 48,
-            "overs": 90,
-            "economy": 5.28,
-            "average": 9.9,
-            "bestBowling": "3/6",
+            "wickets": 51,
+            "overs": 93,
+            "economy": 5.16,
+            "average": 9.41,
+            "bestBowling": "3/5",
             "maidens": 3,
-            "runs": 475,
-            "dotBalls": 298,
-            "wides": 59,
+            "runs": 480,
+            "dotBalls": 312,
+            "wides": 60,
             "noBalls": 2,
-            "threeWickets": 5,
+            "threeWickets": 6,
             "fiveWickets": 0,
-            "matches": 37
+            "matches": 38
           },
           "fielding": {
             "catches": 11,
             "stumpings": 0,
             "runOuts": 5,
             "caughtBehind": 2,
-            "matches": 37
+            "matches": 38
           }
         }
       }
@@ -290,7 +290,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 3
       },
-      "lastUpdated": "2026-09-14T13:25:13.074Z",
+      "lastUpdated": "2026-09-24T03:14:18.684Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -372,7 +372,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 6
       },
-      "lastUpdated": "2026-09-14T13:25:13.087Z",
+      "lastUpdated": "2026-09-24T03:14:18.713Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -419,18 +419,18 @@ const dashboardData = {
       "id": "30000671",
       "name": "Arun Balaji",
       "batting": {
-        "runs": 1436,
-        "innings": 192,
+        "runs": 1448,
+        "innings": 193,
         "average": 11.77,
-        "strikeRate": 102.57,
+        "strikeRate": 102.4,
         "highestScore": "42*",
         "thirties": 5,
         "fifties": 0,
         "hundreds": 0,
-        "fours": 89,
+        "fours": 91,
         "sixes": 82,
         "notOuts": 70,
-        "matches": 261
+        "matches": 263
       },
       "bowling": {
         "wickets": 129,
@@ -445,16 +445,16 @@ const dashboardData = {
         "noBalls": 44,
         "threeWickets": 2,
         "fiveWickets": 0,
-        "matches": 261
+        "matches": 263
       },
       "fielding": {
         "catches": 52,
         "stumpings": 0,
         "runOuts": 16,
         "caughtBehind": 0,
-        "matches": 261
+        "matches": 263
       },
-      "lastUpdated": "2026-09-14T13:25:13.359Z",
+      "lastUpdated": "2026-09-24T03:14:19.112Z",
       "formats": {
         "box": {
           "batting": {
@@ -496,18 +496,18 @@ const dashboardData = {
         },
         "tennis": {
           "batting": {
-            "runs": 79,
-            "innings": 8,
-            "average": 19.75,
-            "strikeRate": 100,
+            "runs": 91,
+            "innings": 9,
+            "average": 18.2,
+            "strikeRate": 97.85,
             "highestScore": "42*",
             "thirties": 1,
             "fifties": 0,
             "hundreds": 0,
-            "fours": 5,
+            "fours": 7,
             "sixes": 5,
             "notOuts": 4,
-            "matches": 17
+            "matches": 19
           },
           "bowling": {
             "wickets": 8,
@@ -522,14 +522,14 @@ const dashboardData = {
             "noBalls": 1,
             "threeWickets": 0,
             "fiveWickets": 0,
-            "matches": 17
+            "matches": 19
           },
           "fielding": {
             "catches": 7,
             "stumpings": 0,
             "runOuts": 0,
             "caughtBehind": 0,
-            "matches": 17
+            "matches": 19
           }
         }
       }
@@ -573,7 +573,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 2
       },
-      "lastUpdated": "2026-09-14T13:25:13.142Z",
+      "lastUpdated": "2026-09-24T03:14:18.797Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -655,7 +655,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 8
       },
-      "lastUpdated": "2026-09-14T13:25:13.152Z",
+      "lastUpdated": "2026-09-24T03:14:18.805Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -737,7 +737,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 24
       },
-      "lastUpdated": "2026-09-14T13:25:13.228Z",
+      "lastUpdated": "2026-09-24T03:14:18.882Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -819,7 +819,7 @@ const dashboardData = {
         "caughtBehind": 2,
         "matches": 156
       },
-      "lastUpdated": "2026-09-14T13:25:13.317Z",
+      "lastUpdated": "2026-09-24T03:14:19.046Z",
       "formats": {
         "box": {
           "batting": {
@@ -903,80 +903,80 @@ const dashboardData = {
       "id": "3224791",
       "name": "Das",
       "batting": {
-        "runs": 356,
-        "innings": 29,
-        "average": 18.74,
-        "strikeRate": 105.01,
+        "runs": 365,
+        "innings": 31,
+        "average": 17.38,
+        "strikeRate": 103.4,
         "highestScore": "36",
         "thirties": 1,
         "fifties": 0,
         "hundreds": 0,
-        "fours": 33,
+        "fours": 34,
         "sixes": 11,
         "notOuts": 10,
-        "matches": 36
+        "matches": 38
       },
       "bowling": {
-        "wickets": 18,
-        "overs": 41,
-        "economy": 7.34,
-        "average": 16.72,
+        "wickets": 21,
+        "overs": 45,
+        "economy": 7.11,
+        "average": 15.24,
         "bestBowling": "3/12",
         "maidens": 3,
-        "runs": 301,
-        "dotBalls": 118,
-        "wides": 19,
+        "runs": 320,
+        "dotBalls": 134,
+        "wides": 21,
         "noBalls": 1,
         "threeWickets": 1,
         "fiveWickets": 0,
-        "matches": 36
+        "matches": 38
       },
       "fielding": {
         "catches": 19,
         "stumpings": 0,
-        "runOuts": 4,
+        "runOuts": 5,
         "caughtBehind": 0,
-        "matches": 36
+        "matches": 38
       },
-      "lastUpdated": "2026-09-14T13:25:13.226Z",
+      "lastUpdated": "2026-09-24T03:14:18.961Z",
       "formats": {
         "box": {},
         "tennis": {
           "batting": {
-            "runs": 356,
-            "innings": 29,
-            "average": 18.74,
-            "strikeRate": 105.01,
+            "runs": 365,
+            "innings": 31,
+            "average": 17.38,
+            "strikeRate": 103.4,
             "highestScore": "36",
             "thirties": 1,
             "fifties": 0,
             "hundreds": 0,
-            "fours": 33,
+            "fours": 34,
             "sixes": 11,
             "notOuts": 10,
-            "matches": 36
+            "matches": 38
           },
           "bowling": {
-            "wickets": 18,
-            "overs": 41,
-            "economy": 7.34,
-            "average": 16.72,
+            "wickets": 21,
+            "overs": 45,
+            "economy": 7.11,
+            "average": 15.24,
             "bestBowling": "3/12",
             "maidens": 3,
-            "runs": 301,
-            "dotBalls": 118,
-            "wides": 19,
+            "runs": 320,
+            "dotBalls": 134,
+            "wides": 21,
             "noBalls": 1,
             "threeWickets": 1,
             "fiveWickets": 0,
-            "matches": 36
+            "matches": 38
           },
           "fielding": {
             "catches": 19,
             "stumpings": 0,
-            "runOuts": 4,
+            "runOuts": 5,
             "caughtBehind": 0,
-            "matches": 36
+            "matches": 38
           }
         }
       }
@@ -1020,7 +1020,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 13
       },
-      "lastUpdated": "2026-09-14T13:25:13.323Z",
+      "lastUpdated": "2026-09-24T03:14:18.980Z",
       "formats": {
         "box": {
           "batting": {
@@ -1104,18 +1104,18 @@ const dashboardData = {
       "id": "44877094",
       "name": "Dinesh Kanakovilpettai",
       "batting": {
-        "runs": 395,
-        "innings": 55,
-        "average": 9.88,
-        "strikeRate": 102.6,
+        "runs": 403,
+        "innings": 56,
+        "average": 9.83,
+        "strikeRate": 102.54,
         "highestScore": "28",
         "thirties": 0,
         "fifties": 0,
         "hundreds": 0,
-        "fours": 29,
+        "fours": 30,
         "sixes": 22,
         "notOuts": 15,
-        "matches": 63
+        "matches": 64
       },
       "bowling": {
         "wickets": 8,
@@ -1130,16 +1130,16 @@ const dashboardData = {
         "noBalls": 3,
         "threeWickets": 0,
         "fiveWickets": 0,
-        "matches": 63
+        "matches": 64
       },
       "fielding": {
         "catches": 10,
         "stumpings": 0,
         "runOuts": 2,
         "caughtBehind": 3,
-        "matches": 63
+        "matches": 64
       },
-      "lastUpdated": "2026-09-14T13:25:13.327Z",
+      "lastUpdated": "2026-09-24T03:14:19.065Z",
       "formats": {
         "box": {
           "batting": {
@@ -1181,18 +1181,18 @@ const dashboardData = {
         },
         "tennis": {
           "batting": {
-            "runs": 211,
-            "innings": 30,
-            "average": 9.17,
-            "strikeRate": 102.43,
+            "runs": 219,
+            "innings": 31,
+            "average": 9.13,
+            "strikeRate": 102.34,
             "highestScore": "28",
             "thirties": 0,
             "fifties": 0,
             "hundreds": 0,
-            "fours": 21,
+            "fours": 22,
             "sixes": 10,
             "notOuts": 7,
-            "matches": 33
+            "matches": 34
           },
           "bowling": {
             "wickets": 1,
@@ -1207,14 +1207,14 @@ const dashboardData = {
             "noBalls": 0,
             "threeWickets": 0,
             "fiveWickets": 0,
-            "matches": 33
+            "matches": 34
           },
           "fielding": {
             "catches": 7,
             "stumpings": 0,
             "runOuts": 1,
             "caughtBehind": 3,
-            "matches": 33
+            "matches": 34
           }
         }
       }
@@ -1258,7 +1258,7 @@ const dashboardData = {
         "caughtBehind": 6,
         "matches": 186
       },
-      "lastUpdated": "2026-09-14T13:25:13.435Z",
+      "lastUpdated": "2026-09-24T03:14:19.128Z",
       "formats": {
         "box": {
           "batting": {
@@ -1342,80 +1342,80 @@ const dashboardData = {
       "id": "51564179",
       "name": "Don",
       "batting": {
-        "runs": 164,
-        "innings": 28,
-        "average": 7.13,
-        "strikeRate": 76.28,
+        "runs": 178,
+        "innings": 31,
+        "average": 7.12,
+        "strikeRate": 72.06,
         "highestScore": "22",
         "thirties": 0,
         "fifties": 0,
         "hundreds": 0,
-        "fours": 14,
+        "fours": 15,
         "sixes": 4,
-        "notOuts": 5,
-        "matches": 33
+        "notOuts": 6,
+        "matches": 36
       },
       "bowling": {
-        "wickets": 15,
-        "overs": 55.3,
-        "economy": 6.86,
-        "average": 25.4,
+        "wickets": 16,
+        "overs": 62.3,
+        "economy": 6.59,
+        "average": 25.75,
         "bestBowling": "2/8",
         "maidens": 0,
-        "runs": 381,
-        "dotBalls": 144,
-        "wides": 37,
+        "runs": 412,
+        "dotBalls": 163,
+        "wides": 41,
         "noBalls": 3,
         "threeWickets": 0,
         "fiveWickets": 0,
-        "matches": 33
+        "matches": 36
       },
       "fielding": {
-        "catches": 4,
+        "catches": 6,
         "stumpings": 0,
         "runOuts": 3,
         "caughtBehind": 0,
-        "matches": 33
+        "matches": 36
       },
-      "lastUpdated": "2026-09-14T13:25:14.611Z",
+      "lastUpdated": "2026-09-24T03:14:21.081Z",
       "formats": {
         "box": {},
         "tennis": {
           "batting": {
-            "runs": 164,
-            "innings": 28,
-            "average": 7.13,
-            "strikeRate": 76.28,
+            "runs": 178,
+            "innings": 31,
+            "average": 7.12,
+            "strikeRate": 72.06,
             "highestScore": "22",
             "thirties": 0,
             "fifties": 0,
             "hundreds": 0,
-            "fours": 14,
+            "fours": 15,
             "sixes": 4,
-            "notOuts": 5,
-            "matches": 33
+            "notOuts": 6,
+            "matches": 36
           },
           "bowling": {
-            "wickets": 15,
-            "overs": 55.3,
-            "economy": 6.86,
-            "average": 25.4,
+            "wickets": 16,
+            "overs": 62.3,
+            "economy": 6.59,
+            "average": 25.75,
             "bestBowling": "2/8",
             "maidens": 0,
-            "runs": 381,
-            "dotBalls": 144,
-            "wides": 37,
+            "runs": 412,
+            "dotBalls": 163,
+            "wides": 41,
             "noBalls": 3,
             "threeWickets": 0,
             "fiveWickets": 0,
-            "matches": 33
+            "matches": 36
           },
           "fielding": {
-            "catches": 4,
+            "catches": 6,
             "stumpings": 0,
             "runOuts": 3,
             "caughtBehind": 0,
-            "matches": 33
+            "matches": 36
           }
         }
       }
@@ -1459,7 +1459,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 14
       },
-      "lastUpdated": "2026-09-14T13:25:13.426Z",
+      "lastUpdated": "2026-09-24T03:14:19.111Z",
       "formats": {
         "box": {
           "batting": {
@@ -1541,7 +1541,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 63
       },
-      "lastUpdated": "2026-09-14T13:25:13.456Z",
+      "lastUpdated": "2026-09-24T03:14:19.202Z",
       "formats": {
         "box": {
           "batting": {
@@ -1625,18 +1625,18 @@ const dashboardData = {
       "id": "50519480",
       "name": "Ganesh",
       "batting": {
-        "runs": 50,
-        "innings": 14,
-        "average": 6.25,
-        "strikeRate": 52.08,
+        "runs": 54,
+        "innings": 15,
+        "average": 6.75,
+        "strikeRate": 50,
         "highestScore": "17*",
         "thirties": 0,
         "fifties": 0,
         "hundreds": 0,
         "fours": 1,
         "sixes": 1,
-        "notOuts": 6,
-        "matches": 31
+        "notOuts": 7,
+        "matches": 34
       },
       "bowling": {
         "wickets": 0,
@@ -1651,32 +1651,32 @@ const dashboardData = {
         "noBalls": 0,
         "threeWickets": 0,
         "fiveWickets": 0,
-        "matches": 31
+        "matches": 34
       },
       "fielding": {
-        "catches": 1,
+        "catches": 2,
         "stumpings": 0,
         "runOuts": 1,
         "caughtBehind": 0,
-        "matches": 31
+        "matches": 34
       },
-      "lastUpdated": "2026-09-14T13:25:13.433Z",
+      "lastUpdated": "2026-09-24T03:14:19.189Z",
       "formats": {
         "box": {},
         "tennis": {
           "batting": {
-            "runs": 50,
-            "innings": 14,
-            "average": 6.25,
-            "strikeRate": 52.08,
+            "runs": 54,
+            "innings": 15,
+            "average": 6.75,
+            "strikeRate": 50,
             "highestScore": "17*",
             "thirties": 0,
             "fifties": 0,
             "hundreds": 0,
             "fours": 1,
             "sixes": 1,
-            "notOuts": 6,
-            "matches": 31
+            "notOuts": 7,
+            "matches": 34
           },
           "bowling": {
             "wickets": 0,
@@ -1691,14 +1691,14 @@ const dashboardData = {
             "noBalls": 0,
             "threeWickets": 0,
             "fiveWickets": 0,
-            "matches": 31
+            "matches": 34
           },
           "fielding": {
-            "catches": 1,
+            "catches": 2,
             "stumpings": 0,
             "runOuts": 1,
             "caughtBehind": 0,
-            "matches": 31
+            "matches": 34
           }
         }
       }
@@ -1742,7 +1742,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 4
       },
-      "lastUpdated": "2026-09-14T13:25:14.699Z",
+      "lastUpdated": "2026-09-24T03:14:21.099Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -1824,7 +1824,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 29
       },
-      "lastUpdated": "2026-09-14T13:25:13.526Z",
+      "lastUpdated": "2026-09-24T03:14:19.199Z",
       "formats": {
         "box": {
           "batting": {
@@ -1943,7 +1943,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 68
       },
-      "lastUpdated": "2026-09-14T13:25:13.547Z",
+      "lastUpdated": "2026-09-24T03:14:19.232Z",
       "formats": {
         "box": {
           "batting": {
@@ -2062,7 +2062,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 4
       },
-      "lastUpdated": "2026-09-14T13:25:14.692Z",
+      "lastUpdated": "2026-09-24T03:14:21.092Z",
       "formats": {
         "box": {
           "batting": {
@@ -2109,80 +2109,80 @@ const dashboardData = {
       "id": "52912684",
       "name": "Inba Kumar",
       "batting": {
-        "runs": 107,
-        "innings": 13,
-        "average": 15.29,
-        "strikeRate": 93.86,
+        "runs": 124,
+        "innings": 15,
+        "average": 13.78,
+        "strikeRate": 92.54,
         "highestScore": "25*",
         "thirties": 0,
         "fifties": 0,
         "hundreds": 0,
-        "fours": 3,
-        "sixes": 7,
+        "fours": 4,
+        "sixes": 8,
         "notOuts": 6,
-        "matches": 18
+        "matches": 21
       },
       "bowling": {
-        "wickets": 16,
-        "overs": 28,
-        "economy": 5.75,
-        "average": 10.06,
+        "wickets": 18,
+        "overs": 35,
+        "economy": 5.54,
+        "average": 10.78,
         "bestBowling": "2/6",
         "maidens": 0,
-        "runs": 161,
-        "dotBalls": 95,
-        "wides": 29,
+        "runs": 194,
+        "dotBalls": 118,
+        "wides": 34,
         "noBalls": 1,
         "threeWickets": 0,
         "fiveWickets": 0,
-        "matches": 18
+        "matches": 21
       },
       "fielding": {
         "catches": 7,
         "stumpings": 0,
         "runOuts": 1,
         "caughtBehind": 0,
-        "matches": 18
+        "matches": 21
       },
-      "lastUpdated": "2026-09-14T13:25:13.530Z",
+      "lastUpdated": "2026-09-24T03:14:19.254Z",
       "formats": {
         "box": {},
         "tennis": {
           "batting": {
-            "runs": 107,
-            "innings": 13,
-            "average": 15.29,
-            "strikeRate": 93.86,
+            "runs": 124,
+            "innings": 15,
+            "average": 13.78,
+            "strikeRate": 92.54,
             "highestScore": "25*",
             "thirties": 0,
             "fifties": 0,
             "hundreds": 0,
-            "fours": 3,
-            "sixes": 7,
+            "fours": 4,
+            "sixes": 8,
             "notOuts": 6,
-            "matches": 18
+            "matches": 21
           },
           "bowling": {
-            "wickets": 16,
-            "overs": 28,
-            "economy": 5.75,
-            "average": 10.06,
+            "wickets": 18,
+            "overs": 35,
+            "economy": 5.54,
+            "average": 10.78,
             "bestBowling": "2/6",
             "maidens": 0,
-            "runs": 161,
-            "dotBalls": 95,
-            "wides": 29,
+            "runs": 194,
+            "dotBalls": 118,
+            "wides": 34,
             "noBalls": 1,
             "threeWickets": 0,
             "fiveWickets": 0,
-            "matches": 18
+            "matches": 21
           },
           "fielding": {
             "catches": 7,
             "stumpings": 0,
             "runOuts": 1,
             "caughtBehind": 0,
-            "matches": 18
+            "matches": 21
           }
         }
       }
@@ -2192,9 +2192,9 @@ const dashboardData = {
       "name": "Jeya Pandi TKM",
       "batting": {
         "runs": 48,
-        "innings": 9,
-        "average": 9.6,
-        "strikeRate": 82.76,
+        "innings": 11,
+        "average": 6.86,
+        "strikeRate": 78.69,
         "highestScore": "15",
         "thirties": 0,
         "fifties": 0,
@@ -2202,39 +2202,39 @@ const dashboardData = {
         "fours": 3,
         "sixes": 3,
         "notOuts": 4,
-        "matches": 17
+        "matches": 19
       },
       "bowling": {
         "wickets": 14,
-        "overs": 28,
-        "economy": 10,
-        "average": 20,
+        "overs": 32,
+        "economy": 10.03,
+        "average": 22.93,
         "bestBowling": "4/16",
         "maidens": 0,
-        "runs": 280,
-        "dotBalls": 74,
-        "wides": 31,
+        "runs": 321,
+        "dotBalls": 84,
+        "wides": 38,
         "noBalls": 2,
         "threeWickets": 2,
         "fiveWickets": 0,
-        "matches": 17
+        "matches": 19
       },
       "fielding": {
         "catches": 5,
         "stumpings": 0,
         "runOuts": 1,
         "caughtBehind": 1,
-        "matches": 17
+        "matches": 19
       },
-      "lastUpdated": "2026-09-14T13:25:13.552Z",
+      "lastUpdated": "2026-09-24T03:14:19.348Z",
       "formats": {
         "box": {},
         "tennis": {
           "batting": {
             "runs": 12,
-            "innings": 3,
-            "average": 4,
-            "strikeRate": 52.17,
+            "innings": 5,
+            "average": 2.4,
+            "strikeRate": 46.15,
             "highestScore": "8",
             "thirties": 0,
             "fifties": 0,
@@ -2242,29 +2242,29 @@ const dashboardData = {
             "fours": 0,
             "sixes": 1,
             "notOuts": 0,
-            "matches": 4
+            "matches": 6
           },
           "bowling": {
             "wickets": 6,
-            "overs": 10,
-            "economy": 7.8,
-            "average": 13,
+            "overs": 14,
+            "economy": 8.5,
+            "average": 19.83,
             "bestBowling": "4/26",
             "maidens": 0,
-            "runs": 78,
-            "dotBalls": 27,
-            "wides": 10,
+            "runs": 119,
+            "dotBalls": 37,
+            "wides": 17,
             "noBalls": 1,
             "threeWickets": 1,
             "fiveWickets": 0,
-            "matches": 4
+            "matches": 6
           },
           "fielding": {
             "catches": 0,
             "stumpings": 0,
             "runOuts": 1,
             "caughtBehind": 1,
-            "matches": 4
+            "matches": 6
           }
         }
       }
@@ -2308,7 +2308,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 4
       },
-      "lastUpdated": "2026-09-14T13:25:14.676Z",
+      "lastUpdated": "2026-09-24T03:14:21.131Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -2390,7 +2390,7 @@ const dashboardData = {
         "caughtBehind": 1,
         "matches": 2
       },
-      "lastUpdated": "2026-09-14T13:25:14.744Z",
+      "lastUpdated": "2026-09-24T03:14:21.147Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -2437,42 +2437,42 @@ const dashboardData = {
       "id": "3224789",
       "name": "Kaviarasu",
       "batting": {
-        "runs": 53,
-        "innings": 12,
-        "average": 5.89,
-        "strikeRate": 91.38,
+        "runs": 61,
+        "innings": 15,
+        "average": 6.78,
+        "strikeRate": 79.22,
         "highestScore": "14",
         "thirties": 0,
         "fifties": 0,
         "hundreds": 0,
         "fours": 5,
         "sixes": 2,
-        "notOuts": 3,
-        "matches": 22
+        "notOuts": 6,
+        "matches": 25
       },
       "bowling": {
-        "wickets": 2,
-        "overs": 14.4,
-        "economy": 11.39,
-        "average": 83.5,
+        "wickets": 3,
+        "overs": 16.4,
+        "economy": 10.8,
+        "average": 60,
         "bestBowling": "1/4",
         "maidens": 1,
-        "runs": 167,
-        "dotBalls": 35,
-        "wides": 14,
+        "runs": 180,
+        "dotBalls": 41,
+        "wides": 17,
         "noBalls": 3,
         "threeWickets": 0,
         "fiveWickets": 0,
-        "matches": 22
+        "matches": 25
       },
       "fielding": {
         "catches": 5,
         "stumpings": 0,
-        "runOuts": 0,
+        "runOuts": 2,
         "caughtBehind": 0,
-        "matches": 22
+        "matches": 25
       },
-      "lastUpdated": "2026-09-14T13:25:13.609Z",
+      "lastUpdated": "2026-09-24T03:14:19.344Z",
       "formats": {
         "box": {
           "batting": {
@@ -2514,40 +2514,40 @@ const dashboardData = {
         },
         "tennis": {
           "batting": {
-            "runs": 36,
-            "innings": 6,
-            "average": 6,
-            "strikeRate": 109.09,
+            "runs": 44,
+            "innings": 9,
+            "average": 7.33,
+            "strikeRate": 84.62,
             "highestScore": "14",
             "thirties": 0,
             "fifties": 0,
             "hundreds": 0,
             "fours": 5,
             "sixes": 0,
-            "notOuts": 0,
-            "matches": 11
+            "notOuts": 3,
+            "matches": 14
           },
           "bowling": {
-            "wickets": 0,
-            "overs": 6,
-            "economy": 14.17,
-            "average": 0,
-            "bestBowling": "0/4",
+            "wickets": 1,
+            "overs": 8,
+            "economy": 12.25,
+            "average": 98,
+            "bestBowling": "1/13",
             "maidens": 0,
-            "runs": 85,
-            "dotBalls": 13,
-            "wides": 11,
+            "runs": 98,
+            "dotBalls": 19,
+            "wides": 14,
             "noBalls": 1,
             "threeWickets": 0,
             "fiveWickets": 0,
-            "matches": 11
+            "matches": 14
           },
           "fielding": {
             "catches": 4,
             "stumpings": 0,
-            "runOuts": 0,
+            "runOuts": 2,
             "caughtBehind": 0,
-            "matches": 11
+            "matches": 14
           }
         }
       }
@@ -2591,7 +2591,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 2
       },
-      "lastUpdated": "2026-09-14T13:25:14.741Z",
+      "lastUpdated": "2026-09-24T03:14:21.193Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -2638,18 +2638,18 @@ const dashboardData = {
       "id": "3224824",
       "name": "Kumaresan TKM",
       "batting": {
-        "runs": 194,
-        "innings": 29,
-        "average": 7.46,
-        "strikeRate": 92.38,
+        "runs": 204,
+        "innings": 31,
+        "average": 7.56,
+        "strikeRate": 92.31,
         "highestScore": "27",
         "thirties": 0,
         "fifties": 0,
         "hundreds": 0,
         "fours": 16,
-        "sixes": 6,
-        "notOuts": 3,
-        "matches": 38
+        "sixes": 7,
+        "notOuts": 4,
+        "matches": 41
       },
       "bowling": {
         "wickets": 3,
@@ -2664,32 +2664,32 @@ const dashboardData = {
         "noBalls": 1,
         "threeWickets": 0,
         "fiveWickets": 0,
-        "matches": 38
+        "matches": 41
       },
       "fielding": {
-        "catches": 17,
+        "catches": 18,
         "stumpings": 2,
         "runOuts": 4,
         "caughtBehind": 0,
-        "matches": 38
+        "matches": 41
       },
-      "lastUpdated": "2026-09-14T13:25:13.604Z",
+      "lastUpdated": "2026-09-24T03:14:19.347Z",
       "formats": {
         "box": {},
         "tennis": {
           "batting": {
-            "runs": 194,
-            "innings": 29,
-            "average": 7.46,
-            "strikeRate": 92.38,
+            "runs": 204,
+            "innings": 31,
+            "average": 7.56,
+            "strikeRate": 92.31,
             "highestScore": "27",
             "thirties": 0,
             "fifties": 0,
             "hundreds": 0,
             "fours": 16,
-            "sixes": 6,
-            "notOuts": 3,
-            "matches": 38
+            "sixes": 7,
+            "notOuts": 4,
+            "matches": 41
           },
           "bowling": {
             "wickets": 3,
@@ -2704,14 +2704,14 @@ const dashboardData = {
             "noBalls": 1,
             "threeWickets": 0,
             "fiveWickets": 0,
-            "matches": 38
+            "matches": 41
           },
           "fielding": {
-            "catches": 17,
+            "catches": 18,
             "stumpings": 2,
             "runOuts": 4,
             "caughtBehind": 0,
-            "matches": 38
+            "matches": 41
           }
         }
       }
@@ -2755,7 +2755,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 1
       },
-      "lastUpdated": "2026-09-14T13:25:13.631Z",
+      "lastUpdated": "2026-09-24T03:14:19.342Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -2837,7 +2837,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 8
       },
-      "lastUpdated": "2026-09-14T13:25:13.656Z",
+      "lastUpdated": "2026-09-24T03:14:19.404Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -2884,10 +2884,10 @@ const dashboardData = {
       "id": "31974223",
       "name": "Manoj Jeganath",
       "batting": {
-        "runs": 4545,
-        "innings": 273,
-        "average": 24.57,
-        "strikeRate": 161.92,
+        "runs": 4546,
+        "innings": 274,
+        "average": 24.44,
+        "strikeRate": 161.78,
         "highestScore": "72",
         "thirties": 44,
         "fifties": 9,
@@ -2895,7 +2895,7 @@ const dashboardData = {
         "fours": 226,
         "sixes": 391,
         "notOuts": 88,
-        "matches": 287
+        "matches": 288
       },
       "bowling": {
         "wickets": 111,
@@ -2910,16 +2910,16 @@ const dashboardData = {
         "noBalls": 38,
         "threeWickets": 9,
         "fiveWickets": 0,
-        "matches": 287
+        "matches": 288
       },
       "fielding": {
-        "catches": 66,
+        "catches": 67,
         "stumpings": 7,
         "runOuts": 18,
         "caughtBehind": 29,
-        "matches": 287
+        "matches": 288
       },
-      "lastUpdated": "2026-09-14T13:25:13.720Z",
+      "lastUpdated": "2026-09-24T03:14:19.473Z",
       "formats": {
         "box": {
           "batting": {
@@ -2961,10 +2961,10 @@ const dashboardData = {
         },
         "tennis": {
           "batting": {
-            "runs": 588,
-            "innings": 33,
-            "average": 23.52,
-            "strikeRate": 140.67,
+            "runs": 589,
+            "innings": 34,
+            "average": 22.65,
+            "strikeRate": 139.9,
             "highestScore": "43",
             "thirties": 10,
             "fifties": 0,
@@ -2972,7 +2972,7 @@ const dashboardData = {
             "fours": 42,
             "sixes": 29,
             "notOuts": 8,
-            "matches": 34
+            "matches": 35
           },
           "bowling": {
             "wickets": 6,
@@ -2987,14 +2987,96 @@ const dashboardData = {
             "noBalls": 3,
             "threeWickets": 0,
             "fiveWickets": 0,
-            "matches": 34
+            "matches": 35
           },
           "fielding": {
-            "catches": 10,
+            "catches": 11,
             "stumpings": 0,
             "runOuts": 3,
             "caughtBehind": 12,
-            "matches": 34
+            "matches": 35
+          }
+        }
+      }
+    },
+    {
+      "id": "53847302",
+      "name": "Mega",
+      "batting": {
+        "runs": 45,
+        "innings": 6,
+        "average": 11.25,
+        "strikeRate": 102.27,
+        "highestScore": "18",
+        "thirties": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 3,
+        "sixes": 3,
+        "notOuts": 2,
+        "matches": 7
+      },
+      "bowling": {
+        "wickets": 2,
+        "overs": 5,
+        "economy": 9.8,
+        "average": 24.5,
+        "bestBowling": "1/14",
+        "maidens": 0,
+        "runs": 49,
+        "dotBalls": 11,
+        "wides": 13,
+        "noBalls": 0,
+        "threeWickets": 0,
+        "fiveWickets": 0,
+        "matches": 7
+      },
+      "fielding": {
+        "catches": 2,
+        "stumpings": 0,
+        "runOuts": 3,
+        "caughtBehind": 0,
+        "matches": 7
+      },
+      "lastUpdated": "2026-09-24T03:14:21.201Z",
+      "formats": {
+        "box": {},
+        "tennis": {
+          "batting": {
+            "runs": 45,
+            "innings": 6,
+            "average": 11.25,
+            "strikeRate": 102.27,
+            "highestScore": "18",
+            "thirties": 0,
+            "fifties": 0,
+            "hundreds": 0,
+            "fours": 3,
+            "sixes": 3,
+            "notOuts": 2,
+            "matches": 7
+          },
+          "bowling": {
+            "wickets": 2,
+            "overs": 5,
+            "economy": 9.8,
+            "average": 24.5,
+            "bestBowling": "1/14",
+            "maidens": 0,
+            "runs": 49,
+            "dotBalls": 11,
+            "wides": 13,
+            "noBalls": 0,
+            "threeWickets": 0,
+            "fiveWickets": 0,
+            "matches": 7
+          },
+          "fielding": {
+            "catches": 2,
+            "stumpings": 0,
+            "runOuts": 3,
+            "caughtBehind": 0,
+            "matches": 7
           }
         }
       }
@@ -3003,10 +3085,10 @@ const dashboardData = {
       "id": "3224827",
       "name": "Meghanathan TKM",
       "batting": {
-        "runs": 1523,
-        "innings": 185,
-        "average": 11.45,
-        "strikeRate": 101.8,
+        "runs": 1524,
+        "innings": 186,
+        "average": 11.37,
+        "strikeRate": 101.74,
         "highestScore": "44*",
         "thirties": 3,
         "fifties": 0,
@@ -3014,7 +3096,7 @@ const dashboardData = {
         "fours": 83,
         "sixes": 102,
         "notOuts": 52,
-        "matches": 221
+        "matches": 222
       },
       "bowling": {
         "wickets": 49,
@@ -3029,16 +3111,16 @@ const dashboardData = {
         "noBalls": 23,
         "threeWickets": 2,
         "fiveWickets": 0,
-        "matches": 221
+        "matches": 222
       },
       "fielding": {
         "catches": 28,
         "stumpings": 6,
         "runOuts": 14,
         "caughtBehind": 14,
-        "matches": 221
+        "matches": 222
       },
-      "lastUpdated": "2026-09-14T13:25:13.755Z",
+      "lastUpdated": "2026-09-24T03:14:19.445Z",
       "formats": {
         "box": {
           "batting": {
@@ -3080,10 +3162,10 @@ const dashboardData = {
         },
         "tennis": {
           "batting": {
-            "runs": 312,
-            "innings": 33,
-            "average": 13,
-            "strikeRate": 102.3,
+            "runs": 313,
+            "innings": 34,
+            "average": 12.52,
+            "strikeRate": 101.95,
             "highestScore": "44*",
             "thirties": 1,
             "fifties": 0,
@@ -3091,7 +3173,7 @@ const dashboardData = {
             "fours": 23,
             "sixes": 14,
             "notOuts": 9,
-            "matches": 38
+            "matches": 39
           },
           "bowling": {
             "wickets": 4,
@@ -3106,14 +3188,14 @@ const dashboardData = {
             "noBalls": 0,
             "threeWickets": 0,
             "fiveWickets": 0,
-            "matches": 38
+            "matches": 39
           },
           "fielding": {
             "catches": 5,
             "stumpings": 0,
             "runOuts": 1,
             "caughtBehind": 8,
-            "matches": 38
+            "matches": 39
           }
         }
       }
@@ -3157,7 +3239,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 0
       },
-      "lastUpdated": "2026-09-14T13:25:13.729Z"
+      "lastUpdated": "2026-09-24T03:14:19.403Z"
     },
     {
       "id": "43184469",
@@ -3198,7 +3280,7 @@ const dashboardData = {
         "caughtBehind": 1,
         "matches": 7
       },
-      "lastUpdated": "2026-09-14T13:25:14.807Z",
+      "lastUpdated": "2026-09-24T03:14:21.212Z",
       "formats": {
         "box": {
           "batting": {
@@ -3280,7 +3362,7 @@ const dashboardData = {
         "caughtBehind": 2,
         "matches": 6
       },
-      "lastUpdated": "2026-09-14T13:25:13.752Z",
+      "lastUpdated": "2026-09-24T03:14:19.471Z",
       "formats": {
         "box": {
           "batting": {
@@ -3399,7 +3481,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 1
       },
-      "lastUpdated": "2026-09-14T13:25:13.792Z",
+      "lastUpdated": "2026-09-24T03:14:19.478Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -3446,42 +3528,42 @@ const dashboardData = {
       "id": "41473990",
       "name": "Muthuraj anna",
       "batting": {
-        "runs": 1960,
-        "innings": 225,
-        "average": 12.48,
-        "strikeRate": 123.12,
+        "runs": 1987,
+        "innings": 227,
+        "average": 12.58,
+        "strikeRate": 123.03,
         "highestScore": "42",
         "thirties": 11,
         "fifties": 0,
         "hundreds": 0,
-        "fours": 90,
-        "sixes": 153,
-        "notOuts": 68,
-        "matches": 253
+        "fours": 93,
+        "sixes": 154,
+        "notOuts": 69,
+        "matches": 255
       },
       "bowling": {
-        "wickets": 93,
-        "overs": 197.2,
-        "economy": 8.86,
-        "average": 18.81,
+        "wickets": 94,
+        "overs": 200.2,
+        "economy": 8.9,
+        "average": 18.97,
         "bestBowling": "5/6",
         "maidens": 2,
-        "runs": 1749,
-        "dotBalls": 518,
+        "runs": 1783,
+        "dotBalls": 523,
         "wides": 120,
         "noBalls": 17,
         "threeWickets": 3,
         "fiveWickets": 1,
-        "matches": 253
+        "matches": 255
       },
       "fielding": {
         "catches": 54,
         "stumpings": 2,
         "runOuts": 17,
         "caughtBehind": 32,
-        "matches": 253
+        "matches": 255
       },
-      "lastUpdated": "2026-09-14T13:25:13.833Z",
+      "lastUpdated": "2026-09-24T03:14:20.338Z",
       "formats": {
         "box": {
           "batting": {
@@ -3523,40 +3605,40 @@ const dashboardData = {
         },
         "tennis": {
           "batting": {
-            "runs": 394,
-            "innings": 49,
-            "average": 11.94,
-            "strikeRate": 111.61,
+            "runs": 421,
+            "innings": 51,
+            "average": 12.38,
+            "strikeRate": 111.97,
             "highestScore": "36",
             "thirties": 2,
             "fifties": 0,
             "hundreds": 0,
-            "fours": 23,
-            "sixes": 18,
-            "notOuts": 16,
-            "matches": 52
+            "fours": 26,
+            "sixes": 19,
+            "notOuts": 17,
+            "matches": 54
           },
           "bowling": {
-            "wickets": 36,
-            "overs": 80.3,
-            "economy": 6.89,
-            "average": 15.42,
+            "wickets": 37,
+            "overs": 83.3,
+            "economy": 7.05,
+            "average": 15.92,
             "bestBowling": "5/6",
             "maidens": 0,
-            "runs": 555,
-            "dotBalls": 234,
+            "runs": 589,
+            "dotBalls": 239,
             "wides": 33,
             "noBalls": 3,
             "threeWickets": 1,
             "fiveWickets": 1,
-            "matches": 52
+            "matches": 54
           },
           "fielding": {
             "catches": 12,
             "stumpings": 0,
             "runOuts": 2,
             "caughtBehind": 23,
-            "matches": 52
+            "matches": 54
           }
         }
       }
@@ -3565,18 +3647,18 @@ const dashboardData = {
       "id": "50511639",
       "name": "Nagaraj Ips4186",
       "batting": {
-        "runs": 147,
-        "innings": 33,
-        "average": 6.13,
-        "strikeRate": 51.4,
+        "runs": 162,
+        "innings": 36,
+        "average": 6.23,
+        "strikeRate": 51.76,
         "highestScore": "13",
         "thirties": 0,
         "fifties": 0,
         "hundreds": 0,
-        "fours": 9,
+        "fours": 10,
         "sixes": 1,
-        "notOuts": 9,
-        "matches": 40
+        "notOuts": 10,
+        "matches": 43
       },
       "bowling": {
         "wickets": 0,
@@ -3591,32 +3673,32 @@ const dashboardData = {
         "noBalls": 0,
         "threeWickets": 0,
         "fiveWickets": 0,
-        "matches": 40
+        "matches": 43
       },
       "fielding": {
         "catches": 5,
         "stumpings": 0,
         "runOuts": 2,
         "caughtBehind": 0,
-        "matches": 40
+        "matches": 43
       },
-      "lastUpdated": "2026-09-14T13:25:13.838Z",
+      "lastUpdated": "2026-09-24T03:14:19.566Z",
       "formats": {
         "box": {},
         "tennis": {
           "batting": {
-            "runs": 147,
-            "innings": 33,
-            "average": 6.13,
-            "strikeRate": 51.4,
+            "runs": 162,
+            "innings": 36,
+            "average": 6.23,
+            "strikeRate": 51.76,
             "highestScore": "13",
             "thirties": 0,
             "fifties": 0,
             "hundreds": 0,
-            "fours": 9,
+            "fours": 10,
             "sixes": 1,
-            "notOuts": 9,
-            "matches": 40
+            "notOuts": 10,
+            "matches": 43
           },
           "bowling": {
             "wickets": 0,
@@ -3631,14 +3713,14 @@ const dashboardData = {
             "noBalls": 0,
             "threeWickets": 0,
             "fiveWickets": 0,
-            "matches": 40
+            "matches": 43
           },
           "fielding": {
             "catches": 5,
             "stumpings": 0,
             "runOuts": 2,
             "caughtBehind": 0,
-            "matches": 40
+            "matches": 43
           }
         }
       }
@@ -3682,7 +3764,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 13
       },
-      "lastUpdated": "2026-09-14T13:25:13.840Z",
+      "lastUpdated": "2026-09-24T03:14:19.547Z",
       "formats": {
         "box": {
           "batting": {
@@ -3801,7 +3883,7 @@ const dashboardData = {
         "caughtBehind": 2,
         "matches": 66
       },
-      "lastUpdated": "2026-09-14T13:25:13.926Z",
+      "lastUpdated": "2026-09-24T03:14:19.610Z",
       "formats": {
         "box": {
           "batting": {
@@ -3885,10 +3967,10 @@ const dashboardData = {
       "id": "51293275",
       "name": "Parthiban S",
       "batting": {
-        "runs": 110,
-        "innings": 8,
-        "average": 27.5,
-        "strikeRate": 106.8,
+        "runs": 116,
+        "innings": 9,
+        "average": 23.2,
+        "strikeRate": 97.48,
         "highestScore": "24",
         "thirties": 0,
         "fifties": 0,
@@ -3896,39 +3978,39 @@ const dashboardData = {
         "fours": 11,
         "sixes": 3,
         "notOuts": 4,
-        "matches": 13
+        "matches": 14
       },
       "bowling": {
-        "wickets": 4,
-        "overs": 9,
-        "economy": 7.67,
-        "average": 17.25,
+        "wickets": 6,
+        "overs": 11,
+        "economy": 7.55,
+        "average": 13.83,
         "bestBowling": "2/11",
         "maidens": 0,
-        "runs": 69,
-        "dotBalls": 23,
+        "runs": 83,
+        "dotBalls": 28,
         "wides": 20,
-        "noBalls": 0,
+        "noBalls": 1,
         "threeWickets": 0,
         "fiveWickets": 0,
-        "matches": 13
+        "matches": 14
       },
       "fielding": {
         "catches": 0,
         "stumpings": 0,
         "runOuts": 0,
         "caughtBehind": 1,
-        "matches": 13
+        "matches": 14
       },
-      "lastUpdated": "2026-09-14T13:25:14.762Z",
+      "lastUpdated": "2026-09-24T03:14:21.247Z",
       "formats": {
         "box": {},
         "tennis": {
           "batting": {
-            "runs": 110,
-            "innings": 8,
-            "average": 27.5,
-            "strikeRate": 106.8,
+            "runs": 116,
+            "innings": 9,
+            "average": 23.2,
+            "strikeRate": 97.48,
             "highestScore": "24",
             "thirties": 0,
             "fifties": 0,
@@ -3936,29 +4018,29 @@ const dashboardData = {
             "fours": 11,
             "sixes": 3,
             "notOuts": 4,
-            "matches": 13
+            "matches": 14
           },
           "bowling": {
-            "wickets": 4,
-            "overs": 9,
-            "economy": 7.67,
-            "average": 17.25,
+            "wickets": 6,
+            "overs": 11,
+            "economy": 7.55,
+            "average": 13.83,
             "bestBowling": "2/11",
             "maidens": 0,
-            "runs": 69,
-            "dotBalls": 23,
+            "runs": 83,
+            "dotBalls": 28,
             "wides": 20,
-            "noBalls": 0,
+            "noBalls": 1,
             "threeWickets": 0,
             "fiveWickets": 0,
-            "matches": 13
+            "matches": 14
           },
           "fielding": {
             "catches": 0,
             "stumpings": 0,
             "runOuts": 0,
             "caughtBehind": 1,
-            "matches": 13
+            "matches": 14
           }
         }
       }
@@ -4002,7 +4084,7 @@ const dashboardData = {
         "caughtBehind": 1,
         "matches": 199
       },
-      "lastUpdated": "2026-09-14T13:25:13.931Z",
+      "lastUpdated": "2026-09-24T03:14:19.674Z",
       "formats": {
         "box": {
           "batting": {
@@ -4121,7 +4203,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 2
       },
-      "lastUpdated": "2026-09-14T13:25:13.916Z",
+      "lastUpdated": "2026-09-24T03:14:19.670Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -4166,44 +4248,44 @@ const dashboardData = {
     },
     {
       "id": "3224839",
-      "name": "Pradeep TKM",
+      "name": "Pradeep V",
       "batting": {
-        "runs": 238,
-        "innings": 26,
-        "average": 18.31,
-        "strikeRate": 108.18,
+        "runs": 250,
+        "innings": 29,
+        "average": 17.86,
+        "strikeRate": 106.84,
         "highestScore": "25*",
         "thirties": 0,
         "fifties": 0,
         "hundreds": 0,
         "fours": 16,
         "sixes": 11,
-        "notOuts": 13,
-        "matches": 31
+        "notOuts": 15,
+        "matches": 34
       },
       "bowling": {
-        "wickets": 12,
-        "overs": 26,
-        "economy": 10.42,
-        "average": 22.58,
+        "wickets": 13,
+        "overs": 27,
+        "economy": 10.11,
+        "average": 21,
         "bestBowling": "2/7",
         "maidens": 0,
-        "runs": 271,
-        "dotBalls": 51,
-        "wides": 21,
+        "runs": 273,
+        "dotBalls": 56,
+        "wides": 22,
         "noBalls": 6,
         "threeWickets": 0,
         "fiveWickets": 0,
-        "matches": 31
+        "matches": 34
       },
       "fielding": {
         "catches": 9,
         "stumpings": 0,
         "runOuts": 2,
         "caughtBehind": 0,
-        "matches": 31
+        "matches": 34
       },
-      "lastUpdated": "2026-09-14T13:25:13.919Z",
+      "lastUpdated": "2026-09-24T03:14:19.732Z",
       "formats": {
         "box": {
           "batting": {
@@ -4245,40 +4327,40 @@ const dashboardData = {
         },
         "tennis": {
           "batting": {
-            "runs": 144,
-            "innings": 15,
-            "average": 20.57,
-            "strikeRate": 96,
+            "runs": 156,
+            "innings": 18,
+            "average": 19.5,
+            "strikeRate": 95.12,
             "highestScore": "25*",
             "thirties": 0,
             "fifties": 0,
             "hundreds": 0,
             "fours": 10,
             "sixes": 4,
-            "notOuts": 8,
-            "matches": 18
+            "notOuts": 10,
+            "matches": 21
           },
           "bowling": {
-            "wickets": 3,
-            "overs": 8,
-            "economy": 10.25,
-            "average": 27.33,
+            "wickets": 4,
+            "overs": 9,
+            "economy": 9.33,
+            "average": 21,
             "bestBowling": "2/7",
             "maidens": 0,
-            "runs": 82,
-            "dotBalls": 19,
-            "wides": 12,
+            "runs": 84,
+            "dotBalls": 24,
+            "wides": 13,
             "noBalls": 1,
             "threeWickets": 0,
             "fiveWickets": 0,
-            "matches": 18
+            "matches": 21
           },
           "fielding": {
             "catches": 6,
             "stumpings": 0,
             "runOuts": 1,
             "caughtBehind": 0,
-            "matches": 18
+            "matches": 21
           }
         }
       }
@@ -4298,31 +4380,31 @@ const dashboardData = {
         "fours": 6,
         "sixes": 8,
         "notOuts": 1,
-        "matches": 15
+        "matches": 16
       },
       "bowling": {
-        "wickets": 17,
-        "overs": 25,
-        "economy": 5.6,
-        "average": 8.24,
+        "wickets": 18,
+        "overs": 28,
+        "economy": 5.5,
+        "average": 8.56,
         "bestBowling": "3/16",
         "maidens": 0,
-        "runs": 140,
-        "dotBalls": 80,
-        "wides": 23,
+        "runs": 154,
+        "dotBalls": 89,
+        "wides": 25,
         "noBalls": 1,
         "threeWickets": 1,
         "fiveWickets": 0,
-        "matches": 15
+        "matches": 16
       },
       "fielding": {
         "catches": 5,
         "stumpings": 1,
         "runOuts": 1,
         "caughtBehind": 2,
-        "matches": 15
+        "matches": 16
       },
-      "lastUpdated": "2026-09-14T13:25:14.015Z",
+      "lastUpdated": "2026-09-24T03:14:19.739Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -4338,29 +4420,29 @@ const dashboardData = {
             "fours": 6,
             "sixes": 8,
             "notOuts": 1,
-            "matches": 15
+            "matches": 16
           },
           "bowling": {
-            "wickets": 17,
-            "overs": 25,
-            "economy": 5.6,
-            "average": 8.24,
+            "wickets": 18,
+            "overs": 28,
+            "economy": 5.5,
+            "average": 8.56,
             "bestBowling": "3/16",
             "maidens": 0,
-            "runs": 140,
-            "dotBalls": 80,
-            "wides": 23,
+            "runs": 154,
+            "dotBalls": 89,
+            "wides": 25,
             "noBalls": 1,
             "threeWickets": 1,
             "fiveWickets": 0,
-            "matches": 15
+            "matches": 16
           },
           "fielding": {
             "catches": 5,
             "stumpings": 1,
             "runOuts": 1,
             "caughtBehind": 2,
-            "matches": 15
+            "matches": 16
           }
         }
       }
@@ -4404,7 +4486,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 3
       },
-      "lastUpdated": "2026-09-14T13:25:14.802Z",
+      "lastUpdated": "2026-09-24T03:14:21.278Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -4451,10 +4533,10 @@ const dashboardData = {
       "id": "3179681",
       "name": "Prasanth",
       "batting": {
-        "runs": 2590,
-        "innings": 262,
-        "average": 17.5,
-        "strikeRate": 110.49,
+        "runs": 2597,
+        "innings": 264,
+        "average": 17.31,
+        "strikeRate": 110.14,
         "highestScore": "41",
         "thirties": 12,
         "fifties": 0,
@@ -4462,31 +4544,31 @@ const dashboardData = {
         "fours": 163,
         "sixes": 129,
         "notOuts": 114,
-        "matches": 314
+        "matches": 317
       },
       "bowling": {
         "wickets": 206,
-        "overs": 565.5,
-        "economy": 7.86,
-        "average": 21.58,
+        "overs": 568.5,
+        "economy": 7.85,
+        "average": 21.67,
         "bestBowling": "5/8",
         "maidens": 7,
-        "runs": 4446,
-        "dotBalls": 1474,
-        "wides": 403,
+        "runs": 4463,
+        "dotBalls": 1488,
+        "wides": 411,
         "noBalls": 126,
         "threeWickets": 13,
         "fiveWickets": 1,
-        "matches": 314
+        "matches": 317
       },
       "fielding": {
-        "catches": 121,
+        "catches": 122,
         "stumpings": 1,
         "runOuts": 27,
-        "caughtBehind": 0,
-        "matches": 314
+        "caughtBehind": 1,
+        "matches": 317
       },
-      "lastUpdated": "2026-09-14T13:25:14.058Z",
+      "lastUpdated": "2026-09-24T03:14:19.786Z",
       "formats": {
         "box": {
           "batting": {
@@ -4528,10 +4610,10 @@ const dashboardData = {
         },
         "tennis": {
           "batting": {
-            "runs": 511,
-            "innings": 61,
-            "average": 13.81,
-            "strikeRate": 91.25,
+            "runs": 518,
+            "innings": 63,
+            "average": 13.28,
+            "strikeRate": 90.24,
             "highestScore": "37",
             "thirties": 2,
             "fifties": 0,
@@ -4539,29 +4621,29 @@ const dashboardData = {
             "fours": 42,
             "sixes": 9,
             "notOuts": 24,
-            "matches": 72
+            "matches": 75
           },
           "bowling": {
             "wickets": 29,
-            "overs": 84.5,
-            "economy": 8.29,
-            "average": 24.24,
+            "overs": 87.5,
+            "economy": 8.2,
+            "average": 24.83,
             "bestBowling": "3/20",
             "maidens": 0,
-            "runs": 703,
-            "dotBalls": 235,
-            "wides": 94,
+            "runs": 720,
+            "dotBalls": 249,
+            "wides": 102,
             "noBalls": 16,
             "threeWickets": 4,
             "fiveWickets": 0,
-            "matches": 72
+            "matches": 75
           },
           "fielding": {
-            "catches": 31,
+            "catches": 32,
             "stumpings": 0,
             "runOuts": 5,
-            "caughtBehind": 0,
-            "matches": 72
+            "caughtBehind": 1,
+            "matches": 75
           }
         }
       }
@@ -4570,42 +4652,42 @@ const dashboardData = {
       "id": "3224203",
       "name": "Praveen J",
       "batting": {
-        "runs": 305,
-        "innings": 51,
-        "average": 10.89,
-        "strikeRate": 73.67,
-        "highestScore": "28*",
-        "thirties": 0,
+        "runs": 344,
+        "innings": 52,
+        "average": 12.29,
+        "strikeRate": 76.79,
+        "highestScore": "39*",
+        "thirties": 1,
         "fifties": 0,
         "hundreds": 0,
-        "fours": 26,
-        "sixes": 3,
-        "notOuts": 23,
-        "matches": 66
+        "fours": 31,
+        "sixes": 4,
+        "notOuts": 24,
+        "matches": 68
       },
       "bowling": {
-        "wickets": 67,
-        "overs": 126.3,
-        "economy": 8.02,
-        "average": 15.13,
+        "wickets": 71,
+        "overs": 131.3,
+        "economy": 7.91,
+        "average": 14.65,
         "bestBowling": "5/8",
         "maidens": 3,
-        "runs": 1014,
-        "dotBalls": 355,
-        "wides": 51,
+        "runs": 1040,
+        "dotBalls": 374,
+        "wides": 53,
         "noBalls": 25,
-        "threeWickets": 7,
+        "threeWickets": 8,
         "fiveWickets": 1,
-        "matches": 66
+        "matches": 68
       },
       "fielding": {
         "catches": 21,
         "stumpings": 0,
         "runOuts": 4,
         "caughtBehind": 1,
-        "matches": 66
+        "matches": 68
       },
-      "lastUpdated": "2026-09-14T13:25:14.055Z",
+      "lastUpdated": "2026-09-24T03:14:19.828Z",
       "formats": {
         "box": {
           "batting": {
@@ -4647,40 +4729,40 @@ const dashboardData = {
         },
         "tennis": {
           "batting": {
-            "runs": 228,
-            "innings": 37,
-            "average": 9.12,
-            "strikeRate": 82.01,
-            "highestScore": "28*",
-            "thirties": 0,
+            "runs": 267,
+            "innings": 38,
+            "average": 10.68,
+            "strikeRate": 85.58,
+            "highestScore": "39*",
+            "thirties": 1,
             "fifties": 0,
             "hundreds": 0,
-            "fours": 23,
-            "sixes": 2,
-            "notOuts": 12,
-            "matches": 48
+            "fours": 28,
+            "sixes": 3,
+            "notOuts": 13,
+            "matches": 50
           },
           "bowling": {
-            "wickets": 59,
-            "overs": 109,
-            "economy": 7.23,
-            "average": 13.36,
+            "wickets": 63,
+            "overs": 114,
+            "economy": 7.14,
+            "average": 12.92,
             "bestBowling": "5/8",
             "maidens": 3,
-            "runs": 788,
-            "dotBalls": 315,
-            "wides": 42,
+            "runs": 814,
+            "dotBalls": 334,
+            "wides": 44,
             "noBalls": 15,
-            "threeWickets": 6,
+            "threeWickets": 7,
             "fiveWickets": 1,
-            "matches": 48
+            "matches": 50
           },
           "fielding": {
             "catches": 19,
             "stumpings": 0,
             "runOuts": 3,
             "caughtBehind": 0,
-            "matches": 48
+            "matches": 50
           }
         }
       }
@@ -4689,42 +4771,42 @@ const dashboardData = {
       "id": "49792919",
       "name": "Prithivi Raj",
       "batting": {
-        "runs": 858,
-        "innings": 80,
-        "average": 16.19,
-        "strikeRate": 123.28,
+        "runs": 941,
+        "innings": 86,
+        "average": 16.51,
+        "strikeRate": 123.82,
         "highestScore": "59*",
         "thirties": 2,
-        "fifties": 3,
+        "fifties": 4,
         "hundreds": 0,
-        "fours": 65,
-        "sixes": 51,
-        "notOuts": 27,
-        "matches": 102
+        "fours": 70,
+        "sixes": 58,
+        "notOuts": 29,
+        "matches": 109
       },
       "bowling": {
-        "wickets": 68,
-        "overs": 165.5,
-        "economy": 7.8,
-        "average": 19.01,
+        "wickets": 72,
+        "overs": 175.3,
+        "economy": 7.85,
+        "average": 19.14,
         "bestBowling": "4/6",
         "maidens": 8,
-        "runs": 1293,
-        "dotBalls": 482,
-        "wides": 131,
-        "noBalls": 8,
+        "runs": 1378,
+        "dotBalls": 505,
+        "wides": 137,
+        "noBalls": 9,
         "threeWickets": 6,
         "fiveWickets": 0,
-        "matches": 102
+        "matches": 109
       },
       "fielding": {
-        "catches": 13,
+        "catches": 14,
         "stumpings": 0,
         "runOuts": 7,
         "caughtBehind": 1,
-        "matches": 102
+        "matches": 109
       },
-      "lastUpdated": "2026-09-14T13:25:14.170Z",
+      "lastUpdated": "2026-09-24T03:14:19.921Z",
       "formats": {
         "box": {
           "batting": {
@@ -4766,40 +4848,40 @@ const dashboardData = {
         },
         "tennis": {
           "batting": {
-            "runs": 324,
-            "innings": 29,
-            "average": 15.43,
-            "strikeRate": 118.25,
+            "runs": 407,
+            "innings": 35,
+            "average": 16.28,
+            "strikeRate": 120.41,
             "highestScore": "59*",
             "thirties": 1,
-            "fifties": 2,
+            "fifties": 3,
             "hundreds": 0,
-            "fours": 35,
-            "sixes": 9,
-            "notOuts": 8,
-            "matches": 41
+            "fours": 40,
+            "sixes": 16,
+            "notOuts": 10,
+            "matches": 48
           },
           "bowling": {
-            "wickets": 48,
-            "overs": 91.5,
-            "economy": 5.42,
-            "average": 10.38,
+            "wickets": 52,
+            "overs": 101.3,
+            "economy": 5.74,
+            "average": 11.21,
             "bestBowling": "4/6",
             "maidens": 6,
-            "runs": 498,
-            "dotBalls": 312,
-            "wides": 61,
-            "noBalls": 5,
+            "runs": 583,
+            "dotBalls": 335,
+            "wides": 67,
+            "noBalls": 6,
             "threeWickets": 6,
             "fiveWickets": 0,
-            "matches": 41
+            "matches": 48
           },
           "fielding": {
-            "catches": 11,
+            "catches": 12,
             "stumpings": 0,
             "runOuts": 2,
             "caughtBehind": 0,
-            "matches": 41
+            "matches": 48
           }
         }
       }
@@ -4809,9 +4891,9 @@ const dashboardData = {
       "name": "Puzghal",
       "batting": {
         "runs": 53,
-        "innings": 6,
-        "average": 13.25,
-        "strikeRate": 91.38,
+        "innings": 7,
+        "average": 10.6,
+        "strikeRate": 88.33,
         "highestScore": "51*",
         "thirties": 0,
         "fifties": 1,
@@ -4819,7 +4901,7 @@ const dashboardData = {
         "fours": 3,
         "sixes": 3,
         "notOuts": 2,
-        "matches": 7
+        "matches": 10
       },
       "bowling": {
         "wickets": 3,
@@ -4834,24 +4916,24 @@ const dashboardData = {
         "noBalls": 1,
         "threeWickets": 0,
         "fiveWickets": 0,
-        "matches": 7
+        "matches": 10
       },
       "fielding": {
         "catches": 4,
         "stumpings": 0,
         "runOuts": 0,
         "caughtBehind": 0,
-        "matches": 7
+        "matches": 10
       },
-      "lastUpdated": "2026-09-14T13:25:14.101Z",
+      "lastUpdated": "2026-09-24T03:14:19.846Z",
       "formats": {
         "box": {},
         "tennis": {
           "batting": {
             "runs": 53,
-            "innings": 6,
-            "average": 13.25,
-            "strikeRate": 91.38,
+            "innings": 7,
+            "average": 10.6,
+            "strikeRate": 88.33,
             "highestScore": "51*",
             "thirties": 0,
             "fifties": 1,
@@ -4859,7 +4941,7 @@ const dashboardData = {
             "fours": 3,
             "sixes": 3,
             "notOuts": 2,
-            "matches": 7
+            "matches": 10
           },
           "bowling": {
             "wickets": 3,
@@ -4874,14 +4956,14 @@ const dashboardData = {
             "noBalls": 1,
             "threeWickets": 0,
             "fiveWickets": 0,
-            "matches": 7
+            "matches": 10
           },
           "fielding": {
             "catches": 4,
             "stumpings": 0,
             "runOuts": 0,
             "caughtBehind": 0,
-            "matches": 7
+            "matches": 10
           }
         }
       }
@@ -4901,7 +4983,7 @@ const dashboardData = {
         "fours": 1,
         "sixes": 0,
         "notOuts": 4,
-        "matches": 21
+        "matches": 22
       },
       "bowling": {
         "wickets": 0,
@@ -4916,16 +4998,16 @@ const dashboardData = {
         "noBalls": 0,
         "threeWickets": 0,
         "fiveWickets": 0,
-        "matches": 21
+        "matches": 22
       },
       "fielding": {
         "catches": 0,
         "stumpings": 0,
         "runOuts": 1,
         "caughtBehind": 0,
-        "matches": 21
+        "matches": 22
       },
-      "lastUpdated": "2026-09-14T13:25:14.128Z",
+      "lastUpdated": "2026-09-24T03:14:19.938Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -4941,7 +5023,7 @@ const dashboardData = {
             "fours": 1,
             "sixes": 0,
             "notOuts": 4,
-            "matches": 21
+            "matches": 22
           },
           "bowling": {
             "wickets": 0,
@@ -4956,14 +5038,14 @@ const dashboardData = {
             "noBalls": 0,
             "threeWickets": 0,
             "fiveWickets": 0,
-            "matches": 21
+            "matches": 22
           },
           "fielding": {
             "catches": 0,
             "stumpings": 0,
             "runOuts": 1,
             "caughtBehind": 0,
-            "matches": 21
+            "matches": 22
           }
         }
       }
@@ -5007,7 +5089,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 21
       },
-      "lastUpdated": "2026-09-14T13:25:14.271Z",
+      "lastUpdated": "2026-09-24T03:14:19.918Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -5089,7 +5171,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 9
       },
-      "lastUpdated": "2026-09-14T13:25:14.824Z",
+      "lastUpdated": "2026-09-24T03:14:21.333Z",
       "formats": {
         "box": {
           "batting": {
@@ -5208,7 +5290,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 8
       },
-      "lastUpdated": "2026-09-14T13:25:14.213Z",
+      "lastUpdated": "2026-09-24T03:14:20.188Z",
       "formats": {
         "box": {
           "batting": {
@@ -5292,42 +5374,42 @@ const dashboardData = {
       "id": "44877085",
       "name": "Ram Tkm Camera",
       "batting": {
-        "runs": 1236,
-        "innings": 146,
-        "average": 14.71,
-        "strikeRate": 113.5,
+        "runs": 1278,
+        "innings": 147,
+        "average": 15.04,
+        "strikeRate": 114.41,
         "highestScore": "50",
-        "thirties": 4,
+        "thirties": 5,
         "fifties": 1,
         "hundreds": 0,
-        "fours": 66,
+        "fours": 73,
         "sixes": 73,
         "notOuts": 62,
-        "matches": 190
+        "matches": 192
       },
       "bowling": {
-        "wickets": 88,
-        "overs": 249.4,
-        "economy": 9.49,
-        "average": 26.93,
+        "wickets": 90,
+        "overs": 251.4,
+        "economy": 9.46,
+        "average": 26.46,
         "bestBowling": "3/20",
         "maidens": 1,
-        "runs": 2370,
-        "dotBalls": 588,
-        "wides": 194,
+        "runs": 2381,
+        "dotBalls": 595,
+        "wides": 196,
         "noBalls": 12,
         "threeWickets": 2,
         "fiveWickets": 0,
-        "matches": 190
+        "matches": 192
       },
       "fielding": {
-        "catches": 61,
+        "catches": 64,
         "stumpings": 0,
         "runOuts": 20,
         "caughtBehind": 5,
-        "matches": 190
+        "matches": 192
       },
-      "lastUpdated": "2026-09-14T13:25:14.227Z",
+      "lastUpdated": "2026-09-24T03:14:20.003Z",
       "formats": {
         "box": {
           "batting": {
@@ -5369,40 +5451,40 @@ const dashboardData = {
         },
         "tennis": {
           "batting": {
-            "runs": 355,
-            "innings": 37,
-            "average": 12.24,
-            "strikeRate": 110.94,
+            "runs": 397,
+            "innings": 38,
+            "average": 13.23,
+            "strikeRate": 114.08,
             "highestScore": "45*",
-            "thirties": 2,
+            "thirties": 3,
             "fifties": 0,
             "hundreds": 0,
-            "fours": 39,
+            "fours": 46,
             "sixes": 5,
             "notOuts": 8,
-            "matches": 43
+            "matches": 45
           },
           "bowling": {
-            "wickets": 5,
-            "overs": 6.3,
-            "economy": 8.15,
-            "average": 10.6,
+            "wickets": 7,
+            "overs": 8.3,
+            "economy": 7.53,
+            "average": 9.14,
             "bestBowling": "2/4",
             "maidens": 0,
-            "runs": 53,
-            "dotBalls": 25,
-            "wides": 8,
+            "runs": 64,
+            "dotBalls": 32,
+            "wides": 10,
             "noBalls": 1,
             "threeWickets": 0,
             "fiveWickets": 0,
-            "matches": 43
+            "matches": 45
           },
           "fielding": {
-            "catches": 11,
+            "catches": 14,
             "stumpings": 0,
             "runOuts": 3,
             "caughtBehind": 2,
-            "matches": 43
+            "matches": 45
           }
         }
       }
@@ -5446,7 +5528,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 5
       },
-      "lastUpdated": "2026-09-14T13:25:14.247Z",
+      "lastUpdated": "2026-09-24T03:14:20.021Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -5528,7 +5610,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 24
       },
-      "lastUpdated": "2026-09-14T13:25:14.853Z",
+      "lastUpdated": "2026-09-24T03:14:21.299Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -5610,7 +5692,7 @@ const dashboardData = {
         "caughtBehind": 1,
         "matches": 17
       },
-      "lastUpdated": "2026-09-14T13:25:14.296Z",
+      "lastUpdated": "2026-09-24T03:14:20.529Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -5657,10 +5739,10 @@ const dashboardData = {
       "id": "50519348",
       "name": "Saran 007",
       "batting": {
-        "runs": 167,
-        "innings": 26,
-        "average": 7.26,
-        "strikeRate": 87.43,
+        "runs": 173,
+        "innings": 28,
+        "average": 6.92,
+        "strikeRate": 86.07,
         "highestScore": "22",
         "thirties": 0,
         "fifties": 0,
@@ -5668,39 +5750,39 @@ const dashboardData = {
         "fours": 15,
         "sixes": 3,
         "notOuts": 3,
-        "matches": 41
+        "matches": 44
       },
       "bowling": {
         "wickets": 40,
-        "overs": 92.5,
-        "economy": 6.87,
-        "average": 15.95,
+        "overs": 98.5,
+        "economy": 6.92,
+        "average": 17.1,
         "bestBowling": "4/9",
         "maidens": 1,
-        "runs": 638,
-        "dotBalls": 289,
-        "wides": 100,
-        "noBalls": 13,
+        "runs": 684,
+        "dotBalls": 306,
+        "wides": 106,
+        "noBalls": 14,
         "threeWickets": 3,
         "fiveWickets": 0,
-        "matches": 41
+        "matches": 44
       },
       "fielding": {
         "catches": 9,
         "stumpings": 0,
         "runOuts": 2,
         "caughtBehind": 0,
-        "matches": 41
+        "matches": 44
       },
-      "lastUpdated": "2026-09-14T13:25:14.293Z",
+      "lastUpdated": "2026-09-24T03:14:20.120Z",
       "formats": {
         "box": {},
         "tennis": {
           "batting": {
-            "runs": 167,
-            "innings": 26,
-            "average": 7.26,
-            "strikeRate": 87.43,
+            "runs": 173,
+            "innings": 28,
+            "average": 6.92,
+            "strikeRate": 86.07,
             "highestScore": "22",
             "thirties": 0,
             "fifties": 0,
@@ -5708,29 +5790,29 @@ const dashboardData = {
             "fours": 15,
             "sixes": 3,
             "notOuts": 3,
-            "matches": 41
+            "matches": 44
           },
           "bowling": {
             "wickets": 40,
-            "overs": 92.5,
-            "economy": 6.87,
-            "average": 15.95,
+            "overs": 98.5,
+            "economy": 6.92,
+            "average": 17.1,
             "bestBowling": "4/9",
             "maidens": 1,
-            "runs": 638,
-            "dotBalls": 289,
-            "wides": 100,
-            "noBalls": 13,
+            "runs": 684,
+            "dotBalls": 306,
+            "wides": 106,
+            "noBalls": 14,
             "threeWickets": 3,
             "fiveWickets": 0,
-            "matches": 41
+            "matches": 44
           },
           "fielding": {
             "catches": 9,
             "stumpings": 0,
             "runOuts": 2,
             "caughtBehind": 0,
-            "matches": 41
+            "matches": 44
           }
         }
       }
@@ -5774,7 +5856,7 @@ const dashboardData = {
         "caughtBehind": 4,
         "matches": 282
       },
-      "lastUpdated": "2026-09-14T13:25:14.361Z",
+      "lastUpdated": "2026-09-24T03:14:20.250Z",
       "formats": {
         "box": {
           "batting": {
@@ -5893,7 +5975,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 1
       },
-      "lastUpdated": "2026-09-14T13:25:14.336Z",
+      "lastUpdated": "2026-09-24T03:14:20.244Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -5940,42 +6022,42 @@ const dashboardData = {
       "id": "52078574",
       "name": "Shanmugam",
       "batting": {
-        "runs": 193,
-        "innings": 30,
-        "average": 12.06,
-        "strikeRate": 102.12,
+        "runs": 194,
+        "innings": 31,
+        "average": 12.13,
+        "strikeRate": 102.11,
         "highestScore": "34",
         "thirties": 1,
         "fifties": 0,
         "hundreds": 0,
         "fours": 12,
         "sixes": 9,
-        "notOuts": 14,
-        "matches": 57
+        "notOuts": 15,
+        "matches": 58
       },
       "bowling": {
         "wickets": 29,
-        "overs": 50.3,
-        "economy": 8.3,
-        "average": 14.45,
+        "overs": 53.3,
+        "economy": 8.06,
+        "average": 14.86,
         "bestBowling": "4/13",
         "maidens": 1,
-        "runs": 419,
-        "dotBalls": 137,
-        "wides": 56,
-        "noBalls": 2,
+        "runs": 431,
+        "dotBalls": 148,
+        "wides": 57,
+        "noBalls": 3,
         "threeWickets": 3,
         "fiveWickets": 0,
-        "matches": 57
+        "matches": 58
       },
       "fielding": {
         "catches": 11,
         "stumpings": 1,
         "runOuts": 2,
         "caughtBehind": 1,
-        "matches": 57
+        "matches": 58
       },
-      "lastUpdated": "2026-09-14T13:25:14.355Z",
+      "lastUpdated": "2026-09-24T03:14:20.395Z",
       "formats": {
         "box": {
           "batting": {
@@ -6017,40 +6099,40 @@ const dashboardData = {
         },
         "tennis": {
           "batting": {
-            "runs": 59,
-            "innings": 10,
-            "average": 9.83,
-            "strikeRate": 75.64,
+            "runs": 60,
+            "innings": 11,
+            "average": 10,
+            "strikeRate": 75.95,
             "highestScore": "14",
             "thirties": 0,
             "fifties": 0,
             "hundreds": 0,
             "fours": 2,
             "sixes": 2,
-            "notOuts": 4,
-            "matches": 19
+            "notOuts": 5,
+            "matches": 20
           },
           "bowling": {
             "wickets": 20,
-            "overs": 26,
-            "economy": 6.69,
-            "average": 8.7,
+            "overs": 29,
+            "economy": 6.41,
+            "average": 9.3,
             "bestBowling": "4/13",
             "maidens": 0,
-            "runs": 174,
-            "dotBalls": 88,
-            "wides": 43,
-            "noBalls": 2,
+            "runs": 186,
+            "dotBalls": 99,
+            "wides": 44,
+            "noBalls": 3,
             "threeWickets": 3,
             "fiveWickets": 0,
-            "matches": 19
+            "matches": 20
           },
           "fielding": {
             "catches": 6,
             "stumpings": 0,
             "runOuts": 0,
             "caughtBehind": 0,
-            "matches": 19
+            "matches": 20
           }
         }
       }
@@ -6094,7 +6176,7 @@ const dashboardData = {
         "caughtBehind": 1,
         "matches": 81
       },
-      "lastUpdated": "2026-09-14T13:25:14.373Z",
+      "lastUpdated": "2026-09-24T03:14:20.397Z",
       "formats": {
         "box": {
           "batting": {
@@ -6213,7 +6295,7 @@ const dashboardData = {
         "caughtBehind": 2,
         "matches": 5
       },
-      "lastUpdated": "2026-09-14T13:25:14.862Z",
+      "lastUpdated": "2026-09-24T03:14:21.315Z",
       "formats": {
         "box": {
           "batting": {
@@ -6297,10 +6379,10 @@ const dashboardData = {
       "id": "50519307",
       "name": "Sriram",
       "batting": {
-        "runs": 8,
-        "innings": 1,
-        "average": 0,
-        "strikeRate": 72.73,
+        "runs": 10,
+        "innings": 2,
+        "average": 10,
+        "strikeRate": 62.5,
         "highestScore": "8*",
         "thirties": 0,
         "fifties": 0,
@@ -6308,39 +6390,39 @@ const dashboardData = {
         "fours": 0,
         "sixes": 0,
         "notOuts": 1,
-        "matches": 6
+        "matches": 7
       },
       "bowling": {
-        "wickets": 1,
-        "overs": 1,
-        "economy": 3,
-        "average": 3,
+        "wickets": 2,
+        "overs": 3,
+        "economy": 4,
+        "average": 6,
         "bestBowling": "1/3",
         "maidens": 0,
-        "runs": 3,
-        "dotBalls": 4,
-        "wides": 1,
+        "runs": 12,
+        "dotBalls": 9,
+        "wides": 3,
         "noBalls": 0,
         "threeWickets": 0,
         "fiveWickets": 0,
-        "matches": 6
+        "matches": 7
       },
       "fielding": {
         "catches": 0,
         "stumpings": 0,
         "runOuts": 0,
         "caughtBehind": 0,
-        "matches": 6
+        "matches": 7
       },
-      "lastUpdated": "2026-09-14T13:25:14.419Z",
+      "lastUpdated": "2026-09-24T03:14:20.403Z",
       "formats": {
         "box": {},
         "tennis": {
           "batting": {
-            "runs": 8,
-            "innings": 1,
-            "average": 0,
-            "strikeRate": 72.73,
+            "runs": 10,
+            "innings": 2,
+            "average": 10,
+            "strikeRate": 62.5,
             "highestScore": "8*",
             "thirties": 0,
             "fifties": 0,
@@ -6348,29 +6430,29 @@ const dashboardData = {
             "fours": 0,
             "sixes": 0,
             "notOuts": 1,
-            "matches": 6
+            "matches": 7
           },
           "bowling": {
-            "wickets": 1,
-            "overs": 1,
-            "economy": 3,
-            "average": 3,
+            "wickets": 2,
+            "overs": 3,
+            "economy": 4,
+            "average": 6,
             "bestBowling": "1/3",
             "maidens": 0,
-            "runs": 3,
-            "dotBalls": 4,
-            "wides": 1,
+            "runs": 12,
+            "dotBalls": 9,
+            "wides": 3,
             "noBalls": 0,
             "threeWickets": 0,
             "fiveWickets": 0,
-            "matches": 6
+            "matches": 7
           },
           "fielding": {
             "catches": 0,
             "stumpings": 0,
             "runOuts": 0,
             "caughtBehind": 0,
-            "matches": 6
+            "matches": 7
           }
         }
       }
@@ -6414,7 +6496,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 24
       },
-      "lastUpdated": "2026-09-14T13:25:14.453Z",
+      "lastUpdated": "2026-09-24T03:14:20.512Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -6496,7 +6578,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 4
       },
-      "lastUpdated": "2026-09-14T13:25:14.425Z",
+      "lastUpdated": "2026-09-24T03:14:20.511Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -6578,7 +6660,7 @@ const dashboardData = {
         "caughtBehind": 5,
         "matches": 96
       },
-      "lastUpdated": "2026-09-14T13:25:14.478Z",
+      "lastUpdated": "2026-09-24T03:14:20.513Z",
       "formats": {
         "box": {
           "batting": {
@@ -6662,80 +6744,80 @@ const dashboardData = {
       "id": "48320216",
       "name": "Vicky K",
       "batting": {
-        "runs": 35,
-        "innings": 10,
-        "average": 5,
-        "strikeRate": 54.69,
+        "runs": 47,
+        "innings": 12,
+        "average": 5.22,
+        "strikeRate": 65.28,
         "highestScore": "15",
         "thirties": 0,
         "fifties": 0,
         "hundreds": 0,
         "fours": 2,
-        "sixes": 1,
+        "sixes": 2,
         "notOuts": 3,
-        "matches": 17
+        "matches": 19
       },
       "bowling": {
-        "wickets": 17,
-        "overs": 48,
-        "economy": 7.52,
-        "average": 21.24,
+        "wickets": 19,
+        "overs": 52,
+        "economy": 7.27,
+        "average": 19.89,
         "bestBowling": "3/3",
         "maidens": 1,
-        "runs": 361,
-        "dotBalls": 143,
-        "wides": 17,
+        "runs": 378,
+        "dotBalls": 157,
+        "wides": 20,
         "noBalls": 8,
         "threeWickets": 2,
         "fiveWickets": 0,
-        "matches": 17
+        "matches": 19
       },
       "fielding": {
         "catches": 4,
         "stumpings": 0,
-        "runOuts": 1,
+        "runOuts": 2,
         "caughtBehind": 0,
-        "matches": 17
+        "matches": 19
       },
-      "lastUpdated": "2026-09-14T13:25:14.903Z",
+      "lastUpdated": "2026-09-24T03:14:21.392Z",
       "formats": {
         "box": {},
         "tennis": {
           "batting": {
-            "runs": 25,
-            "innings": 5,
-            "average": 5,
-            "strikeRate": 80.65,
+            "runs": 37,
+            "innings": 7,
+            "average": 5.29,
+            "strikeRate": 94.87,
             "highestScore": "15",
             "thirties": 0,
             "fifties": 0,
             "hundreds": 0,
             "fours": 1,
-            "sixes": 1,
+            "sixes": 2,
             "notOuts": 0,
-            "matches": 9
+            "matches": 11
           },
           "bowling": {
-            "wickets": 11,
-            "overs": 25.3,
-            "economy": 6.9,
-            "average": 16,
+            "wickets": 13,
+            "overs": 29.3,
+            "economy": 6.54,
+            "average": 14.85,
             "bestBowling": "3/18",
             "maidens": 0,
-            "runs": 176,
-            "dotBalls": 75,
-            "wides": 6,
+            "runs": 193,
+            "dotBalls": 89,
+            "wides": 9,
             "noBalls": 5,
             "threeWickets": 1,
             "fiveWickets": 0,
-            "matches": 9
+            "matches": 11
           },
           "fielding": {
             "catches": 2,
             "stumpings": 0,
-            "runOuts": 0,
+            "runOuts": 1,
             "caughtBehind": 0,
-            "matches": 9
+            "matches": 11
           }
         }
       }
@@ -6779,7 +6861,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 2
       },
-      "lastUpdated": "2026-09-14T13:25:14.482Z",
+      "lastUpdated": "2026-09-24T03:14:20.795Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -6826,42 +6908,42 @@ const dashboardData = {
       "id": "3224784",
       "name": "VIGNESHWARAN JEGANATH",
       "batting": {
-        "runs": 3135,
-        "innings": 225,
-        "average": 21.77,
-        "strikeRate": 148.23,
+        "runs": 3150,
+        "innings": 227,
+        "average": 21.58,
+        "strikeRate": 147.54,
         "highestScore": "55*",
         "thirties": 21,
         "fifties": 4,
         "hundreds": 0,
-        "fours": 198,
+        "fours": 199,
         "sixes": 230,
         "notOuts": 81,
-        "matches": 250
+        "matches": 253
       },
       "bowling": {
-        "wickets": 185,
-        "overs": 423.3,
-        "economy": 8.18,
-        "average": 18.72,
+        "wickets": 186,
+        "overs": 427.3,
+        "economy": 8.14,
+        "average": 18.7,
         "bestBowling": "4/14",
         "maidens": 3,
-        "runs": 3464,
-        "dotBalls": 973,
-        "wides": 259,
+        "runs": 3479,
+        "dotBalls": 986,
+        "wides": 260,
         "noBalls": 56,
         "threeWickets": 11,
         "fiveWickets": 0,
-        "matches": 250
+        "matches": 253
       },
       "fielding": {
-        "catches": 80,
-        "stumpings": 3,
+        "catches": 83,
+        "stumpings": 4,
         "runOuts": 23,
         "caughtBehind": 10,
-        "matches": 250
+        "matches": 253
       },
-      "lastUpdated": "2026-09-14T13:25:14.534Z",
+      "lastUpdated": "2026-09-24T03:14:20.851Z",
       "formats": {
         "box": {
           "batting": {
@@ -6903,40 +6985,40 @@ const dashboardData = {
         },
         "tennis": {
           "batting": {
-            "runs": 495,
-            "innings": 42,
-            "average": 14.56,
-            "strikeRate": 120.44,
+            "runs": 510,
+            "innings": 44,
+            "average": 14.17,
+            "strikeRate": 118.33,
             "highestScore": "40*",
             "thirties": 2,
             "fifties": 0,
             "hundreds": 0,
-            "fours": 48,
+            "fours": 49,
             "sixes": 11,
             "notOuts": 8,
-            "matches": 45
+            "matches": 48
           },
           "bowling": {
-            "wickets": 35,
-            "overs": 69,
-            "economy": 7.45,
+            "wickets": 36,
+            "overs": 73,
+            "economy": 7.25,
             "average": 14.69,
             "bestBowling": "4/14",
             "maidens": 2,
-            "runs": 514,
-            "dotBalls": 184,
-            "wides": 43,
+            "runs": 529,
+            "dotBalls": 197,
+            "wides": 44,
             "noBalls": 4,
             "threeWickets": 4,
             "fiveWickets": 0,
-            "matches": 45
+            "matches": 48
           },
           "fielding": {
-            "catches": 15,
-            "stumpings": 0,
+            "catches": 18,
+            "stumpings": 1,
             "runOuts": 1,
             "caughtBehind": 7,
-            "matches": 45
+            "matches": 48
           }
         }
       }
@@ -6945,80 +7027,162 @@ const dashboardData = {
       "id": "53476447",
       "name": "Vijay",
       "batting": {
-        "runs": 8,
-        "innings": 4,
-        "average": 2,
-        "strikeRate": 40,
+        "runs": 12,
+        "innings": 5,
+        "average": 3,
+        "strikeRate": 50,
         "highestScore": "7",
         "thirties": 0,
         "fifties": 0,
         "hundreds": 0,
         "fours": 0,
         "sixes": 0,
-        "notOuts": 0,
-        "matches": 7
+        "notOuts": 1,
+        "matches": 8
       },
       "bowling": {
-        "wickets": 9,
-        "overs": 8.1,
-        "economy": 5.02,
-        "average": 4.56,
+        "wickets": 11,
+        "overs": 11.1,
+        "economy": 5.55,
+        "average": 5.64,
         "bestBowling": "3/4",
         "maidens": 0,
-        "runs": 41,
-        "dotBalls": 33,
-        "wides": 10,
-        "noBalls": 0,
+        "runs": 62,
+        "dotBalls": 45,
+        "wides": 20,
+        "noBalls": 1,
         "threeWickets": 1,
         "fiveWickets": 0,
-        "matches": 7
+        "matches": 8
       },
       "fielding": {
         "catches": 3,
         "stumpings": 0,
         "runOuts": 0,
         "caughtBehind": 0,
-        "matches": 7
+        "matches": 8
       },
-      "lastUpdated": "2026-09-14T13:25:14.508Z",
+      "lastUpdated": "2026-09-24T03:14:20.796Z",
       "formats": {
         "box": {},
         "tennis": {
           "batting": {
-            "runs": 8,
-            "innings": 4,
-            "average": 2,
-            "strikeRate": 40,
+            "runs": 12,
+            "innings": 5,
+            "average": 3,
+            "strikeRate": 50,
             "highestScore": "7",
             "thirties": 0,
             "fifties": 0,
             "hundreds": 0,
             "fours": 0,
             "sixes": 0,
-            "notOuts": 0,
-            "matches": 7
+            "notOuts": 1,
+            "matches": 8
           },
           "bowling": {
-            "wickets": 9,
-            "overs": 8.1,
-            "economy": 5.02,
-            "average": 4.56,
+            "wickets": 11,
+            "overs": 11.1,
+            "economy": 5.55,
+            "average": 5.64,
             "bestBowling": "3/4",
             "maidens": 0,
-            "runs": 41,
-            "dotBalls": 33,
-            "wides": 10,
-            "noBalls": 0,
+            "runs": 62,
+            "dotBalls": 45,
+            "wides": 20,
+            "noBalls": 1,
             "threeWickets": 1,
             "fiveWickets": 0,
-            "matches": 7
+            "matches": 8
           },
           "fielding": {
             "catches": 3,
             "stumpings": 0,
             "runOuts": 0,
             "caughtBehind": 0,
-            "matches": 7
+            "matches": 8
+          }
+        }
+      }
+    },
+    {
+      "id": "13277087",
+      "name": "Vijay",
+      "batting": {
+        "runs": 5,
+        "innings": 1,
+        "average": 5,
+        "strikeRate": 55.56,
+        "highestScore": "5",
+        "thirties": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 1,
+        "sixes": 0,
+        "notOuts": 0,
+        "matches": 2
+      },
+      "bowling": {
+        "wickets": 1,
+        "overs": 2,
+        "economy": 5.5,
+        "average": 11,
+        "bestBowling": "1/9",
+        "maidens": 0,
+        "runs": 11,
+        "dotBalls": 10,
+        "wides": 4,
+        "noBalls": 0,
+        "threeWickets": 0,
+        "fiveWickets": 0,
+        "matches": 2
+      },
+      "fielding": {
+        "catches": 1,
+        "stumpings": 0,
+        "runOuts": 0,
+        "caughtBehind": 0,
+        "matches": 2
+      },
+      "lastUpdated": "2026-09-24T03:14:20.834Z",
+      "formats": {
+        "box": {},
+        "tennis": {
+          "batting": {
+            "runs": 5,
+            "innings": 1,
+            "average": 5,
+            "strikeRate": 55.56,
+            "highestScore": "5",
+            "thirties": 0,
+            "fifties": 0,
+            "hundreds": 0,
+            "fours": 1,
+            "sixes": 0,
+            "notOuts": 0,
+            "matches": 2
+          },
+          "bowling": {
+            "wickets": 1,
+            "overs": 2,
+            "economy": 5.5,
+            "average": 11,
+            "bestBowling": "1/9",
+            "maidens": 0,
+            "runs": 11,
+            "dotBalls": 10,
+            "wides": 4,
+            "noBalls": 0,
+            "threeWickets": 0,
+            "fiveWickets": 0,
+            "matches": 2
+          },
+          "fielding": {
+            "catches": 1,
+            "stumpings": 0,
+            "runOuts": 0,
+            "caughtBehind": 0,
+            "matches": 2
           }
         }
       }
@@ -7062,7 +7226,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 5
       },
-      "lastUpdated": "2026-09-14T13:25:14.902Z",
+      "lastUpdated": "2026-09-24T03:14:21.396Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -7144,7 +7308,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 0
       },
-      "lastUpdated": "2026-09-14T13:25:14.545Z"
+      "lastUpdated": "2026-09-24T03:14:20.979Z"
     },
     {
       "id": "23651211",
@@ -7185,7 +7349,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 1
       },
-      "lastUpdated": "2026-09-14T13:25:14.540Z",
+      "lastUpdated": "2026-09-24T03:14:20.963Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -7232,18 +7396,18 @@ const dashboardData = {
       "id": "41474289",
       "name": "Vmr",
       "batting": {
-        "runs": 2189,
-        "innings": 165,
-        "average": 23.54,
-        "strikeRate": 143.45,
+        "runs": 2212,
+        "innings": 166,
+        "average": 23.53,
+        "strikeRate": 142.99,
         "highestScore": "54*",
         "thirties": 15,
         "fifties": 2,
         "hundreds": 0,
-        "fours": 137,
-        "sixes": 172,
+        "fours": 138,
+        "sixes": 174,
         "notOuts": 72,
-        "matches": 194
+        "matches": 196
       },
       "bowling": {
         "wickets": 131,
@@ -7258,16 +7422,16 @@ const dashboardData = {
         "noBalls": 35,
         "threeWickets": 10,
         "fiveWickets": 0,
-        "matches": 194
+        "matches": 196
       },
       "fielding": {
         "catches": 39,
         "stumpings": 0,
         "runOuts": 11,
         "caughtBehind": 3,
-        "matches": 194
+        "matches": 196
       },
-      "lastUpdated": "2026-09-14T13:25:14.635Z",
+      "lastUpdated": "2026-09-24T03:14:20.981Z",
       "formats": {
         "box": {
           "batting": {
@@ -7309,18 +7473,18 @@ const dashboardData = {
         },
         "tennis": {
           "batting": {
-            "runs": 428,
-            "innings": 26,
-            "average": 25.18,
-            "strikeRate": 149.65,
+            "runs": 451,
+            "innings": 27,
+            "average": 25.06,
+            "strikeRate": 146.91,
             "highestScore": "42",
             "thirties": 3,
             "fifties": 0,
             "hundreds": 0,
-            "fours": 41,
-            "sixes": 22,
+            "fours": 42,
+            "sixes": 24,
             "notOuts": 9,
-            "matches": 31
+            "matches": 33
           },
           "bowling": {
             "wickets": 16,
@@ -7335,14 +7499,14 @@ const dashboardData = {
             "noBalls": 8,
             "threeWickets": 3,
             "fiveWickets": 0,
-            "matches": 31
+            "matches": 33
           },
           "fielding": {
             "catches": 13,
             "stumpings": 0,
             "runOuts": 3,
             "caughtBehind": 2,
-            "matches": 31
+            "matches": 33
           }
         }
       }
@@ -7386,7 +7550,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 18
       },
-      "lastUpdated": "2026-09-14T13:25:14.602Z",
+      "lastUpdated": "2026-09-24T03:14:21.006Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -7468,7 +7632,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 8
       },
-      "lastUpdated": "2026-09-14T13:25:14.908Z",
+      "lastUpdated": "2026-09-24T03:14:21.392Z",
       "formats": {
         "box": {},
         "tennis": {
@@ -7550,7 +7714,7 @@ const dashboardData = {
         "caughtBehind": 0,
         "matches": 41
       },
-      "lastUpdated": "2026-09-14T13:25:14.958Z",
+      "lastUpdated": "2026-09-24T03:14:21.438Z",
       "formats": {
         "box": {
           "batting": {
@@ -7606,9 +7770,9 @@ const dashboardData = {
         "3179681",
         "41473990",
         "44877085",
+        "49792919",
         "30000671",
         "3224827",
-        "49792919",
         "43668809",
         "3224791",
         "50511636",
@@ -7618,8 +7782,9 @@ const dashboardData = {
         "50519541",
         "52078574",
         "41832657",
-        "3224824",
         "52912684",
+        "3224824",
+        "51293275",
         "3224203",
         "42047823",
         "32005843",
@@ -7627,9 +7792,8 @@ const dashboardData = {
         "14373666",
         "43183920",
         "22159981",
-        "51564179",
-        "51293275",
         "3224789",
+        "51564179",
         "52294685",
         "3227167",
         "50749899",
@@ -7638,13 +7802,14 @@ const dashboardData = {
         "51020763",
         "52858716",
         "50511639",
+        "50511642",
         "32928266",
+        "53368586",
         "38457602",
         "49129928",
         "40398708",
-        "48320216",
         "50519480",
-        "50511642",
+        "48320216",
         "3224806",
         "3224846",
         "37775058",
@@ -7667,7 +7832,6 @@ const dashboardData = {
         "39280713",
         "52501921",
         "50519307",
-        "53368586",
         "49291545",
         "49288825",
         "42504857",
@@ -7689,9 +7853,9 @@ const dashboardData = {
         "50519348",
         "50519541",
         "3224846",
+        "44877085",
         "40398708",
         "52912684",
-        "44877085",
         "52078574",
         "3224791",
         "48320216",
@@ -7719,13 +7883,13 @@ const dashboardData = {
         "3224824",
         "43668809",
         "41833160",
+        "3224789",
         "53368586",
         "43184469",
-        "3224789",
         "52858716",
+        "39280713",
         "50519307",
         "48658210",
-        "39280713",
         "52294797",
         "49015857",
         "49289038",
@@ -7778,19 +7942,20 @@ const dashboardData = {
         "3224839",
         "50519348",
         "52858716",
-        "51564179",
         "52912684",
+        "51564179",
         "50511639",
         "50519541",
         "41832657",
         "3227167",
+        "3224789",
         "32005843",
         "48320216",
         "50749899",
         "3224846",
-        "3224789",
         "43184469",
         "42504857",
+        "53368586",
         "52294685",
         "22159981",
         "53476447",
@@ -7802,7 +7967,6 @@ const dashboardData = {
         "1317491",
         "46171603",
         "32928266",
-        "53368586",
         "48658210",
         "51020763",
         "38457602",
@@ -7852,13 +8016,13 @@ const dashboardData = {
         "3224839",
         "44877094",
         "43183920",
-        "42047823",
         "51564179",
+        "42047823",
         "41474287",
+        "50749899",
         "48320216",
-        "3224846",
         "38457602",
-        "50749899"
+        "3224846"
       ]
     },
     "box": {
@@ -8004,13 +8168,13 @@ const dashboardData = {
         "3224822",
         "41474289",
         "3224784",
+        "49792919",
         "3179681",
         "41473990",
         "3224791",
         "44877085",
         "50511636",
         "41473993",
-        "49792919",
         "3224827",
         "41473991",
         "50519541",
@@ -8022,14 +8186,16 @@ const dashboardData = {
         "3224824",
         "30000671",
         "50519348",
-        "41832657",
         "52912684",
-        "42047823",
+        "41832657",
         "51564179",
+        "53368586",
+        "42047823",
         "52294685",
         "41474287",
         "22159981",
         "14373666",
+        "3224789",
         "50511639",
         "52078574",
         "1317491",
@@ -8038,7 +8204,6 @@ const dashboardData = {
         "50749899",
         "48320216",
         "50511642",
-        "3224789",
         "50519480",
         "3224806",
         "40398708",
@@ -8049,8 +8214,8 @@ const dashboardData = {
         "52294741",
         "32928266",
         "43668809",
-        "46171603",
         "52294797",
+        "46171603",
         "49792859",
         "30004585",
         "52858716",
@@ -8064,7 +8229,6 @@ const dashboardData = {
         "39280713",
         "52501921",
         "50519307",
-        "53368586",
         "49291545",
         "49288825",
         "42504857",
@@ -8072,22 +8236,22 @@ const dashboardData = {
         "51565141"
       ],
       "bowling": [
-        "49792919",
         "3224203",
+        "49792919",
         "50511636",
-        "50519348",
         "3224784",
+        "50519348",
         "3224822",
         "3179681",
-        "41473990",
         "52078574",
+        "41473990",
         "50519541",
         "53476447",
         "41474289",
-        "3224791",
         "40398708",
-        "3224846",
+        "3224791",
         "52912684",
+        "3224846",
         "48320216",
         "3224806",
         "42504857",
@@ -8096,11 +8260,11 @@ const dashboardData = {
         "41473991",
         "32005843",
         "41473993",
-        "51293275",
+        "44877085",
         "30000671",
         "49015980",
+        "51293275",
         "3224824",
-        "44877085",
         "50749899",
         "3224839",
         "3224827",
@@ -8149,18 +8313,18 @@ const dashboardData = {
         "3224824",
         "3224822",
         "3224203",
+        "50511636",
         "3224784",
         "41474289",
-        "50511636",
         "41473990",
-        "49792919",
         "44877085",
         "31974223",
+        "49792919",
         "50519348",
         "44877094",
+        "52912684",
         "30000671",
         "51564179",
-        "52912684",
         "50511639",
         "3224839",
         "50519541",
@@ -8170,8 +8334,9 @@ const dashboardData = {
         "42047823",
         "50749899",
         "3224846",
-        "52858716",
         "3224789",
+        "53368586",
+        "52858716",
         "41473991",
         "42504857",
         "52294685",
@@ -8182,7 +8347,6 @@ const dashboardData = {
         "49015857",
         "50519480",
         "1317491",
-        "53368586",
         "32005843",
         "51020763",
         "48320216",
@@ -8216,34 +8380,35 @@ const dashboardData = {
         "50749965"
       ],
       "allrounder": [
-        "3224822",
         "49792919",
+        "3224822",
         "50511636",
         "3224784",
         "41474289",
         "3179681",
         "41473990",
-        "31974223",
         "3224203",
+        "31974223",
         "3224791",
         "41473993",
+        "44877085",
         "50519348",
         "41473991",
         "50519541",
-        "44877085",
         "3224827",
-        "51293275",
         "52912684",
-        "30000671",
+        "51293275",
         "3224824",
+        "30000671",
+        "51564179",
         "52078574",
         "3224839",
-        "51564179",
         "48320216",
         "44877094",
         "3224846",
         "3224806",
         "50749899",
+        "3224789",
         "52294685"
       ]
     }
